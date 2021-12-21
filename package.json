@@ -1,0 +1,35 @@
+{
+  "name": "lilsebastian",
+  "version": "1.0.0",
+  "description": "FEC Project Catwalk",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FrontEnd2EZ/lilSebastian.git"
+  },
+  "author": "Meilin Chen, John Razi, Ginwoo Pak, Jacob Hawkins",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FrontEnd2EZ/lilSebastian/issues"
+  },
+  "homepage": "https://github.com/FrontEnd2EZ/lilSebastian#readme",
+  "devDependencies": {
+    "@babel/core": "^7.16.5",
+    "@babel/preset-env": "^7.16.5",
+    "@babel/preset-react": "^7.16.5",
+    "babel-loader": "^8.2.3",
+    "webpack": "^5.65.0",
+    "webpack-cli": "^4.9.1"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-react"
+    ]
+  },
+  "dependencies": {
+    "react-dom": "^17.0.2"
+  }
+}
