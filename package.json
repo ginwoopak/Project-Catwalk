@@ -4,7 +4,9 @@
   "description": "FEC Project Catwalk",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack -w",
+    "start": "nodemon server/index.js"
   },
   "repository": {
     "type": "git",
@@ -26,10 +28,16 @@
   },
   "babel": {
     "presets": [
-      "@babel/preset-react"
+      "@babel/preset-react",
+      "@babel/preset-env"
     ]
   },
   "dependencies": {
-    "react-dom": "^17.0.2"
+    "axios": "^0.24.0",
+    "express": "^4.17.2",
+    "nodemon": "^2.0.15",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "underscore": "^1.13.2"
   }
 }
