@@ -8,8 +8,8 @@ class AddToCart extends React.Component {
 
   render() {
     return (
-      <div>
-        <span>STARS</span><span href='#'>Read All Reviews</span><br/>
+      <>
+        <span>STARS</span><span href='#'>Read All Reviews</span>
         <h6>CATEGORY</h6>
         <h2>Expanded Product Name</h2>
         <a>price</a>
@@ -27,7 +27,7 @@ class AddToCart extends React.Component {
         </select>
         <button>Add to Cart</button>
         <button>Favorite</button>
-      </div>
+      </>
     );
   }
 }

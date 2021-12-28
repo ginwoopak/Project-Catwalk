@@ -11,11 +11,10 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <ImageGallery />
-        <AddToCart />
+      <>
+        <div><ImageGallery /><AddToCart /></div>
         <ProductInfo />
-      </div>
+      </>
     );
   }
 }
