@@ -1,0 +1,4 @@
+.rowQuestion {
+  display: flex;
+  flex-direction:row;
+}

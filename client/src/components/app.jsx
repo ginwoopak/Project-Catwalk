@@ -1,4 +1,5 @@
 import React from 'react';
+import QuestionsAnswers from './QA/QuestionsAnswers.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -9,7 +10,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>Hello World</div>
+      <QuestionsAnswers />
     );
   }
 }
