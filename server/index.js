@@ -4,13 +4,8 @@ const path = require('path');
 const PORT = 3000;
 const app = express();
 
-app.use(express.static(path.join(__dirname, '..', '/dist')));
-
-app.get('/', (req, res) => {
-  res.send('Hello from the server!');
-  res.end();
-})
+app.use(express.static('client/dist'));
 
 app.listen(PORT, () => {
-  console.log(`Server listening at localhost:${3000}`);
+  console.log(`Server listening at localhost:${PORT}`);
 })
