@@ -1,4 +1,6 @@
-import React from 'react';
+import React/*, {useState}*/ from 'react';
+
+import {AddToCart, ProductInfo, ImageGallery} from './ProductDetails/expandedInfo.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -9,7 +11,11 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>Hello World</div>
+      <div>
+        <ImageGallery />
+        <AddToCart />
+        <ProductInfo />
+      </div>
     );
   }
 }
