@@ -1,8 +1,8 @@
-import React, {useState, useContext, useEffect, useMemo} from 'react';
-import {products, productInfo} from '../sampleData.js';
+import React, { useState, useContext, useEffect, useMemo } from "react";
+import sampleData from "../sampleData.js";
 
 const Outfits = () => {
-  const [relatedProducts, setRelatedProducts] = useState(products);
+  const [relatedProducts, setRelatedProducts] = useState(sampleData);
 
   return (
     <>

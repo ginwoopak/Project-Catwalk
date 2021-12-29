@@ -1,12 +1,12 @@
-import React from 'react';
-import RelatedProducts from './related/related_products/RelatedProducts.jsx';
-import Outfits from './related/outfits/Outfits.jsx';
+import React from "react";
+import RelatedProducts from "./related/related_products/RelatedProducts.jsx";
+import Outfits from "./related/outfits/Outfits.jsx";
 
 import {
   AddToCart,
   ProductInfo,
   ImageGallery,
-} from './ProductDetails/expandedInfo.js';
+} from "./ProductDetails/expandedInfo.js";
 
 class App extends React.Component {
   constructor(props) {
@@ -30,19 +30,18 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <div>Hello World</div>
-        <RelatedProducts />
-        <Outfits />
-      </div>
-
       <>
-        AddContext
+        {/* AddContext
         <div>
           <ImageGallery />
           <AddToCart />
         </div>
-        <ProductInfo />
+        <ProductInfo /> */}
+
+        <div>
+          <RelatedProducts />
+          <Outfits />
+        </div>
       </>
     );
   }
