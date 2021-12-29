@@ -1,5 +1,6 @@
 import React, {useState, useContext, useEffect, useMemo} from 'react';
-import sampleData from './sampleData.js';
+import sampleData from '../sampleData.js';
+import Modal from '../modal/Modal.jsx';
 
 const RelatedProducts = () => {
 

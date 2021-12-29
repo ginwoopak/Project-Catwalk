@@ -1,6 +1,6 @@
 import React from 'react';
-import RelatedProducts from './related/RelatedProducts.jsx';
-import Outfits from './outfits/Outfits.jsx';
+import RelatedProducts from './related/related_products/RelatedProducts.jsx';
+import Outfits from './related/outfits/Outfits.jsx';
 
 class App extends React.Component {
   constructor(props) {
