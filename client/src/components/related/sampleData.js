@@ -1,4 +1,4 @@
-var products = [
+const products = [
   {
     "id": 1,
     "name": "Camo Onesie",
@@ -101,7 +101,7 @@ var products = [
   }
 ];
 
-var productInfo = {
+const productInfo = {
   "id": 4,
   "name": "Air Minis 250",
   "slogan": "Full court support",
@@ -120,4 +120,4 @@ var productInfo = {
   ]
 };
 
-exports = { products, productInfo };
+export default products;
