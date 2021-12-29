@@ -10,7 +10,7 @@ const products = [
     "default?": true,
     "photos": [
       {
-        "thumbnail_url": "client/src/components/related/pics/onsie.jpg",
+        "thumbnail_url": "./related_product_pics/onsie.jpg",
         "url": "https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
       },
       {
@@ -30,7 +30,7 @@ const products = [
     "default?": true,
     "photos": [
       {
-        "thumbnail_url": "client/src/components/related/pics/sneaker.jpg",
+        "thumbnail_url": "./related_product_pics/sneaker.jpg",
         "url": "https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
       },
       {
@@ -50,7 +50,7 @@ const products = [
     "default?": true,
     "photos": [
       {
-        "thumbnail_url": "client/src/components/related/pics/jogger.jpg",
+        "thumbnail_url": "./related_product_pics/jogger.jpg",
         "url": "https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
       },
       {
@@ -70,7 +70,7 @@ const products = [
     "default?": true,
     "photos": [
       {
-        "thumbnail_url": "client/src/components/related/pics/sneaker.jpg",
+        "thumbnail_url": "./related_product_pics/sneaker.jpg",
         "url": "https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
       },
       {
@@ -90,7 +90,7 @@ const products = [
     "default?": true,
     "photos": [
       {
-        "thumbnail_url": "client/src/components/related/pics/mask.jpg",
+        "thumbnail_url": "./related_product_pics/mask.jpg",
         "url": "https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
       },
       {
