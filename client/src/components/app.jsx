@@ -1,17 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Ratings from './Ratings.jsx';
+import Reviews from './Reviews.jsx';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
+function App() {
 
-    this.state = {};
-  }
-
-  render() {
-    return (
-      <div>Yahtzee</div>
-    );
-  }
+  return (
+    <div>Yahtzee!
+    <Ratings />
+    <Reviews />
+    </div>
+  )
 }
 
 export default App;
