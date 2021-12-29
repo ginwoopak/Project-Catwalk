@@ -1,4 +1,6 @@
 import React from 'react';
+import RelatedProducts from './related/RelatedProducts.jsx';
+import Outfits from './outfits/Outfits.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -9,7 +11,12 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>Hello World</div>
+      <div>
+        <div>Hello World</div>
+        <RelatedProducts />
+        <Outfits />
+      </div>
+
     );
   }
 }
