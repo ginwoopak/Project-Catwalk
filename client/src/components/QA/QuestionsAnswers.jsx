@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchBarQA from './SearchBarQA.jsx';
 import IndividualQA from './IndividualQA.jsx';
+import LoadMoreQA from './LoadMoreQA.jsx';
 
 const QuestionsAnswers = () => {
   return (
@@ -9,8 +10,15 @@ const QuestionsAnswers = () => {
       <div>
         <SearchBarQA />
       </div>
+      <br></br>
       <div>
         <IndividualQA />
+        <br></br>
+        <IndividualQA />
+      </div>
+      <br></br>
+      <div>
+        <LoadMoreQA />
       </div>
     </div>
   );
