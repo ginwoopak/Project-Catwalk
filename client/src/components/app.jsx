@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import QuestionsAnswers from './QA/QuestionsAnswers.jsx';
 import apiCall from './apiCall.js';
@@ -7,7 +8,7 @@ import {
   ProductInfo,
   ImageGallery,
 } from './ProductDetails/expandedInfo.js';
-// eslint-disable-next-line no-unused-vars
+
 import { startSession } from 'mongoose';
 
 class App extends React.Component {
@@ -48,7 +49,7 @@ class App extends React.Component {
         </div>
         <ProductInfo /> */}
         <div>
-          <QuestionsAnswers allProducts={this.state.allProducts}/>
+          <QuestionsAnswers currentItem={this.state.currentItem}/>
         </div>
       </>
     );
