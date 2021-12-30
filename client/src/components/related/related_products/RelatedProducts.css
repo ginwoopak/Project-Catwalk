@@ -1,27 +1,35 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap");
 
 /* color variables */
 /* $clr-primary: #d50000; */
 
-
-/* *,
+*,
 *::before,
 *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-} */
+}
 
-/* body {
+body {
   font-family: Oxygen, sans-serif;
   margin: 2rem;
-} */
+}
 
-.relatedProductsContainer {
+h1 {
+  margin: 4rem;
+  font-size: 1.8rem;
+}
+
+/* .gridContainer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(12rem, 16rem));
   gap: 2rem;
   justify-content: center;
+} */
+
+.gridContainer {
+  margin: 2rem;
 }
 
 .card {
@@ -33,20 +41,33 @@
   justify-content: space-between;
   cursor: pointer;
   transition: transform 200ms ease-in;
+  margin: 1.8rem;
 }
 
 .card__image {
-  height: 12rem;
+  height: 14rem;
   width: 100%;
   object-fit: cover;
 }
 
 .card__category {
   padding: 1rem;
-  font-size: 1rem;
+  font-size: 0rem;
+  color: rgb(148, 148, 148);
 }
 
 .card__name {
   padding: 0 1rem;
   font-weight: bold;
+}
+
+.card__price {
+  padding: 1rem;
+  font-size: 1rem;
+}
+
+.card__rate {
+  padding: 0 1rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
 }

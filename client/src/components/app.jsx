@@ -37,7 +37,6 @@ class App extends React.Component {
           <AddToCart />
         </div>
         <ProductInfo /> */}
-
         <div>
           <RelatedProducts />
           <Outfits />
