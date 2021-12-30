@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, createContext, useEffect } from 'react';
+import { API_KEY } from '../../../config/config.js';
 import apiCall from './apiCall.js';
 
 import {
@@ -6,48 +7,80 @@ import {
   ProductInfo,
   ImageGallery,
 } from './ProductDetails/expandedInfo.js';
+
 import { startSession } from 'mongoose';
+import axios from 'axios';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
+export const AppContext = createContext(null);
 
-    this.state = {
-      currentItem: {},
-      allProducts: [],
-    };
-  }
+const App = function () {
+  const [currentItem, setCurrentItem] = useState({});
+  const [allProducts, setAllProducts] = useState([]);
 
-  componentDidMount() {
-    apiCall
-      .then((result) => {
-        this.setState({ allProducts: result });
-        console.log('allProducts: ', this.state.allProducts); //REMOVE THIS LINE WHEN SHIPPING APP
-        return this.state;
+  useEffect(() => {
+    axios
+      .get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/', {
+        headers: {
+          Authorization: API_KEY,
+          'Content-Type': 'application/json',
+        },
       })
-      .then((state) => {
-        setTimeout(() => {
-          this.setState({ currentItem: state.allProducts[0] });
-          console.log('currentItem: ', this.state.currentItem); //REMOVE THIS LINE WHEN SHIPPING APP
-        }, 500);
+      .then((response) => {
+        setAllProducts(response.data);
+        console.log('allProducts updated');
+        return response.data[0].id;
+      })
+      .then((id) => {
+        axios
+          .get(
+            `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${id}`,
+            {
+              headers: {
+                Authorization: API_KEY,
+                'Content-Type': 'application/json',
+              },
+            }
+          )
+          .then((response) => {
+            setCurrentItem(response.data);
+            console.log('currentItem updated');
+          });
       });
-  }
+  }, []);
 
-  clickHandler() {
-    this.setState({ currentItem: 'new_ID_here' });
-  }
+  // useEffect(
+  //   (productId) => {
+  //     axios
+  //       .get(
+  //         'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/' +
+  //           productId,
+  //         {
+  //           headers: {
+  //             Authorization: API_KEY,
+  //             'Content-Type': 'application/json',
+  //           },
+  //         }
+  //       )
+  //       .then((data) => {
+  //         setCurrentItem(data);
+  //         console.log('currentItem: ', currentItem);
+  //       });
+  //   },
+  //   [allProducts]
+  // );
 
-  render() {
-    return (
-      <>
-        <div>
-          <ImageGallery />
-          <AddToCart />
-        </div>
-        <ProductInfo />
-      </>
-    );
-  }
-}
+  return (
+    <AppContext.Provider
+      value={(currentItem, setCurrentItem, allProducts, setAllProducts)}
+    >
+      <div>
+        {console.log(currentItem)}
+        <ImageGallery />
+        <AddToCart />
+      </div>
+      <ProductInfo />
+    </AppContext.Provider>
+  );
+};
 
 export default App;
