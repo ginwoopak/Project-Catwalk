@@ -2,6 +2,7 @@ import React from 'react';
 import SearchBarQA from './SearchBarQA.jsx';
 import IndividualQA from './IndividualQA.jsx';
 import LoadMoreQA from './LoadMoreQA.jsx';
+import MoreAnsweredQuestionsQA from './MoreAnsweredQuestionsQA.jsx';
 
 const QuestionsAnswers = () => {
   return (
@@ -19,6 +20,9 @@ const QuestionsAnswers = () => {
       <br></br>
       <div>
         <LoadMoreQA />
+      </div>
+      <div className='rowQuestion'>
+        <MoreAnsweredQuestionsQA />
       </div>
     </div>
   );

@@ -2,3 +2,10 @@
   display: flex;
   flex-direction:row;
 }
+#big_image {
+  width: 500px;
+}
+
+.thumbnail {
+  width: 100px;
+}
