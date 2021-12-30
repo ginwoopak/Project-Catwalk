@@ -1,6 +1,6 @@
 import React, { useState, createContext, useEffect } from "react";
 import { API_KEY } from "../../../config/config.js";
-// import apiCall from './apiCall.js';
+import Reviews from "./R&R/Reviews.jsx";
 
 import {
   AddToCart,
@@ -15,10 +15,8 @@ export const AppContext = createContext(null);
 const App = function () {
   const [currentItem, setCurrentItem] = useState({ id: 0 });
   const [allProducts, setAllProducts] = useState([]);
-  // const [currentStyle, setCurrentStyle] = useState([]);
+
   // const [reviews, setReviews] = useState([]);
-  // const [related, setRelated] = useState([]);
-  // const [QA, setQA] = useState([]);
 
   useEffect(() => {
     axios
@@ -30,7 +28,6 @@ const App = function () {
       })
       .then((response) => {
         setAllProducts(response.data);
-        console.log("allProducts updated");
         return response.data[0].id;
       })
       .then((id) => {
@@ -46,22 +43,24 @@ const App = function () {
           )
           .then((response) => {
             setCurrentItem(response.data);
-            console.log("currentItem updated");
           });
       });
   }, []);
 
   return (
-    <AppContext.Provider
-      value={{ currentItem, setCurrentItem, allProducts, setAllProducts }}
-    >
-      <div>
-        {console.log(currentItem)}
-        <ImageGallery />
-        <AddToCart />
-      </div>
-      <ProductInfo />
-    </AppContext.Provider>
+    <div>
+      <AppContext.Provider
+        value={{ currentItem, setCurrentItem, allProducts, setAllProducts }}
+      >
+        <div>
+          <ImageGallery />
+          <AddToCart />
+        </div>
+        <ProductInfo />
+      </AppContext.Provider>
+
+      <Reviews />
+    </div>
   );
 };
 
