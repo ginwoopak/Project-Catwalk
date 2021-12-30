@@ -8,7 +8,7 @@ import {
   ProductInfo,
   ImageGallery,
 } from "./ProductDetails/expandedInfo.js";
-import { startSession } from "mongoose";
+// import { startSession } from "mongoose";
 
 class App extends React.Component {
   constructor(props) {
