@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { API_KEY } from '../../../config/config.js';
 
-const apiCall = new Promise((callback) => {
+const apiCall = (callback) => {
   let allProducts = [];
   axios({
     method: 'GET',
@@ -62,6 +62,6 @@ const apiCall = new Promise((callback) => {
       console.log(err);
       callback(err);
     });
-});
+};
 
 export default apiCall;
