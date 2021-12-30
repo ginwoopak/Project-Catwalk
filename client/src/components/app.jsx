@@ -21,14 +21,18 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    apiCall((err, result) => {
-      if (err) {
-        console.log(err);
-      } else {
+    apiCall
+      .then((result) => {
         this.setState({ allProducts: result });
-        console.log(this.state);
-      }
-    });
+        console.log('allProducts: ', this.state.allProducts); //REMOVE THIS LINE WHEN SHIPPING APP
+        return this.state;
+      })
+      .then((state) => {
+        setTimeout(() => {
+          this.setState({ currentItem: state.allProducts[0] });
+          console.log('currentItem: ', this.state.currentItem); //REMOVE THIS LINE WHEN SHIPPING APP
+        }, 500);
+      });
   }
 
   clickHandler() {
