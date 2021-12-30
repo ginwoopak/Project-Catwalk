@@ -1,6 +1,3 @@
 node_modules
-<<<<<<< HEAD
-client/dist/bundle.js
-=======
 config/config.js
->>>>>>> main
+client/dist/bundle.js

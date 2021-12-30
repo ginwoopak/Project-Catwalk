@@ -5,7 +5,7 @@ const MoreAnsweredQuestionsQA = () => {
     <button>
       More Answered Questions
     </button>
-  )
-}
+  );
+};
 
 export default MoreAnsweredQuestionsQA;
