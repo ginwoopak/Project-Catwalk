@@ -31,6 +31,7 @@ const RelatedProducts = () => {
       <h1>Related Products</h1>
       <div className="gridContainer">
         <Carousel
+          arrows={true}
           swipeable={false}
           draggable={false}
           showDots={true}
