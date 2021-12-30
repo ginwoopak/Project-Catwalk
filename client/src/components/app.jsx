@@ -1,31 +1,38 @@
 import React from "react";
 import RelatedProducts from "./related/related_products/RelatedProducts.jsx";
 import Outfits from "./related/outfits/Outfits.jsx";
+import apiCall from "./apiCall.js";
 
 import {
   AddToCart,
   ProductInfo,
   ImageGallery,
 } from "./ProductDetails/expandedInfo.js";
+import { startSession } from "mongoose";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      currentItem: {
-        id: 40344,
-        data: 0, //
-        related: [], //
-      },
-      allProducts: [{}], //load all products and store features/styles in each obj
+      currentItem: {},
+      allProducts: [],
     };
   }
 
-  populateData() {}
+  componentDidMount() {
+    apiCall((err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        this.setState({ allProducts: result });
+        console.log(this.state);
+      }
+    });
+  }
 
   clickHandler() {
-    this.setState({ currentItem: 0 });
+    this.setState({ currentItem: "new_ID_here" });
   }
 
   render() {
