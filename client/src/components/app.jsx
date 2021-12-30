@@ -1,12 +1,14 @@
 import React from "react";
 import apiCall from "./apiCall.js";
+import Ratings from "./R&R/Ratings.jsx";
+import Reviews from "./R&R/Reviews.jsx";
 
 import {
   AddToCart,
   ProductInfo,
   ImageGallery,
 } from "./ProductDetails/expandedInfo.js";
-import { startSession } from "mongoose";
+// import { startSession } from "mongoose";
 
 class App extends React.Component {
   constructor(props) {
@@ -41,6 +43,11 @@ class App extends React.Component {
           <AddToCart />
         </div>
         <ProductInfo />
+
+        <div>
+          <Ratings />
+          <Reviews />
+        </div>
       </>
     );
   }
