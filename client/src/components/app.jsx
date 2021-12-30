@@ -1,6 +1,6 @@
 import React, { useState, createContext, useEffect } from 'react';
 import { API_KEY } from '../../../config/config.js';
-import apiCall from './apiCall.js';
+// import apiCall from './apiCall.js';
 
 import {
   AddToCart,
@@ -8,14 +8,17 @@ import {
   ImageGallery,
 } from './ProductDetails/expandedInfo.js';
 
-import { startSession } from 'mongoose';
 import axios from 'axios';
 
 export const AppContext = createContext(null);
 
 const App = function () {
-  const [currentItem, setCurrentItem] = useState({});
+  const [currentItem, setCurrentItem] = useState({ id: 0 });
   const [allProducts, setAllProducts] = useState([]);
+  // const [currentStyle, setCurrentStyle] = useState([]);
+  // const [reviews, setReviews] = useState([]);
+  // const [related, setRelated] = useState([]);
+  // const [QA, setQA] = useState([]);
 
   useEffect(() => {
     axios
@@ -48,30 +51,9 @@ const App = function () {
       });
   }, []);
 
-  // useEffect(
-  //   (productId) => {
-  //     axios
-  //       .get(
-  //         'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/' +
-  //           productId,
-  //         {
-  //           headers: {
-  //             Authorization: API_KEY,
-  //             'Content-Type': 'application/json',
-  //           },
-  //         }
-  //       )
-  //       .then((data) => {
-  //         setCurrentItem(data);
-  //         console.log('currentItem: ', currentItem);
-  //       });
-  //   },
-  //   [allProducts]
-  // );
-
   return (
     <AppContext.Provider
-      value={(currentItem, setCurrentItem, allProducts, setAllProducts)}
+      value={{ currentItem, setCurrentItem, allProducts, setAllProducts }}
     >
       <div>
         {console.log(currentItem)}
