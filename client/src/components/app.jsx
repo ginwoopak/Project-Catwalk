@@ -1,12 +1,11 @@
-import React from 'react';
-import apiCall from './apiCall.js';
+import React from "react";
+import apiCall from "./apiCall.js";
 
 import {
   AddToCart,
   ProductInfo,
   ImageGallery,
-} from './ProductDetails/expandedInfo.js';
-import { startSession } from 'mongoose';
+} from "./ProductDetails/expandedInfo.js";
 
 class App extends React.Component {
   constructor(props) {
@@ -30,7 +29,7 @@ class App extends React.Component {
   }
 
   clickHandler() {
-    this.setState({ currentItem: 'new_ID_here' });
+    this.setState({ currentItem: "new_ID_here" });
   }
 
   render() {
