@@ -2,6 +2,9 @@ import React, { useState, createContext, useEffect } from "react";
 import { API_KEY } from "../../../config/config.js";
 import Reviews from "./R&R/Reviews.jsx";
 import RatingBreakdown from "./R&R/RatingBreakdown.jsx";
+import RelatedProducts from "./related/related_products/RelatedProducts.jsx";
+import Outfits from "./related/outfits/Outfits.jsx";
+import apiCall from "./apiCall.js";
 
 import {
   AddToCart,
@@ -16,8 +19,6 @@ export const AppContext = createContext(null);
 const App = function () {
   const [currentItem, setCurrentItem] = useState({ id: 40345 });
   const [allProducts, setAllProducts] = useState([]);
-
-  // const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
     axios
@@ -57,6 +58,11 @@ const App = function () {
         <AddToCart />
       </div>
       <ProductInfo />
+
+      <div>
+        <RelatedProducts />
+        <Outfits />
+      </div>
 
       <RatingBreakdown />
       <Reviews />
