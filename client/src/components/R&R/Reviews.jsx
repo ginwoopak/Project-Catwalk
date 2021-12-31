@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 import React, { useContext, useEffect, useState } from 'react';
+=======
+import React, { createContext, useContext, useEffect, useState } from 'react';
+>>>>>>> bbfd314d9dc19bf452529dedf8d8ac566d1f35fb
 import { AppContext } from '../app.jsx';
 import axios from 'axios';
 import { API_KEY } from '../../../../config/config.js';
 import Review from './Review.jsx';
+<<<<<<< HEAD
 
 const Reviews = function () {
   const { currentItem } = useContext(AppContext);
@@ -25,6 +30,16 @@ const Reviews = function () {
       ],
     },
   ]);
+=======
+import RatingBreakdown from './RatingBreakdown.jsx';
+
+export const ReviewContext = createContext(null);
+
+const Reviews = function () {
+  const { currentItem } = useContext(AppContext);
+  const [reviews, setReviews] = useState([]);
+  const [reviewBreak, setReviewBreak] = useState({ ratings: '' });
+>>>>>>> bbfd314d9dc19bf452529dedf8d8ac566d1f35fb
 
   useEffect(() => {
     axios
@@ -39,21 +54,43 @@ const Reviews = function () {
       )
       .then((response) => {
         setReviews(response.data.results);
+      })
+      .then(() => {
+        axios
+          .get(
+            `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta?product_id=${currentItem.id}`,
+            {
+              headers: {
+                Authorization: API_KEY,
+                'Content-Type': 'application/json',
+              },
+            }
+          )
+          .then((response) => {
+            setReviewBreak(response.data);
+          });
       });
   }, [currentItem]);
 
-  let display = [];
-  reviews.forEach((revObj) => {
-    display.push(<Review key={revObj.review_id} rev={revObj} />);
-  });
+  // let display = [];
+  // reviews.forEach((revObj) => {
+  //   display.push(<Review key={revObj.review_id} rev={revObj} />);
+  // });
 
   return (
-    <div>
-      Reviews Section will go here!
-      <div>Sorting</div>
-      <div>List of Reviews</div>
-      <ul>{display}</ul>
-    </div>
+    <ReviewContext.Provider value={{ reviews, reviewBreak }}>
+      <div>
+        <RatingBreakdown />
+        Reviews Section will go here!
+        <div>Sorting</div>
+        <div>List of Reviews</div>
+        <ul>
+          {reviews.map((item) => {
+            return <Review key={item.review_id} rev={item} />;
+          }) || null}
+        </ul>
+      </div>
+    </ReviewContext.Provider>
   );
 };
 

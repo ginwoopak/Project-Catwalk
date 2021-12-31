@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../app.jsx';
+<<<<<<< HEAD
 import axios from 'axios';
 import { API_KEY } from '../../../../config/config.js';
 import HalfRating from './Stars.jsx';
@@ -77,25 +78,40 @@ const RatingBreakdown = function () {
         setReviewBreak(response.data);
       });
   }, [currentItem]);
+=======
+import HalfRating from './Stars.jsx';
+import { ReviewContext } from './Reviews.jsx';
 
-  var avgArray = Object.values(reviewBreak.ratings);
-  var totalNumOfValues = 0;
-  var sumOfNumbers = 0;
-  var bigOne = 0;
+const RatingBreakdown = function () {
+  const { currentItem } = useContext(AppContext);
+  const { reviews, reviewBreak } = useContext(ReviewContext);
+  const [average, setAverage] = useState(0);
 
-  avgArray.forEach((element, index) => {
-    totalNumOfValues = totalNumOfValues + Number(element);
-    sumOfNumbers = (index + 1) * Number(element);
-    bigOne = bigOne + sumOfNumbers;
-  });
+  const getAverage = () => {
+    var avgArray = Object.values(reviewBreak.ratings);
+    var totalNumOfValues = 0;
+    var sumOfNumbers = 0;
+    var bigOne = 0;
 
-  var average = bigOne / totalNumOfValues;
+    avgArray.forEach((element, index) => {
+      totalNumOfValues = totalNumOfValues + Number(element);
+      sumOfNumbers = (index + 1) * Number(element);
+      bigOne = bigOne + sumOfNumbers;
+    });
+>>>>>>> bbfd314d9dc19bf452529dedf8d8ac566d1f35fb
+
+    return bigOne / totalNumOfValues;
+  };
+
+  useEffect(() => {
+    setAverage(getAverage());
+  }, [currentItem]);
 
   return (
     <div>
       <div>Ratings will go here</div>
-      <div>{average}</div>
-      <HalfRating num={average} />
+      {/* <div>{average || 0}</div> */}
+      <HalfRating num={average || 0} />
       <div>Percentages</div>
       <div>Graphs</div>
       <div>Size/Comfort</div>

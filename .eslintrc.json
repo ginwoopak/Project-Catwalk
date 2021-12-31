@@ -40,9 +40,9 @@
     /* Variable declaration */
     "one-var": [1, { "uninitialized": "never", "initialized": "never" }],
     "no-use-before-define": 2,
-    "no-unused-vars": "off",
     /* Minuta */
-    "comma-style": [2, "last"]
-    // "quotes": [1, "single"]
+    "comma-style": [2, "last"],
+    "quotes": [1, "single"]
+    // "no-unused-vars": "off"
   }
 }
