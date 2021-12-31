@@ -1,17 +1,16 @@
 import React, { useState, createContext, useEffect } from 'react';
 import { API_KEY } from '../../../config/config.js';
-
+import Reviews from './R&R/Reviews.jsx';
+import RatingBreakdown from './R&R/RatingBreakdown.jsx';
 import RelatedProducts from './related/related_products/RelatedProducts.jsx';
 import Outfits from './related/outfits/Outfits.jsx';
-
 import ProductInfo from './ProductDetails/expandedInfo.jsx';
-
 import axios from 'axios';
 
 export const AppContext = createContext(null);
 
 const App = function () {
-  const [currentItem, setCurrentItem] = useState({ id: 0 });
+  const [currentItem, setCurrentItem] = useState({ id: 40345 });
   const [allProducts, setAllProducts] = useState([]);
 
   useEffect(() => {
@@ -51,6 +50,8 @@ const App = function () {
         <ProductInfo />
         <RelatedProducts />
         <Outfits />
+        <RatingBreakdown />
+        <Reviews />
       </div>
     </AppContext.Provider>
   );
