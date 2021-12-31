@@ -1,15 +1,19 @@
-import React, { useState, createContext, useEffect } from "react";
-import QuestionsAnswers from "./QA/QuestionsAnswers.jsx";
-import { API_KEY } from "../../../config/config.js";
+import React, { useState, createContext, useEffect } from 'react';
+import QuestionsAnswers from './QA/QuestionsAnswers.jsx';
+import { API_KEY } from '../../../config/config.js';
 // import apiCall from './apiCall.js';
 
 import {
   AddToCart,
   ProductInfo,
   ImageGallery,
-} from "./ProductDetails/expandedInfo.js";
+} from './ProductDetails/expandedInfo.js';
 
-import axios from "axios";
+import axios from 'axios';
+
+// get question data into component
+// set up mapping function for list
+// set up individualQA
 
 export const AppContext = createContext(null);
 
@@ -23,16 +27,16 @@ const App = function () {
 
   useEffect(() => {
     axios
-      .get("https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/", {
+      .get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/', {
         headers: {
           Authorization: API_KEY,
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
       })
       .then((response) => {
         setAllProducts(response.data);
-        console.log("allProducts updated");
-        return response.data[0].id;
+        console.log('allProducts updated', response.data);
+        return response.data[3].id;
       })
       .then((id) => {
         axios
@@ -41,30 +45,29 @@ const App = function () {
             {
               headers: {
                 Authorization: API_KEY,
-                "Content-Type": "application/json",
+                'Content-Type': 'application/json',
               },
             }
           )
           .then((response) => {
             setCurrentItem(response.data);
-            console.log("currentItem updated");
+            console.log('currentItem updated');
           });
       });
   }, []);
 
   return (
     <AppContext.Provider
-      value={{ currentItem, setCurrentItem, allProducts, setAllProducts }}
-    >
-      <div>
-        <QuestionsAnswers currentItem={this.state.currentItem} />
+      value={{ currentItem, setCurrentItem, allProducts, setAllProducts }}>
+      <div className='center'>
+        <QuestionsAnswers />
       </div>
-      <div>
+      {/* <div>
         {console.log(currentItem)}
         <ImageGallery />
         <AddToCart />
       </div>
-      <ProductInfo />
+      <ProductInfo /> */}
     </AppContext.Provider>
   );
 };

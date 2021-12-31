@@ -5,9 +5,9 @@ const AddAnswerQA = () => {
   const [addAnswer, setAddAnswer] = useState(null)
 
   return (
-    <div onClick={() => {setAddAnswer(alert('ADD ANSWER'))}}>
+    <span onClick={() => {setAddAnswer(alert('ADD ANSWER'))}}>
       <u>Add Answer</u>
-    </div>
+    </span>
   );
 };
 
