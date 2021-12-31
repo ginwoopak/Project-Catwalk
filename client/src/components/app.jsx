@@ -4,7 +4,8 @@ import apiCall from './apiCall.js';
 import React, { useState, createContext, useEffect } from 'react';
 import { API_KEY } from '../../../config/config.js';
 import QuestionsAnswers from './QA/QuestionsAnswers.jsx';
-// import apiCall from './apiCall.js';
+import Reviews from './R&R/Reviews.jsx';
+import RatingBreakdown from './R&R/RatingBreakdown.jsx';
 
 import {
   AddToCart,
@@ -21,12 +22,8 @@ import axios from 'axios';
 export const AppContext = createContext(null);
 
 const App = function () {
-  const [currentItem, setCurrentItem] = useState({ id: 0 });
+  const [currentItem, setCurrentItem] = useState({ id: 40345 });
   const [allProducts, setAllProducts] = useState([]);
-  // const [currentStyle, setCurrentStyle] = useState([]);
-  // const [reviews, setReviews] = useState([]);
-  // const [related, setRelated] = useState([]);
-  // const [QA, setQA] = useState([]);
 
   useEffect(() => {
     axios
@@ -63,19 +60,21 @@ const App = function () {
     <AppContext.Provider
       value={{ currentItem, setCurrentItem, allProducts, setAllProducts }}
     >
-      {/* <div>
-        {console.log(currentItem)}
+      <div>
         <ImageGallery />
         <AddToCart />
       </div>
-      <ProductInfo /> */}
+      <ProductInfo />
+
       <div>
         <RelatedProducts />
         <Outfits />
       </div>
-      <div className='center'>
+      <div >
         <QuestionsAnswers />
       </div>
+      <RatingBreakdown />
+      <Reviews />
     </AppContext.Provider>
   );
 };
