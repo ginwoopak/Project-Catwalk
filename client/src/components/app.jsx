@@ -36,7 +36,7 @@ const App = function () {
       .then((response) => {
         setAllProducts(response.data);
         console.log('allProducts updated', response.data);
-        return response.data[3].id;
+        return response.data[1].id;
       })
       .then((id) => {
         axios
