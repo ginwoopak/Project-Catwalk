@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap");
+
+/* color variables */
+/* $clr-primary: #d50000; */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Oxygen, sans-serif;
+  margin: 2rem;
+}
+
+h1 {
+  margin: 3rem;
+  margin-left: 6rem;
+  font-size: 1.8rem;
+}
+
+/* .gridContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 16rem));
+  gap: 2rem;
+  justify-content: center;
+} */
+
+.gridContainer {
+  margin: 2rem;
+  margin-left: 10rem;
+  margin-right: 10rem;
+}
+
+.card {
+  overflow: hidden;
+  box-shadow: 0 2px 20px #e1e5ee;
+  border-radius: 0.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: transform 200ms ease-in;
+  margin: 1.8rem;
+  height: 27rem;
+}
+
+.card__image {
+  height: 16rem;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card__category {
+  padding: 1rem;
+  font-size: 0rem;
+  color: rgb(148, 148, 148);
+}
+
+.card__name {
+  padding: 0 1rem;
+  font-weight: bold;
+}
+
+.card__price {
+  padding: 1rem;
+  font-size: 1rem;
+}
+
+.card__rate {
+  padding: 0 1rem;
+  font-weight: bold;
+  /* margin-bottom: 2rem; */
+}
+
+.add_a_outfit {
+  font-size: 1.5rem;
+  text-align: center;
+  margin: 2rem;
+  margin-top: 5rem;
+}
+
+.add_outfit_Btn {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  height: 30rem;
+  /* border-radius: 1rem; */
+  padding-bottom: 2rem;
+  background-color: white;
+  border-color: rgba(255, 255, 255, 0);
+  border-style: solid;
+}
+
+#plus_sign {
+  font-size: 14rem;
+}
+
+/* .add_outfit_Btn svg {
+  font-size: 100px;
+  padding: 20px;
+  color: #2c2e2e;
+} */
+
+/* .icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.icon--plus {
+  background-color: cornflowerblue;
+}
+
+.icon--plus > path {
+  fill: gold;
+  stroke: gold;
+  stroke-width: 0.1;
+  stroke-linejoin: round;
+} */
