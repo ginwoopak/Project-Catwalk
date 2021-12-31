@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-function Review(props) {
+const Review = (props) => {
   return (
     <li>
       <div>{props.rev.rating}</div>
@@ -13,6 +13,6 @@ function Review(props) {
       <div>Helpful?{props.rev.helpfulness}</div>
     </li>
   );
-}
+};
 
 export default Review;

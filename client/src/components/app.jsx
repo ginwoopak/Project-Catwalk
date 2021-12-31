@@ -10,7 +10,7 @@ import axios from 'axios';
 export const AppContext = createContext(null);
 
 const App = function () {
-  const [currentItem, setCurrentItem] = useState({ id: 40345 });
+  const [currentItem, setCurrentItem] = useState({ id: 40346 });
   const [allProducts, setAllProducts] = useState([]);
 
   useEffect(() => {
@@ -23,7 +23,7 @@ const App = function () {
       })
       .then((response) => {
         setAllProducts(response.data);
-        return response.data[0].id;
+        return response.data[3].id;
       })
       .then((id) => {
         axios
@@ -50,7 +50,6 @@ const App = function () {
         <ProductInfo />
         <RelatedProducts />
         <Outfits />
-        <RatingBreakdown />
         <Reviews />
       </div>
     </AppContext.Provider>
