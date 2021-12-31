@@ -1,15 +1,15 @@
-import React, { useState, useContext, useEffect, useMemo } from "react";
-import axios from "axios";
-import { API_KEY } from "../../../../../config/config.js";
+import React, { useState, useContext, useEffect, useMemo } from 'react';
+import axios from 'axios';
+import { API_KEY } from '../../../../../config/config.js';
 
-import sampleData from "../sampleData.js";
-import Modal from "../modal/Modal.jsx";
-import "./RelatedProducts.css";
-import ProductCard from "./ProductCard.jsx";
-import { AppContext } from "../../app.jsx";
+import sampleData from '../sampleData.js';
+import Modal from '../modal/Modal.jsx';
+import './RelatedProducts.css';
+import ProductCard from './ProductCard.jsx';
+import { AppContext } from '../../app.jsx';
 
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 
 const RelatedProducts = () => {
   const { currentItem } = useContext(AppContext);
@@ -31,7 +31,7 @@ const RelatedProducts = () => {
         {
           headers: {
             Authorization: API_KEY,
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
         }
       )
@@ -43,7 +43,7 @@ const RelatedProducts = () => {
   return (
     <>
       <h1>Related Products</h1>
-      <div className="gridContainer">
+      <div className='gridContainer'>
         <Carousel
           arrows={true}
           swipeable={false}
@@ -69,7 +69,7 @@ const RelatedProducts = () => {
             </div>
           ))} */}
           {relatedIds.map((id) => (
-            <div className="card" key={id}>
+            <div className='card' key={id}>
               <ProductCard productId={id} />
             </div>
           ))}

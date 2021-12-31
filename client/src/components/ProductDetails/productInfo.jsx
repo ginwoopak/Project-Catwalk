@@ -1,9 +1,8 @@
-import React/*, {useState}*/ from 'react';
+import React /*, {useState}*/ from 'react';
 
 class ProductInfo extends React.Component {
   constructor(props) {
     super(props);
-
   }
   render() {
     return (
@@ -14,11 +13,5 @@ class ProductInfo extends React.Component {
     );
   }
 }
-
-
-
-
-
-
 
 export default ProductInfo;

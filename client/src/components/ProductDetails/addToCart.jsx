@@ -1,29 +1,31 @@
-import React/*, {useState}*/ from 'react';
+import React /*, {useState}*/ from 'react';
 
 class AddToCart extends React.Component {
   constructor(props) {
     super(props);
-
   }
 
   render() {
     return (
       <>
-        <span>STARS</span><span href='#'>Read All Reviews</span>
+        <span>STARS</span>
+        <span href='#'>Read All Reviews</span>
         <h6>CATEGORY</h6>
         <h2>Expanded Product Name</h2>
         <a>price</a>
-        <h6>Style {'>'} </h6><h6>Selected Style</h6>
+        <h6>Style {'>'} </h6>
+        <h6>Selected Style</h6>
         <div>
-          {/* Map the styles here */}<img></img>
+          {/* Map the styles here */}
+          <img></img>
         </div>
-        <select name="size">
+        <select name='size'>
           {/* Map the sizes here */}
-          <option value="S">Small</option>
+          <option value='S'>Small</option>
         </select>
         <select>
           {/* Map 1-10 */}
-          <option value="amt">1</option>
+          <option value='amt'>1</option>
         </select>
         <button>Add to Cart</button>
         <button>Favorite</button>
@@ -33,7 +35,6 @@ class AddToCart extends React.Component {
 }
 
 export default AddToCart;
-
 
 // import React, {useState} from 'react';
 
@@ -51,5 +52,3 @@ export default AddToCart;
 //     </div>
 //   );
 // };
-
-
