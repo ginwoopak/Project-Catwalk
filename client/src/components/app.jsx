@@ -10,10 +10,6 @@ export const AppContext = createContext(null);
 const App = function () {
   const [currentItem, setCurrentItem] = useState({ id: 0 });
   const [allProducts, setAllProducts] = useState([]);
-  // const [currentStyle, setCurrentStyle] = useState([]);
-  // const [reviews, setReviews] = useState([]);
-  // const [related, setRelated] = useState([]);
-  // const [QA, setQA] = useState([]);
 
   useEffect(() => {
     axios
@@ -25,7 +21,6 @@ const App = function () {
       })
       .then((response) => {
         setAllProducts(response.data);
-        // console.log('allProducts updated');
         return response.data[0].id;
       })
       .then((id) => {
@@ -41,7 +36,6 @@ const App = function () {
           )
           .then((response) => {
             setCurrentItem(response.data);
-            // console.log('currentItem updated');
           });
       });
   }, []);
@@ -50,7 +44,6 @@ const App = function () {
     <AppContext.Provider
       value={{ currentItem, setCurrentItem, allProducts, setAllProducts }}
     >
-      {/* {console.log(currentItem)} */}
       <ProductInfo />
     </AppContext.Provider>
   );

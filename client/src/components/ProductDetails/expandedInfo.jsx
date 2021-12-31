@@ -3,6 +3,7 @@ import { AppContext } from '../app.jsx';
 import axios from 'axios';
 import { API_KEY } from '../../../../config/config.js';
 import ImageGallery from 'react-image-gallery';
+import './productInfo.css';
 
 const ProductInfo = function () {
   const { currentItem } = useContext(AppContext);
@@ -90,9 +91,9 @@ const ProductInfo = function () {
         </div>
         <select name='size'>
           {selected && selected.skus
-            ? Object.values(selected.skus).map((skus) => {
-                return <option value={skus}>{skus.size}</option>;
-              })
+            ? Object.values(selected.skus).map((skus) => (
+                <option value={skus}>{skus.size}</option>
+              ))
             : ''}
         </select>
         <select>
