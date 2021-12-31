@@ -1,18 +1,18 @@
-import React, { useState, createContext, useEffect } from "react";
-import { API_KEY } from "../../../config/config.js";
-import Reviews from "./R&R/Reviews.jsx";
-import RatingBreakdown from "./R&R/RatingBreakdown.jsx";
-import RelatedProducts from "./related/related_products/RelatedProducts.jsx";
-import Outfits from "./related/outfits/Outfits.jsx";
-import apiCall from "./apiCall.js";
+import React, { useState, createContext, useEffect } from 'react';
+import { API_KEY } from '../../../config/config.js';
+import Reviews from './R&R/Reviews.jsx';
+import RatingBreakdown from './R&R/RatingBreakdown.jsx';
+import RelatedProducts from './related/related_products/RelatedProducts.jsx';
+import Outfits from './related/outfits/Outfits.jsx';
+import apiCall from './apiCall.js';
 
 import {
   AddToCart,
   ProductInfo,
   ImageGallery,
-} from "./ProductDetails/expandedInfo.js";
+} from './ProductDetails/expandedInfo.js';
 
-import axios from "axios";
+import axios from 'axios';
 
 export const AppContext = createContext(null);
 
@@ -22,10 +22,10 @@ const App = function () {
 
   useEffect(() => {
     axios
-      .get("https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/", {
+      .get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/', {
         headers: {
           Authorization: API_KEY,
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
       })
       .then((response) => {
@@ -39,7 +39,7 @@ const App = function () {
             {
               headers: {
                 Authorization: API_KEY,
-                "Content-Type": "application/json",
+                'Content-Type': 'application/json',
               },
             }
           )

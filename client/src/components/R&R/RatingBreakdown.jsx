@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
-import { AppContext } from "../app.jsx";
-import axios from "axios";
-import { API_KEY } from "../../../../config/config.js";
-import HalfRating from "./Stars.jsx";
+import React, { useContext, useEffect, useState } from 'react';
+import { AppContext } from '../app.jsx';
+import axios from 'axios';
+import { API_KEY } from '../../../../config/config.js';
+import HalfRating from './Stars.jsx';
 
 const RatingBreakdown = function () {
   const { currentItem } = useContext(AppContext);
@@ -10,38 +10,38 @@ const RatingBreakdown = function () {
     {
       review_id: 841407,
       rating: 5,
-      summary: "Best Ever! ",
+      summary: 'Best Ever! ',
       recommend: true,
       response: null,
-      body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ",
-      date: "2021-09-23T00:00:00.000Z",
-      reviewer_name: "chester",
+      body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ',
+      date: '2021-09-23T00:00:00.000Z',
+      reviewer_name: 'chester',
       helpfulness: 13,
       photos: [
         {
           id: 1595448,
-          url: "https://res.cloudinary.com/drbwyfh4x/image/upload/v1632370529/lixlgtng4vu3kyp4p8ah.png",
+          url: 'https://res.cloudinary.com/drbwyfh4x/image/upload/v1632370529/lixlgtng4vu3kyp4p8ah.png',
         },
       ],
     },
   ]);
   const [reviewBreak, setReviewBreak] = useState({
-    product_id: "40345",
+    product_id: '40345',
     ratings: {
-      1: "1",
-      2: "2",
-      3: "2",
-      4: "2",
-      5: "12",
+      1: '1',
+      2: '2',
+      3: '2',
+      4: '2',
+      5: '12',
     },
     recommended: {
-      false: "4",
-      true: "15",
+      false: '4',
+      true: '15',
     },
     characteristics: {
       Quality: {
         id: 135223,
-        value: "3.7000000000000000",
+        value: '3.7000000000000000',
       },
     },
   });
@@ -53,7 +53,7 @@ const RatingBreakdown = function () {
         {
           headers: {
             Authorization: API_KEY,
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
         }
       )
@@ -69,7 +69,7 @@ const RatingBreakdown = function () {
         {
           headers: {
             Authorization: API_KEY,
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
         }
       )
