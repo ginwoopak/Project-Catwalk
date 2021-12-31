@@ -1,12 +1,7 @@
 import React, { useState, createContext, useEffect } from 'react';
 import { API_KEY } from '../../../config/config.js';
-// import apiCall from './apiCall.js';
 
-import {
-  AddToCart,
-  ProductInfo,
-  ImageGallery,
-} from './ProductDetails/expandedInfo.js';
+import ProductInfo from './ProductDetails/expandedInfo.jsx';
 
 import axios from 'axios';
 
@@ -30,7 +25,7 @@ const App = function () {
       })
       .then((response) => {
         setAllProducts(response.data);
-        console.log('allProducts updated');
+        // console.log('allProducts updated');
         return response.data[0].id;
       })
       .then((id) => {
@@ -46,7 +41,7 @@ const App = function () {
           )
           .then((response) => {
             setCurrentItem(response.data);
-            console.log('currentItem updated');
+            // console.log('currentItem updated');
           });
       });
   }, []);
@@ -55,11 +50,7 @@ const App = function () {
     <AppContext.Provider
       value={{ currentItem, setCurrentItem, allProducts, setAllProducts }}
     >
-      <div>
-        {console.log(currentItem)}
-        <ImageGallery />
-        <AddToCart />
-      </div>
+      {/* {console.log(currentItem)} */}
       <ProductInfo />
     </AppContext.Provider>
   );
