@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { AppContext } from '../app.jsx';
-import axios from 'axios';
-import { API_KEY } from '../../../../config/config.js';
+import React, { useContext, useEffect, useState } from "react";
+import { AppContext } from "../app.jsx";
+import axios from "axios";
+import { API_KEY } from "../../../../config/config.js";
 
 const ImageGallery = function () {
   const { currentItem } = useContext(AppContext);
@@ -9,7 +9,7 @@ const ImageGallery = function () {
   //===================
   const [images, setImages] = useState([
     {
-      url: '',
+      url: "",
     },
   ]);
 
@@ -20,7 +20,7 @@ const ImageGallery = function () {
         {
           headers: {
             Authorization: API_KEY,
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
         }
       )
@@ -32,7 +32,6 @@ const ImageGallery = function () {
 
   return (
     <>
-      {console.log('images: ', images)}
       <img src={images[0].url}></img>
       {/* <button id='prev' onClick={() => this.imgChange(event)}>
         Prev
