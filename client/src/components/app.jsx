@@ -1,28 +1,17 @@
-import RelatedProducts from './related/related_products/RelatedProducts.jsx';
-import Outfits from './related/outfits/Outfits.jsx';
-import apiCall from './apiCall.js';
 import React, { useState, createContext, useEffect } from 'react';
 import { API_KEY } from '../../../config/config.js';
 import QuestionsAnswers from './QA/QuestionsAnswers.jsx';
 import Reviews from './R&R/Reviews.jsx';
 import RatingBreakdown from './R&R/RatingBreakdown.jsx';
-
-import {
-  AddToCart,
-  ProductInfo,
-  ImageGallery,
-} from './ProductDetails/expandedInfo.js';
-
+import RelatedProducts from './related/related_products/RelatedProducts.jsx';
+import Outfits from './related/outfits/Outfits.jsx';
+import ProductInfo from './ProductDetails/expandedInfo.jsx';
 import axios from 'axios';
-
-// get question data into component
-// set up mapping function for list
-// set up individualQA
 
 export const AppContext = createContext(null);
 
 const App = function () {
-  const [currentItem, setCurrentItem] = useState({ id: 40345 });
+  const [currentItem, setCurrentItem] = useState({ id: 40346 });
   const [allProducts, setAllProducts] = useState([]);
 
   useEffect(() => {
@@ -35,8 +24,7 @@ const App = function () {
       })
       .then((response) => {
         setAllProducts(response.data);
-        console.log('allProducts updated', response.data);
-        return response.data[1].id;
+        return response.data[3].id;
       })
       .then((id) => {
         axios
@@ -61,20 +49,12 @@ const App = function () {
       value={{ currentItem, setCurrentItem, allProducts, setAllProducts }}
     >
       <div>
-        <ImageGallery />
-        <AddToCart />
-      </div>
-      <ProductInfo />
-
-      <div>
+        <ProductInfo />
         <RelatedProducts />
         <Outfits />
-      </div>
-      <div >
         <QuestionsAnswers />
+        <Reviews />
       </div>
-      <RatingBreakdown />
-      <Reviews />
     </AppContext.Provider>
   );
 };

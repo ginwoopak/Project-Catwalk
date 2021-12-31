@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const Review = (props) => {
   return (
@@ -13,6 +13,6 @@ const Review = (props) => {
       <div>Helpful?{props.rev.helpfulness}</div>
     </li>
   );
-}
+};
 
 export default Review;
