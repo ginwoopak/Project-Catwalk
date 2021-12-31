@@ -1,31 +1,45 @@
 import React, { useState, useContext, useEffect, useMemo } from "react";
+import axios from "axios";
+import { API_KEY } from "../../../../../config/config.js";
+
 import sampleData from "../sampleData.js";
 import Modal from "../modal/Modal.jsx";
 import "./RelatedProducts.css";
+import ProductCard from "./ProductCard.jsx";
+import { AppContext } from "../../app.jsx";
 
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
 const RelatedProducts = () => {
+  const { currentItem } = useContext(AppContext);
   const [relatedProducts, setRelatedProducts] = useState(sampleData);
+  const [relatedIds, setRelatedIds] = useState([]);
 
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 4,
+      items: 3,
       slidesToSlide: 3, // optional, default to 1.
     },
-    // tablet: {
-    //   breakpoint: { max: 1024, min: 464 },
-    //   items: 2,
-    //   slidesToSlide: 2, // optional, default to 1.
-    // },
-    // mobile: {
-    //   breakpoint: { max: 464, min: 0 },
-    //   items: 1,
-    //   slidesToSlide: 1, // optional, default to 1.
-    // },
   };
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${currentItem.id}/related`,
+        {
+          headers: {
+            Authorization: API_KEY,
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((response) => {
+        setRelatedIds(response.data);
+      });
+  }, [currentItem]);
+
   return (
     <>
       <h1>Related Products</h1>
@@ -36,20 +50,9 @@ const RelatedProducts = () => {
           draggable={false}
           showDots={false}
           responsive={responsive}
-          ssr={true} // means to render carousel on server-side.
-          // infinite={true}
-          // autoPlay={this.props.deviceType !== "mobile" ? true : false}
-          // autoPlaySpeed={1000}
-          // keyBoardControl={true}
-          // customTransition="all .5"
-          // transitionDuration={500}
-          // containerClass="carousel-container"
-          // removeArrowOnDeviceType={["tablet", "mobile"]}
-          // deviceType={this.props.deviceType}
-          // dotListClass="custom-dot-list-style"
-          // itemClass="carousel-item-padding-40-px"
+          ssr={true}
         >
-          {relatedProducts.map((item) => (
+          {/* {relatedProducts.map((item) => (
             <div className="card" key={item.id}>
               <div className="card__body">
                 <img
@@ -63,6 +66,11 @@ const RelatedProducts = () => {
                 <div className="card__price">${item.default_price}</div>
                 <div className="card__rate">rate: {item.rate[0]}</div>
               </div>
+            </div>
+          ))} */}
+          {relatedIds.map((id) => (
+            <div className="card" key={id}>
+              <ProductCard productId={id} />
             </div>
           ))}
         </Carousel>

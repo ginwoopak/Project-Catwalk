@@ -58,12 +58,12 @@ const App = function () {
     <AppContext.Provider
       value={{ currentItem, setCurrentItem, allProducts, setAllProducts }}
     >
-      <div>
+      {/* <div>
         {console.log(currentItem)}
         <ImageGallery />
         <AddToCart />
       </div>
-      <ProductInfo />
+      <ProductInfo /> */}
       <div>
         <RelatedProducts />
         <Outfits />
