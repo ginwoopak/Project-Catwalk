@@ -1,6 +1,9 @@
 import React, { useState, createContext, useEffect } from 'react';
 import { API_KEY } from '../../../config/config.js';
 
+import RelatedProducts from './related/related_products/RelatedProducts.jsx';
+import Outfits from './related/outfits/Outfits.jsx';
+
 import ProductInfo from './ProductDetails/expandedInfo.jsx';
 
 import axios from 'axios';
@@ -44,7 +47,11 @@ const App = function () {
     <AppContext.Provider
       value={{ currentItem, setCurrentItem, allProducts, setAllProducts }}
     >
-      <ProductInfo />
+      <div>
+        <ProductInfo />
+        <RelatedProducts />
+        <Outfits />
+      </div>
     </AppContext.Provider>
   );
 };
