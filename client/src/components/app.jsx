@@ -1,5 +1,6 @@
 import React, { useState, createContext, useEffect } from 'react';
 import { API_KEY } from '../../../config/config.js';
+import QuestionsAnswers from './QA/QuestionsAnswers.jsx';
 import Reviews from './R&R/Reviews.jsx';
 import RatingBreakdown from './R&R/RatingBreakdown.jsx';
 import RelatedProducts from './related/related_products/RelatedProducts.jsx';
@@ -38,6 +39,7 @@ const App = function () {
           )
           .then((response) => {
             setCurrentItem(response.data);
+            console.log('currentItem updated');
           });
       });
   }, []);
@@ -50,6 +52,7 @@ const App = function () {
         <ProductInfo />
         <RelatedProducts />
         <Outfits />
+        <QuestionsAnswers />
         <Reviews />
       </div>
     </AppContext.Provider>
