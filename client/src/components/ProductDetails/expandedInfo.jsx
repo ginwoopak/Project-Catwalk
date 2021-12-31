@@ -62,10 +62,22 @@ const ProductInfo = function () {
 
   return (
     <>
-      <>
-        {/* {console.log('images: ', images)} */}
-        <ImageGallery items={images || null} />
-      </>
+      <div className='gallery-container'>
+        <ImageGallery
+          items={images || null}
+          infinite={true}
+          showBullets={true}
+          showFullscreenButton={true}
+          showThumbnails={true}
+          showIndex={false}
+          showNav={true}
+          isRTL={false}
+          thumbnailPosition={'left'}
+          slideOnThumbnailOver={false}
+          additionalClass='app-image-gallery'
+          useWindowKeyDown={true}
+        />
+      </div>
       <>
         <span>STARS </span>
         <span href='#'> Read All Reviews</span>
