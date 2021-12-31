@@ -1,18 +1,23 @@
-import React, { useState, createContext, useEffect } from "react";
-import { API_KEY } from "../../../config/config.js";
-import Reviews from "./R&R/Reviews.jsx";
-import RatingBreakdown from "./R&R/RatingBreakdown.jsx";
-import RelatedProducts from "./related/related_products/RelatedProducts.jsx";
-import Outfits from "./related/outfits/Outfits.jsx";
-import apiCall from "./apiCall.js";
+import RelatedProducts from './related/related_products/RelatedProducts.jsx';
+import Outfits from './related/outfits/Outfits.jsx';
+import apiCall from './apiCall.js';
+import React, { useState, createContext, useEffect } from 'react';
+import { API_KEY } from '../../../config/config.js';
+import QuestionsAnswers from './QA/QuestionsAnswers.jsx';
+import Reviews from './R&R/Reviews.jsx';
+import RatingBreakdown from './R&R/RatingBreakdown.jsx';
 
 import {
   AddToCart,
   ProductInfo,
   ImageGallery,
-} from "./ProductDetails/expandedInfo.js";
+} from './ProductDetails/expandedInfo.js';
 
-import axios from "axios";
+import axios from 'axios';
+
+// get question data into component
+// set up mapping function for list
+// set up individualQA
 
 export const AppContext = createContext(null);
 
@@ -22,15 +27,16 @@ const App = function () {
 
   useEffect(() => {
     axios
-      .get("https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/", {
+      .get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/', {
         headers: {
           Authorization: API_KEY,
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
       })
       .then((response) => {
         setAllProducts(response.data);
-        return response.data[0].id;
+        console.log('allProducts updated', response.data);
+        return response.data[1].id;
       })
       .then((id) => {
         axios
@@ -39,12 +45,13 @@ const App = function () {
             {
               headers: {
                 Authorization: API_KEY,
-                "Content-Type": "application/json",
+                'Content-Type': 'application/json',
               },
             }
           )
           .then((response) => {
             setCurrentItem(response.data);
+            console.log('currentItem updated');
           });
       });
   }, []);
@@ -63,7 +70,9 @@ const App = function () {
         <RelatedProducts />
         <Outfits />
       </div>
-
+      <div >
+        <QuestionsAnswers />
+      </div>
       <RatingBreakdown />
       <Reviews />
     </AppContext.Provider>
