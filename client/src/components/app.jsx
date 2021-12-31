@@ -1,3 +1,6 @@
+import RelatedProducts from "./related/related_products/RelatedProducts.jsx";
+import Outfits from "./related/outfits/Outfits.jsx";
+import apiCall from "./apiCall.js";
 import React, { useState, createContext, useEffect } from "react";
 import { API_KEY } from "../../../config/config.js";
 // import apiCall from './apiCall.js';
@@ -55,12 +58,16 @@ const App = function () {
     <AppContext.Provider
       value={{ currentItem, setCurrentItem, allProducts, setAllProducts }}
     >
-      <div>
+      {/* <div>
         {console.log(currentItem)}
         <ImageGallery />
         <AddToCart />
       </div>
-      <ProductInfo />
+      <ProductInfo /> */}
+      <div>
+        <RelatedProducts />
+        <Outfits />
+      </div>
     </AppContext.Provider>
   );
 };
