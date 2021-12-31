@@ -1,25 +1,11 @@
 import React, { useState, createContext, useEffect } from 'react';
 import { API_KEY } from '../../../config/config.js';
-<<<<<<< HEAD
-=======
 import QuestionsAnswers from './QA/QuestionsAnswers.jsx';
->>>>>>> bbfd314d9dc19bf452529dedf8d8ac566d1f35fb
 import Reviews from './R&R/Reviews.jsx';
 import RatingBreakdown from './R&R/RatingBreakdown.jsx';
 import RelatedProducts from './related/related_products/RelatedProducts.jsx';
 import Outfits from './related/outfits/Outfits.jsx';
-<<<<<<< HEAD
-import apiCall from './apiCall.js';
-
-import {
-  AddToCart,
-  ProductInfo,
-  ImageGallery,
-} from './ProductDetails/expandedInfo.js';
-
-=======
 import ProductInfo from './ProductDetails/expandedInfo.jsx';
->>>>>>> bbfd314d9dc19bf452529dedf8d8ac566d1f35fb
 import axios from 'axios';
 
 export const AppContext = createContext(null);
