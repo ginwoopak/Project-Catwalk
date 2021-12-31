@@ -13,7 +13,7 @@ import axios from "axios";
 export const AppContext = createContext(null);
 
 const App = function () {
-  const [currentItem, setCurrentItem] = useState({ id: 0 });
+  const [currentItem, setCurrentItem] = useState({ id: 40345 });
   const [allProducts, setAllProducts] = useState([]);
 
   // const [reviews, setReviews] = useState([]);
@@ -48,19 +48,17 @@ const App = function () {
   }, []);
 
   return (
-    <div>
-      <AppContext.Provider
-        value={{ currentItem, setCurrentItem, allProducts, setAllProducts }}
-      >
-        <div>
-          <ImageGallery />
-          <AddToCart />
-        </div>
-        <ProductInfo />
-      </AppContext.Provider>
+    <AppContext.Provider
+      value={{ currentItem, setCurrentItem, allProducts, setAllProducts }}
+    >
+      <div>
+        <ImageGallery />
+        <AddToCart />
+      </div>
+      <ProductInfo />
 
       <Reviews />
-    </div>
+    </AppContext.Provider>
   );
 };
 
