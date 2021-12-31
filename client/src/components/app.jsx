@@ -1,6 +1,7 @@
 import React, { useState, createContext, useEffect } from "react";
 import { API_KEY } from "../../../config/config.js";
 import Reviews from "./R&R/Reviews.jsx";
+import RatingBreakdown from "./R&R/RatingBreakdown.jsx";
 
 import {
   AddToCart,
@@ -57,6 +58,7 @@ const App = function () {
       </div>
       <ProductInfo />
 
+      <RatingBreakdown />
       <Reviews />
     </AppContext.Provider>
   );

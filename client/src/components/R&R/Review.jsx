@@ -1,18 +1,17 @@
 import React from "react";
 
 function Review(props) {
-  console.log("hello from an individual review", props.list[0].rating);
   return (
-    <div>
-      <div>{props.list[0].rating}</div>
-      <div>Date of Review</div>
-      <div>Review Summary</div>
-      <div>Review Body</div>
-      <div>Recommended</div>
-      <div>Reviewer Name</div>
-      <div>Response to Review</div>
-      <div>Rating Helpfulness</div>
-    </div>
+    <li>
+      <div>{props.rev.rating}</div>
+      <div>{props.rev.date}</div>
+      <div>{props.rev.summary}</div>
+      <div>{props.rev.body}</div>
+      <div>Recommended? True/False{props.rev.recommend}</div>
+      <div>{props.rev.reviewer_name}</div>
+      <div>Response Pending?{props.rev.response}</div>
+      <div>Helpful?{props.rev.helpfulness}</div>
+    </li>
   );
 }
 
