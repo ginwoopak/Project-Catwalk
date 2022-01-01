@@ -44,6 +44,23 @@ const Reviews = function () {
   });
   const [average, setAverage] = useState(5);
 
+  //helper function
+  const getAverage = () => {
+    var avgArray = Object.values(reviewBreak.ratings);
+    var totalNumOfValues = 0;
+    var sumOfNumbers = 0;
+    var bigOne = 0;
+
+    avgArray.forEach((element, index) => {
+      totalNumOfValues = totalNumOfValues + Number(element);
+      sumOfNumbers = (index + 1) * Number(element);
+      bigOne = bigOne + sumOfNumbers;
+    });
+    console.log(bigOne, totalNumOfValues);
+
+    return bigOne / totalNumOfValues;
+  };
+
   useEffect(() => {
     axios
       .get(
@@ -71,7 +88,8 @@ const Reviews = function () {
           )
           .then((response) => {
             setReviewBreak(response.data);
-            console.log('call for reviews', response.data);
+            console.log('hello', response.data);
+            setAverage(getAverage());
           });
       });
   }, [currentItem]);
