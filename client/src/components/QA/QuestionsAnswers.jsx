@@ -9,7 +9,6 @@ import axios from 'axios';
 import { API_KEY } from '../../../../config/config.js';
 
 const QuestionsAnswers = () => {
-
   const { currentItem } = useContext(AppContext);
 
   return (
@@ -17,7 +16,7 @@ const QuestionsAnswers = () => {
       <h3>Questions & Answers</h3>
       <div>
         <SearchBarQA />
-        <ListQA className='align_left'/>
+        <ListQA className='align_left' />
         {/* <IndividualQA />
         <br></br>
         <IndividualQA /> */}
@@ -33,40 +32,3 @@ const QuestionsAnswers = () => {
 };
 
 export default QuestionsAnswers;
-
-// ================== Class Component ===============
-
-// class QuestionsAnswers extends React.Component {
-//   constructor(props) {
-//     super(props);
-
-//     this.state = {};
-
-//   }
-
-//   render() {
-//     console.log('Props:', this.props.currentItem);
-
-//     return (
-//       <div>
-//         <h3>Questions & Answers</h3>
-//         <div>
-//           <SearchBarQA />
-//         </div>
-//         <br></br>
-//         <div>
-//           <IndividualQA />
-//           <br></br>
-//           <IndividualQA />
-//         </div>
-//         <br></br>
-//         <div>
-//           <LoadMoreQA />
-//         </div>
-//         <div className="rowQuestion">
-//           <MoreAnsweredQuestionsQA />
-//         </div>
-//       </div>
-//     );
-//   }
-// }

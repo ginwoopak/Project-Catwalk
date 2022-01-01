@@ -24,7 +24,7 @@ const App = function () {
       })
       .then((response) => {
         setAllProducts(response.data);
-        return response.data[0].id;
+        return response.data[1].id;
       })
       .then((id) => {
         axios
@@ -39,7 +39,6 @@ const App = function () {
           )
           .then((response) => {
             setCurrentItem(response.data);
-            console.log('currentItem updated');
           });
       });
   }, []);

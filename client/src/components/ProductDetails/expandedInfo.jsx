@@ -10,7 +10,73 @@ const ProductInfo = function () {
 
   //===================
   const [images, setImages] = useState([{}]); //set Images from styles
-  const [styles, setStyles] = useState([]); //store all styles data
+  const [styles, setStyles] = useState([
+    {
+      style_id: 240500,
+      name: 'Forest Green & Black',
+      original_price: '140.00',
+      sale_price: null,
+      'default?': true,
+      photos: [
+        {
+          thumbnail_url:
+            'https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80',
+          url: 'https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
+        },
+        {
+          thumbnail_url:
+            'https://images.unsplash.com/photo-1534011546717-407bced4d25c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80',
+          url: 'https://images.unsplash.com/photo-1534011546717-407bced4d25c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2734&q=80',
+        },
+        {
+          thumbnail_url:
+            'https://images.unsplash.com/photo-1549831243-a69a0b3d39e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80',
+          url: 'https://images.unsplash.com/photo-1549831243-a69a0b3d39e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2775&q=80',
+        },
+        {
+          thumbnail_url:
+            'https://images.unsplash.com/photo-1527522883525-97119bfce82d?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80',
+          url: 'https://images.unsplash.com/photo-1527522883525-97119bfce82d?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80',
+        },
+        {
+          thumbnail_url:
+            'https://images.unsplash.com/photo-1556648202-80e751c133da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80',
+          url: 'https://images.unsplash.com/photo-1556648202-80e751c133da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
+        },
+        {
+          thumbnail_url:
+            'https://images.unsplash.com/photo-1532543491484-63e29b3c1f5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80',
+          url: 'https://images.unsplash.com/photo-1532543491484-63e29b3c1f5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
+        },
+      ],
+      skus: {
+        1394769: {
+          quantity: 8,
+          size: 'XS',
+        },
+        1394770: {
+          quantity: 16,
+          size: 'S',
+        },
+        1394771: {
+          quantity: 17,
+          size: 'M',
+        },
+        1394772: {
+          quantity: 10,
+          size: 'L',
+        },
+        1394773: {
+          quantity: 15,
+          size: 'XL',
+        },
+        1394774: {
+          quantity: 4,
+          size: 'XL',
+        },
+      },
+    },
+  ]); //store all styles data
   const [selected, setSelected] = useState({}); //select one style to populate
 
   const selectStyle = (styleId) => {
@@ -30,7 +96,6 @@ const ProductInfo = function () {
         thumbnail: styles[n].photos[i].thumbnail_url,
       });
     }
-    // console.log('style: ', styles[n]);
     setSelected(styles[n]);
     setImages(gallery);
   };
@@ -47,18 +112,11 @@ const ProductInfo = function () {
         }
       )
       .then((response) => {
-        console.log('selected style: ', response.data.results[0]);
-        console.log('Current Item: ', currentItem);
         setStyles(response.data.results);
         setSelected(response.data.results[0]);
         selectStyle();
       });
   }, [currentItem]);
-  //====================
-
-  // const selectStyle = (event) => {
-  //   console.log(event.target);
-  // };
 
   return (
     <>
@@ -103,8 +161,10 @@ const ProductInfo = function () {
         </div>
         <select name='size'>
           {selected && selected.skus
-            ? Object.values(selected.skus).map((skus) => (
-                <option value={skus}>{skus.size}</option>
+            ? Object.values(selected.skus).map((skus, index) => (
+                <option key={index} value={skus}>
+                  {skus.size}
+                </option>
               ))
             : ''}
         </select>
