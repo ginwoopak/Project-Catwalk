@@ -10,7 +10,39 @@ export const ReviewContext = createContext(null);
 const Reviews = function () {
   const { currentItem } = useContext(AppContext);
   const [reviews, setReviews] = useState([]);
-  const [reviewBreak, setReviewBreak] = useState({ ratings: '' });
+  const [reviewBreak, setReviewBreak] = useState({
+    product_id: '40344',
+    ratings: {
+      1: '15',
+      2: '13',
+      3: '43',
+      4: '54',
+      5: '138',
+    },
+    recommended: {
+      false: '76',
+      true: '187',
+    },
+    characteristics: {
+      Fit: {
+        id: 135219,
+        value: '2.6354166666666667',
+      },
+      Length: {
+        id: 135220,
+        value: '2.6458333333333333',
+      },
+      Comfort: {
+        id: 135221,
+        value: '2.9473684210526316',
+      },
+      Quality: {
+        id: 135222,
+        value: '3.1538461538461538',
+      },
+    },
+  });
+  const [average, setAverage] = useState(5);
 
   useEffect(() => {
     axios
@@ -39,18 +71,17 @@ const Reviews = function () {
           )
           .then((response) => {
             setReviewBreak(response.data);
+            console.log('call for reviews', response.data);
           });
       });
   }, [currentItem]);
 
-  // let display = [];
-  // reviews.forEach((revObj) => {
-  //   display.push(<Review key={revObj.review_id} rev={revObj} />);
-  // });
-
   return (
-    <ReviewContext.Provider value={{ reviews, reviewBreak }}>
+    <ReviewContext.Provider
+      value={{ reviews, reviewBreak, average, setAverage }}
+    >
       <div>
+        Review Breakdown is here. Should be left corner.
         <RatingBreakdown />
         Reviews Section will go here!
         <div>Sorting</div>
@@ -58,7 +89,7 @@ const Reviews = function () {
         <ul>
           {reviews.map((item) => {
             return <Review key={item.review_id} rev={item} />;
-          }) || null}
+          })}
         </ul>
       </div>
     </ReviewContext.Provider>

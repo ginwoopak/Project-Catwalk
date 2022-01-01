@@ -6,9 +6,10 @@ import { ReviewContext } from './Reviews.jsx';
 const RatingBreakdown = function () {
   const { currentItem } = useContext(AppContext);
   const { reviews, reviewBreak } = useContext(ReviewContext);
-  const [average, setAverage] = useState(0);
+  const { average, setAverage } = useContext(ReviewContext);
 
   const getAverage = () => {
+    console.log('checkone');
     var avgArray = Object.values(reviewBreak.ratings);
     var totalNumOfValues = 0;
     var sumOfNumbers = 0;
@@ -30,7 +31,7 @@ const RatingBreakdown = function () {
   return (
     <div>
       <div>Ratings will go here</div>
-      {/* <div>{average || 0}</div> */}
+      <div>{average || 0}</div>
       <HalfRating num={average || 0} />
       <div>Percentages</div>
       <div>Graphs</div>
