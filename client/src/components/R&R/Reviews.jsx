@@ -56,7 +56,6 @@ const Reviews = function () {
       sumOfNumbers = (index + 1) * Number(element);
       bigOne = bigOne + sumOfNumbers;
     });
-    console.log(bigOne, totalNumOfValues);
 
     return bigOne / totalNumOfValues;
   };
@@ -88,7 +87,6 @@ const Reviews = function () {
           )
           .then((response) => {
             setReviewBreak(response.data);
-            console.log('hello', response.data);
             setAverage(getAverage());
           });
       });

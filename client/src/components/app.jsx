@@ -22,6 +22,7 @@ const App = function () {
         },
       })
       .then((response) => {
+        console.log(response.data);
         setAllProducts(response.data);
         return response.data[3].id;
       })
