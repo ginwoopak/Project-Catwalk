@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import React, { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../app.jsx';
 import axios from 'axios';
@@ -12,6 +13,7 @@ const ProductInfo = function () {
   const [images, setImages] = useState([{}]); //set Images from styles
   const [styles, setStyles] = useState([]); //store all styles data
   const [selected, setSelected] = useState({}); //select one style to populate
+  const [sku, setSku] = useState(0);
 
   const selectStyle = (styleId) => {
     let n = 0;
@@ -30,9 +32,10 @@ const ProductInfo = function () {
         thumbnail: styles[n].photos[i].thumbnail_url,
       });
     }
-    // console.log('style: ', styles[n]);
+    console.log('style: ', styles[n]);
     setSelected(styles[n]);
     setImages(gallery);
+    setSku(Object.keys(styles[n].skus)[0]);
   };
 
   useEffect(() => {
@@ -47,8 +50,8 @@ const ProductInfo = function () {
         }
       )
       .then((response) => {
-        console.log('selected style: ', response.data.results[0]);
-        console.log('Current Item: ', currentItem);
+        // console.log('selected style: ', response.data.results[0]);
+        // console.log('Current Item: ', currentItem);
         setStyles(response.data.results);
         setSelected(response.data.results[0]);
         selectStyle();
@@ -56,9 +59,21 @@ const ProductInfo = function () {
   }, [currentItem]);
   //====================
 
-  // const selectStyle = (event) => {
-  //   console.log(event.target);
-  // };
+  const loadQuantity = () => {
+    let a = [];
+    for (let i = 1; i <= selected.skus[sku].quantity; i++) {
+      a.push(
+        <option value='amt' key={i}>
+          {i}
+        </option>
+      );
+    }
+    return a;
+  };
+
+  const sizeSelect = (event) => {
+    setSku(event.target.value);
+  };
 
   return (
     <>
@@ -72,7 +87,7 @@ const ProductInfo = function () {
           showIndex={false}
           showNav={true}
           isRTL={false}
-          thumbnailPosition={'left'}
+          thumbnailPosition={'bottom'}
           slideOnThumbnailOver={false}
           additionalClass='app-image-gallery'
           useWindowKeyDown={true}
@@ -101,21 +116,20 @@ const ProductInfo = function () {
           })}
           <img></img>
         </div>
-        <select name='size'>
+        <select name='size' onChange={() => sizeSelect(event)}>
           {selected && selected.skus
-            ? Object.values(selected.skus).map((skus) => (
-                <option value={skus}>{skus.size}</option>
+            ? Object.entries(selected.skus).map((sku) => (
+                <option value={sku[0]} key={sku[0]}>
+                  {sku[1].size}
+                </option>
               ))
             : ''}
         </select>
-        <select>
-          {/* {selected && selected.skus
-            ? Object.values(selected.skus).map((skus) => {
-                return <option value={skus.size}>{skus.size}</option>;
-              })
-            : ''} */}
-          <option value='amt'>1</option>
-        </select>
+        {selected && selected.skus && sku && selected.skus[sku].quantity > 0 ? (
+          <select>{loadQuantity()}</select>
+        ) : (
+          <a value='amt'>SOLD OUT</a>
+        )}
         <button>Add to Cart</button>
         <button>Favorite</button>
       </>
