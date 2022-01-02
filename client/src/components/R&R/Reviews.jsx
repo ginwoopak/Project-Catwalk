@@ -11,49 +11,23 @@ const Reviews = function () {
   const { currentItem } = useContext(AppContext);
   const [reviews, setReviews] = useState([]);
   const [reviewBreak, setReviewBreak] = useState({
-    product_id: '40344',
     ratings: {
-      1: '15',
-      2: '13',
-      3: '43',
-      4: '54',
-      5: '138',
-    },
-    recommended: {
-      false: '76',
-      true: '187',
-    },
-    characteristics: {
-      Fit: {
-        id: 135219,
-        value: '2.6354166666666667',
-      },
-      Length: {
-        id: 135220,
-        value: '2.6458333333333333',
-      },
-      Comfort: {
-        id: 135221,
-        value: '2.9473684210526316',
-      },
-      Quality: {
-        id: 135222,
-        value: '3.1538461538461538',
-      },
+      5: '5',
     },
   });
-  const [average, setAverage] = useState(5);
+  const [average, setAverage] = useState(0);
 
   //helper function
   const getAverage = () => {
     var avgArray = Object.values(reviewBreak.ratings);
+    var indArray = Object.keys(reviewBreak.ratings);
     var totalNumOfValues = 0;
     var sumOfNumbers = 0;
     var bigOne = 0;
 
     avgArray.forEach((element, index) => {
       totalNumOfValues = totalNumOfValues + Number(element);
-      sumOfNumbers = (index + 1) * Number(element);
+      sumOfNumbers = indArray[index] * Number(element);
       bigOne = bigOne + sumOfNumbers;
     });
 
@@ -87,6 +61,8 @@ const Reviews = function () {
           )
           .then((response) => {
             setReviewBreak(response.data);
+          })
+          .then(() => {
             setAverage(getAverage());
           });
       });
