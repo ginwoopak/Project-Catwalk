@@ -51,7 +51,7 @@ const App = function () {
         <ProductInfo />
         <RelatedProducts />
         <Outfits />
-        {/* <QuestionsAnswers /> */}
+        <QuestionsAnswers />
         <Reviews />
       </div>
     </AppContext.Provider>
