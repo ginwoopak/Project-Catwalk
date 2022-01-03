@@ -10,7 +10,7 @@ import axios from 'axios';
 export const AppContext = createContext(null);
 
 const App = function () {
-  const [currentItem, setCurrentItem] = useState({ id: 40346 });
+  const [currentItem, setCurrentItem] = useState({ id: 40344 });
   const [allProducts, setAllProducts] = useState([]);
 
   useEffect(() => {
@@ -38,6 +38,7 @@ const App = function () {
           )
           .then((response) => {
             setCurrentItem(response.data);
+            // console.log('currentItem updated');
           });
       });
   }, []);
