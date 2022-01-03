@@ -1,7 +1,29 @@
 @import url('~react-image-gallery/styles/css/image-gallery.css');
 
-#big_image {
-  width: 500px;
+.product {
+  display: flex;
+  padding: 50px;
+}
+
+#product-info {
+  display: grid;
+  border-style: solid;
+  border-color: red;
+}
+
+.gallery-container {
+  justify-content: flex-start;
+  height: 50%;
+  width: 50%;
+}
+
+.image-gallery {
+  shape-image-threshold: inherit;
+}
+
+.add-to-cart {
+  justify-content: flex-end;
+  width: 50%;
 }
 
 .thumbnail {
@@ -10,6 +32,15 @@
   border-radius: 50%;
 }
 
-.gallery-container {
-  width: 50%;
+.slogan {
+  height: 50%;
+}
+
+.sale-price {
+  color: red;
+}
+
+.sale-price .default-price {
+  color: black;
+  text-decoration: line-through;
 }
