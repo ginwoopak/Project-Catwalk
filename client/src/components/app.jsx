@@ -10,7 +10,11 @@ import axios from 'axios';
 export const AppContext = createContext(null);
 
 const App = function () {
+<<<<<<< HEAD
   const [currentItem, setCurrentItem] = useState({ id: 40347 });
+=======
+  const [currentItem, setCurrentItem] = useState({ id: 40345 });
+>>>>>>> main
   const [allProducts, setAllProducts] = useState([]);
 
   useEffect(() => {
@@ -23,7 +27,11 @@ const App = function () {
       })
       .then((response) => {
         setAllProducts(response.data);
+<<<<<<< HEAD
         return response.data[3].id;
+=======
+        return response.data[1].id;
+>>>>>>> main
       })
       .then((id) => {
         axios
