@@ -2,7 +2,6 @@ import React, { useState, createContext, useEffect } from 'react';
 import { API_KEY } from '../../../config/config.js';
 import QuestionsAnswers from './QA/QuestionsAnswers.jsx';
 import Reviews from './R&R/Reviews.jsx';
-import RatingBreakdown from './R&R/RatingBreakdown.jsx';
 import RelatedProducts from './related/related_products/RelatedProducts.jsx';
 import Outfits from './related/outfits/Outfits.jsx';
 import ProductInfo from './ProductDetails/expandedInfo.jsx';
@@ -11,7 +10,7 @@ import axios from 'axios';
 export const AppContext = createContext(null);
 
 const App = function () {
-  const [currentItem, setCurrentItem] = useState({ id: 40346 });
+  const [currentItem, setCurrentItem] = useState({ id: 40344 });
   const [allProducts, setAllProducts] = useState([]);
 
   useEffect(() => {
@@ -24,7 +23,7 @@ const App = function () {
       })
       .then((response) => {
         setAllProducts(response.data);
-        return response.data[3].id;
+        return response.data[0].id;
       })
       .then((id) => {
         axios
@@ -39,7 +38,7 @@ const App = function () {
           )
           .then((response) => {
             setCurrentItem(response.data);
-            console.log('currentItem updated');
+            // console.log('currentItem updated');
           });
       });
   }, []);

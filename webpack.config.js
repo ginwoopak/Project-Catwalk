@@ -4,7 +4,7 @@ const DIST_DIR = path.join(__dirname, './client/dist');
 
 module.exports = {
   mode: 'development',
-  entry: `${SRC_DIR}/index.js`,
+  entry: ['regenerator-runtime/runtime.js', `${SRC_DIR}/index.js`],
   devtool: 'eval-source-map',
   output: {
     filename: 'bundle.js',
