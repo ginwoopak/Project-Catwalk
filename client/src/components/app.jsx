@@ -23,7 +23,7 @@ const App = function () {
       })
       .then((response) => {
         setAllProducts(response.data);
-        return response.data[0].id;
+        return response.data[2].id;
       })
       .then((id) => {
         axios
