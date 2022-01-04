@@ -14,6 +14,30 @@ const App = function () {
   const [currentItem, setCurrentItem] = useState({ id: 40344 });
   const [allProducts, setAllProducts] = useState([]);
   const [callId, setId] = useState(40344);
+  const [average, setAverage] = useState(0);
+  const [
+    reviewBreak,
+    setReviewBreak,
+    getAverage = () => {
+      var avgArray = Object.values(reviewBreak.ratings);
+      var indArray = Object.keys(reviewBreak.ratings);
+      var totalNumOfValues = 0;
+      var sumOfNumbers = 0;
+      var bigOne = 0;
+
+      avgArray.forEach((element, index) => {
+        totalNumOfValues = totalNumOfValues + Number(element);
+        sumOfNumbers = indArray[index] * Number(element);
+        bigOne = bigOne + sumOfNumbers;
+      });
+
+      return (bigOne / totalNumOfValues).toFixed(1);
+    },
+  ] = useState({
+    ratings: {
+      5: '5',
+    },
+  });
 
   useEffect(async () => {
     try {
@@ -46,6 +70,11 @@ const App = function () {
         setAllProducts,
         callAPI,
         setNewItem,
+        average,
+        setAverage,
+        reviewBreak,
+        setReviewBreak,
+        getAverage,
       }}
     >
       <div>
@@ -53,7 +82,7 @@ const App = function () {
         {currentItem ? <RelatedProducts /> : null}
         {currentItem ? <Outfits /> : null}
         {currentItem ? <QuestionsAnswers /> : null}
-        {currentItem ? <Reviews /> : null}
+        {currentItem ? <Reviews className='rev' /> : null}
       </div>
     </AppContext.Provider>
   );
