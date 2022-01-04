@@ -33,7 +33,7 @@ app.get(/products/, (req, res) => {
     })
       .then((response) => {
         memo[req.path] = response.data;
-        console.log('API CALLED');
+        // console.log('API CALLED');
         res.send(response.data);
       })
       .catch((error) => {
@@ -57,7 +57,7 @@ app.get(/qa/, (req, res) => {
     })
       .then((response) => {
         memo[req.path + `?product_id=${req.query.product_id}`] = response.data;
-        console.log('API CALLED');
+        // console.log('API CALLED');
         res.send(response.data);
       })
       .catch((error) => {
@@ -81,7 +81,7 @@ app.get(/reviews/, (req, res) => {
     })
       .then((response) => {
         memo[req.path + `?product_id=${req.query.product_id}`] = response.data;
-        console.log('API CALLED');
+        // console.log('API CALLED');;
         res.send(response.data);
       })
       .catch((error) => {
