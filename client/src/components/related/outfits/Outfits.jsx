@@ -72,11 +72,6 @@ const Outfits = () => {
               </div>
             </div>
           ))}
-          {/* {relatedIds.map((id) => (
-            <div className="card" key={id}>
-              <ProductCard productId={id} />
-            </div>
-          ))} */}
         </Carousel>
       </div>
     </>

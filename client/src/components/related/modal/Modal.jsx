@@ -7,6 +7,8 @@ import { AppContext } from '../../app.jsx';
 const Modal = ({ openModal, setOpenModal, selectedId, currentItem }) => {
   const { callAPI } = useContext(AppContext);
   const [allFeats, setAllFeats] = useState([]);
+  const [currentFeats, setCurrentFeats] = useState([]);
+  const [selectedFeats, setSelectedFeats] = useState([]);
   const [selectedItem, setSelectedItem] = useState({});
 
   const getAllFeatures = () => {
@@ -24,7 +26,7 @@ const Modal = ({ openModal, setOpenModal, selectedId, currentItem }) => {
     AllFeatures = Array.from(
       new Set([...currentFeatures, ...selectedFeatures])
     );
-    return AllFeatures;
+    return [currentFeatures, selectedFeatures, AllFeatures];
   };
 
   useEffect(() => {
@@ -35,27 +37,12 @@ const Modal = ({ openModal, setOpenModal, selectedId, currentItem }) => {
   }, [selectedId]);
 
   useEffect(() => {
-    setAllFeats(getAllFeatures());
+    setCurrentFeats(getAllFeatures()[0]);
+    setSelectedFeats(getAllFeatures()[1]);
+    setAllFeats(getAllFeatures()[2]);
   }, [selectedItem]);
 
   return (
-    // <div className='modalBackground'>
-    //   <div className='modalContaner'>
-    //     <button
-    //       className='closeBtn'
-    //       onClick={() => {
-    //         setOpenModal(false);
-    //       }}
-    //     >
-    //       x
-    //     </button>
-    //     Modal
-    //     {/* {console.log('selectedItem updated:', selectedItem)}
-    //     {console.log('currentItem:', currentItem)} */}
-    //     {console.log('allFeatures:', allFeats)}
-    //   </div>
-    // </div>
-    ////////
     <div className='modalBackground'>
       <div className='modalContaner'>
         <button
@@ -66,42 +53,32 @@ const Modal = ({ openModal, setOpenModal, selectedId, currentItem }) => {
         >
           x
         </button>
+        {console.log('allFeatures:::', allFeats)}
+        {console.log('curr:::', currentFeats)}
+        {console.log('select:::', selectedFeats)}
         <div>
           <h2>Comparing</h2>
-          <div className='tableItemNames'>
-            <p>{currentItem.name}</p>
-            <p>{selectedItem.name}</p>
-          </div>
-          {/* <table>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-              </tr>
-            </tbody>
-          </table> */}
           <table>
             <thead className='tableHeaders'>
               <tr>
                 <th>{currentItem.name}</th>
-                <th>{'---'}</th>
+                <th>{''}</th>
                 <th>{selectedItem.name}</th>
               </tr>
             </thead>
-            {/* <tbody className='tableBody'>
-              {allFeats.map((item, key) => (
-                <tr key={key} className='tableRow'>
+            <tbody className='tableBody'>
+              {allFeats.map((item, index) => (
+                <tr key={index} className='tableRow'>
                   <td className='leftCheck'>
-                    {currentItem.includes(item) ? 'Y' : ''}
+                    {currentFeats.includes(item) ? 'Y' : ''}
                   </td>
                   <td>{item}</td>
                   <td className='rightCheck'>
-                    {selectedItem.includes(item) ? 'Y' : ''}
+                    {selectedFeats.includes(item) ? 'Y' : ''}
                   </td>
                 </tr>
               ))}
-            </tbody> */}
+            </tbody>
           </table>
         </div>
       </div>
