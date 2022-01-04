@@ -16,13 +16,10 @@ const ProductCard = ({ productId }) => {
 
   useEffect(() => {
     callAPI(`products/${productId}/styles`, (response) => {
-      console.log('styles: ', response.data);
       setImageUrl(response.data.results[0].photos[0].thumbnail_url);
       setSalesPrice(response.data.results[0].sale_price);
     });
     callAPI(`products/${productId}`, (response) => {
-      console.log('product id: ', response.data);
-
       setCategory(response.data.category);
       setName(response.data.name);
       setPrice(response.data.default_price);
