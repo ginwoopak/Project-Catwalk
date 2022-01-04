@@ -42,7 +42,7 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  cursor: pointer;
+  /* cursor: pointer; */
   transition: transform 200ms ease-in;
   margin: 1.8rem;
   height: 27rem;
@@ -63,6 +63,7 @@ h1 {
 .card__name {
   padding: 0 1rem;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .card__price {
@@ -99,35 +100,43 @@ h1 {
   flex-direction: column;
   justify-content: center;
   height: 30rem;
-  /* border-radius: 1rem; */
   padding-bottom: 2rem;
-  background-color: white;
+  background-color: rgba(228, 141, 141, 0);
   border-color: rgba(255, 255, 255, 0);
   border-style: solid;
 }
 
-#plus_sign {
-  font-size: 14rem;
+.plusIcon {
+  display: flex;
+  align-items: center;
+
+  width: 30%;
+  height: 30%;
 }
 
-/* .add_outfit_Btn svg {
-  font-size: 100px;
-  padding: 20px;
-  color: #2c2e2e;
-} */
-
-/* .icon {
-  display: inline-block;
-  vertical-align: middle;
+.icon-tag {
+  cursor: pointer;
+  position: absolute;
+  top: 15;
+  right: 15;
+  z-index: 1;
+  width: 2rem;
+  height: 2rem;
+  background-color: rgba(211, 211, 211, 0);
+  border-color: rgba(211, 211, 211, 0);
 }
 
-.icon--plus {
-  background-color: cornflowerblue;
+.starIcon {
+  color: lightgray;
+  width: fit-content;
+  height: fit-content;
+  /* border: 0 2px 20px lightgray; */
 }
 
-.icon--plus > path {
-  fill: gold;
-  stroke: gold;
-  stroke-width: 0.1;
-  stroke-linejoin: round;
-} */
+.xIcon {
+  color: black;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 50%;
+  background-color: white;
+}

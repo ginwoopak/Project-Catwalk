@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect, useMemo } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-regular-svg-icons';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { API_KEY } from '../../../../../config/config.js';
 
 import sampleData from '../sampleData.js';
@@ -59,17 +59,16 @@ const RelatedProducts = () => {
           {relatedIds.map((id) => (
             <div className='card' key={id}>
               <button
-                className='starBtn'
-                aria-label='button'
+                className='icon-tag'
                 onClick={(e) => {
                   setModalOpen(true);
                   setSelectedId(id);
                   e.stopPropagation();
                 }}
               >
-                <FontAwesomeIcon icon={faStar} />
+                <FontAwesomeIcon icon={faStar} className='starIcon' />
               </button>
-              <ProductCard productId={id} />
+              <ProductCard productId={id} setModalOpen={setModalOpen} />
             </div>
           ))}
         </Carousel>

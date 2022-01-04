@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faXmarkCircle,
   faPlusSquare,
+  faSquarePlus,
 } from '@fortawesome/free-regular-svg-icons';
 import axios from 'axios';
 import { API_KEY } from '../../../../../config/config.js';
@@ -39,24 +40,19 @@ const Outfits = () => {
         >
           <div className='card'>
             <div className='add_a_outfit'>Add a Outfit</div>
-            <button className='add_outfit_Btn'>
-              {/* <svg className="icon  icon--plus" viewBox="0 0 5 5" xmlns="http://www.w3.org/2000/svg">
-                <path d="M2 1 h1 v1 h1 v1 h-1 v1 h-1 v-1 h-1 v-1 h1 z" />
-              </svg> */}
-              <div id='plus_sign'>+</div>
-            </button>
+            <div className='add_outfit_Btn'>
+              <FontAwesomeIcon icon={faSquarePlus} className='plusIcon' />
+            </div>
           </div>
           {relatedProducts.map((item) => (
             <div className='card' key={item.id}>
               <div className='card__body'>
-                <button>
-                  <FontAwesomeIcon icon={faXmarkCircle} />
+                <button className='icon-tag'>
+                  <FontAwesomeIcon icon={faXmarkCircle} className='xIcon' />
                 </button>
                 <img
                   className='card__image'
                   src={item.photos[0].thumbnail_url}
-                  // width="100"
-                  // height="100"
                 />
                 <div className='card__category'>{item.category}</div>
                 <div className='card__name'>{item.name}</div>
@@ -64,8 +60,7 @@ const Outfits = () => {
                 <div className='card__price'>
                   {item.sale_price ? (
                     <a className='card__sale_price'>
-                      ${item.sale_price}
-                      <a> </a>
+                      ${item.sale_price} &nbsp;
                       <a className='card__ori_price'>${item.original_price}</a>
                     </a>
                   ) : (

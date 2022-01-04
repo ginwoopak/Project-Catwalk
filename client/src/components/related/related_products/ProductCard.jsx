@@ -16,13 +16,6 @@ const ProductCard = ({ productId }) => {
   const [price, setPrice] = useState(0);
   const [rating, setRating] = useState(2.5); // refactor needed
   const [salesPrice, setSalesPrice] = useState(0);
-  // const [modalOpen, setModalOpen] = useState(false);
-
-  // const openModal = (item, e) => {
-  //   setSelectedRelatedProduct(findProduct);
-  //   setShowModal(true);
-  //   e.stopPropagation();
-  // }
 
   useEffect(() => {
     axios
@@ -73,24 +66,13 @@ const ProductCard = ({ productId }) => {
   return (
     <div>
       <div className='card__body'>
-        {/* <button
-          className='starBtn'
-          aria-label='button'
-          onClick={(e) => {
-            setModalOpen(true);
-            e.stopPropagation();
-          }}
-        >
-          <FontAwesomeIcon icon={faStar} />
-        </button> */}
-
         <img className='card__image' src={imageUrl} />
         <div className='card__category'>{category}</div>
         <div className='card__name'>{name}</div>
         <div className='card__price'>
           {salesPrice ? (
             <a className='card__sale_price'>
-              ${salesPrice}
+              ${salesPrice} &nbsp;
               <a className='card__ori_price'>${price}</a>
             </a>
           ) : (
