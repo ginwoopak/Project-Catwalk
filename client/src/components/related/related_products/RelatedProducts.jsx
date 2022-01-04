@@ -18,7 +18,7 @@ const RelatedProducts = () => {
   const [relatedProducts, setRelatedProducts] = useState(sampleData);
   const [relatedIds, setRelatedIds] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
-  const [selectedId, setSelectedId] = useState(0);
+  const [selectedId, setSelectedId] = useState(null);
 
   const responsive = {
     desktop: {

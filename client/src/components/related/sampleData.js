@@ -6,7 +6,7 @@ const products = [
     description:
       'The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.',
     category: 'Jackets',
-    default_price: '140',
+    original_price: '140',
     sale_price: null,
     'default?': true,
     photos: [
@@ -29,7 +29,7 @@ const products = [
     description:
       "Where you're going you might not need roads, but you definitely need some shades. Give those baby blues a rest and let the future shine bright on these timeless lenses.",
     category: 'Accessories',
-    default_price: '69',
+    original_price: '69',
     sale_price: null,
     'default?': true,
     photos: [
@@ -52,7 +52,7 @@ const products = [
     description:
       "Whether you're a morning person or not. Whether you're gym bound or not. Everyone looks good in joggers.",
     category: 'Pants',
-    default_price: '40',
+    original_price: '40',
     sale_price: null,
     'default?': true,
     photos: [
@@ -75,7 +75,7 @@ const products = [
     description:
       'This optimized air cushion pocket reduces impact but keeps a perfect balance underfoot.',
     category: 'Basketball Shoes',
-    default_price: '150',
+    original_price: '150',
     sale_price: null,
     'default?': true,
     photos: [
@@ -97,8 +97,8 @@ const products = [
     slogan: 'Just wear it',
     description: '50 pcs per box',
     category: 'Accessories',
-    default_price: '15',
-    sale_price: null,
+    original_price: '15',
+    sale_price: 12.99,
     'default?': true,
     photos: [
       {
@@ -107,32 +107,12 @@ const products = [
       },
       {
         thumbnail_url:
-          'https://images.unsplash.com/photo-1534011546717-407bced4d25c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80',
+          'https://imaoriginalplash.com/photo-1534011546717-407bced4d25c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80',
         url: 'https://images.unsplash.com/photo-1534011546717-407bced4d25c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2734&q=80',
       },
     ],
     rate: [4.5],
   },
 ];
-
-const productInfo = {
-  id: 4,
-  name: 'Air Minis 250',
-  slogan: 'Full court support',
-  description:
-    'This optimized air cushion pocket reduces impact but keeps a perfect balance underfoot.',
-  category: 'Basketball Shoes',
-  default_price: '150',
-  features: [
-    {
-      feature: 'Sole',
-      value: 'Rubber',
-    },
-    {
-      feature: 'Material',
-      value: 'FullControlSkin',
-    },
-  ],
-};
 
 export default products;

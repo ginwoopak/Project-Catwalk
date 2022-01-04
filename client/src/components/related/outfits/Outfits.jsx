@@ -1,12 +1,15 @@
 import React, { useState, useContext, useEffect, useMemo } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faXmarkCircle } from '@fortawesome/free-regular-svg-icons';
+import {
+  faXmarkCircle,
+  faPlusSquare,
+} from '@fortawesome/free-regular-svg-icons';
 import axios from 'axios';
 import { API_KEY } from '../../../../../config/config.js';
 import sampleData from '../sampleData.js';
 import { AppContext } from '../../app.jsx';
 import '../related_products//RelatedProducts.css';
-
+import HalfRating from '../../R&R/Stars.jsx';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
@@ -57,8 +60,21 @@ const Outfits = () => {
                 />
                 <div className='card__category'>{item.category}</div>
                 <div className='card__name'>{item.name}</div>
-                <div className='card__price'>${item.default_price}</div>
-                <div className='card__rate'>rate: {item.rate[0]}</div>
+                {/* <div className='card__price'>${item.default_price}</div> */}
+                <div className='card__price'>
+                  {item.sale_price ? (
+                    <a className='card__sale_price'>
+                      ${item.sale_price}
+                      <a> </a>
+                      <a className='card__ori_price'>${item.original_price}</a>
+                    </a>
+                  ) : (
+                    <a className='card__ori_price'>${item.original_price}</a>
+                  )}
+                </div>
+                <div className='card__rate'>
+                  <HalfRating num={item.rate[0] || 0} />
+                </div>
               </div>
             </div>
           ))}
