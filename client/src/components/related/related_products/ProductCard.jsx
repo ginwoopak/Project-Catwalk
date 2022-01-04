@@ -28,7 +28,6 @@ const ProductCard = ({ productId }) => {
   }, [productId]);
 
   return (
-    //
     <div className='card__body'>
       <img className='card__image' src={imageUrl} />
       <div className='card__category'>{category}</div>

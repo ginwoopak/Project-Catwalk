@@ -14,7 +14,7 @@ const RelatedProducts = () => {
   const [relatedIds, setRelatedIds] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
-  const [currentId, setCurrentId] = useState(currentItem.id);
+  const [currentDisplayItem, setCurrentDisplayItem] = useState({});
 
   const responsive = {
     desktop: {
@@ -27,6 +27,9 @@ const RelatedProducts = () => {
   useEffect(() => {
     callAPI(`products/${currentItem.id}/related`, (response) => {
       setRelatedIds(response.data);
+    });
+    callAPI(`products/${currentItem.id}`, (response) => {
+      setCurrentDisplayItem(response.data);
     });
   }, [currentItem]);
 
@@ -64,7 +67,6 @@ const RelatedProducts = () => {
                   onClick={() => {
                     setModalOpen(true);
                     setSelectedId(id);
-                    console.log('selectedId:::', id);
                   }}
                 >
                   <FontAwesomeIcon icon={faStar} className='starIcon' />
@@ -79,7 +81,7 @@ const RelatedProducts = () => {
             openModal={modalOpen}
             setOpenModal={setModalOpen}
             selectedId={selectedId}
-            // currentId={currentId}
+            currentItem={currentDisplayItem}
           />
         ) : null}
       </div>
