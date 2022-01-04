@@ -1,17 +1,16 @@
 import React, { useState, useContext, useEffect, useMemo } from 'react';
-
-import sampleData from '../sampleData.js';
 import Modal from '../modal/Modal.jsx';
 import './RelatedProducts.css';
 import ProductCard from './ProductCard.jsx';
 import { AppContext } from '../../app.jsx';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
 const RelatedProducts = () => {
   const { currentItem, callAPI } = useContext(AppContext);
-  const [relatedProducts, setRelatedProducts] = useState(sampleData);
   const [relatedIds, setRelatedIds] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
@@ -28,7 +27,6 @@ const RelatedProducts = () => {
   useEffect(() => {
     callAPI(`products/${currentItem.id}/related`, (response) => {
       setRelatedIds(response.data);
-      console.log(response.data);
     });
   }, [currentItem]);
 
@@ -50,8 +48,6 @@ const RelatedProducts = () => {
                 <img
                   className="card__image"
                   src={item.photos[0].thumbnail_url}
-                  // width="100"
-                  // height="100"
                 />
                 <div className="card__category">{item.category}</div>
                 <div className="card__name">{item.name}</div>
@@ -63,19 +59,29 @@ const RelatedProducts = () => {
           {relatedIds.map((id) => {
             return (
               <div className='card' key={id}>
+                <button
+                  className='icon-tag'
+                  onClick={() => {
+                    setModalOpen(true);
+                    setSelectedId(id);
+                    console.log('selectedId:::', id);
+                  }}
+                >
+                  <FontAwesomeIcon icon={faStar} className='starIcon' />
+                </button>
                 <ProductCard productId={id} />
               </div>
             );
           })}
         </Carousel>
-        {/* {modalOpen && (
+        {modalOpen ? (
           <Modal
             openModal={modalOpen}
             setOpenModal={setModalOpen}
             selectedId={selectedId}
-            currentId={currentId}
+            // currentId={currentId}
           />
-        )} */}
+        ) : null}
       </div>
     </>
   );

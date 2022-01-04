@@ -3,11 +3,9 @@ import './Modal.css';
 import axios from 'axios';
 import { API_KEY } from '../../../../../config/config.js';
 import { AppContext } from '../../app.jsx';
-import { isMouseMoveEvent } from 'react-multi-carousel';
 
-const Modal = ({ openModal, setOpenModal, selectedId, currentId }) => {
-  const { currentItem } = useContext(AppContext);
-  const isMounted = useRef(false);
+const Modal = ({ openModal, setOpenModal, selectedId }) => {
+  const { currentItem, callAPI } = useContext(AppContext);
   const [selectedItem, setSelectedItem] = useState({
     id: 40345,
     campus: 'hr-rfp',
@@ -36,24 +34,10 @@ const Modal = ({ openModal, setOpenModal, selectedId, currentId }) => {
   });
 
   useEffect(() => {
-    axios
-      .get(
-        `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${selectedId}`,
-        {
-          headers: {
-            Authorization: API_KEY,
-            'Content-Type': 'application/json',
-          },
-        }
-      )
-      .then((response) => {
-        setSelectedItem(response.data.features);
-        console.log('data:', response.data.features);
-        console.log('selectedId:', selectedId);
-        console.log('selectedItem updated:', selectedItem);
-        console.log('currentItem::', currentItem);
-      });
-  }, [selectedItem]);
+    callAPI(`products/${selectedId}`, (response) => {
+      setSelectedItem(response.data);
+    });
+  }, [selectedId]);
 
   // var currentFeatures, selectedFeatures, AllFeatures;
   // if (selectedItem.features && currentItem.features) {
@@ -82,6 +66,7 @@ const Modal = ({ openModal, setOpenModal, selectedId, currentId }) => {
           x
         </button>
         Modal
+        {console.log('selectedItem updated:', selectedItem)}
       </div>
     </div>
 

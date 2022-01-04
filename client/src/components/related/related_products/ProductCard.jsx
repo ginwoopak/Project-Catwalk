@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect, useMemo } from 'react';
 import sampleData from '../sampleData.js';
 import './RelatedProducts.css';
 
+import HalfRating from '../../R&R/Stars.jsx';
 import { AppContext } from '../../app.jsx';
 import products from '../sampleData.js';
 
@@ -16,32 +17,36 @@ const ProductCard = ({ productId }) => {
 
   useEffect(() => {
     callAPI(`products/${productId}/styles`, (response) => {
-      console.log('styles: ', response.data);
       setImageUrl(response.data.results[0].photos[0].thumbnail_url);
       setSalesPrice(response.data.results[0].sale_price);
+      setPrice(response.data.results[0].original_price);
     });
     callAPI(`products/${productId}`, (response) => {
-      console.log('product id: ', response.data);
-
       setCategory(response.data.category);
       setName(response.data.name);
-      setPrice(response.data.default_price);
     });
   }, [productId]);
 
   return (
     //
     <div className='card__body'>
-      {/* <button aria-label="button">
-        <i className="far fa-star star fa-lg "></i>
-      </button> */}
       <img className='card__image' src={imageUrl} />
       <div className='card__category'>{category}</div>
       <div className='card__name'>{name}</div>
-      <div className='card__price'>${price}</div>
+      <div className='card__price'>
+        {salesPrice ? (
+          <a className='card__sale_price'>
+            ${salesPrice} &nbsp;
+            <a className='card__ori_price'>${price}</a>
+          </a>
+        ) : (
+          <a className='card__ori_price'>${price}</a>
+        )}
+      </div>
       {/* <div className="card__rate">rate: {rating}</div> */}
-      <div className='card__rate'>rate: 5</div>
-      {/* {productId} */}
+      <div className='card__rate'>
+        <HalfRating num={rating || 0} />
+      </div>
     </div>
   );
 };
