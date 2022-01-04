@@ -15,29 +15,27 @@ const App = function () {
   const [allProducts, setAllProducts] = useState([]);
   const [callId, setId] = useState(40344);
   const [average, setAverage] = useState(0);
-  const [
-    reviewBreak,
-    setReviewBreak,
-    getAverage = () => {
-      var avgArray = Object.values(reviewBreak.ratings);
-      var indArray = Object.keys(reviewBreak.ratings);
-      var totalNumOfValues = 0;
-      var sumOfNumbers = 0;
-      var bigOne = 0;
-
-      avgArray.forEach((element, index) => {
-        totalNumOfValues = totalNumOfValues + Number(element);
-        sumOfNumbers = indArray[index] * Number(element);
-        bigOne = bigOne + sumOfNumbers;
-      });
-
-      return Number((bigOne / totalNumOfValues).toFixed(1));
-    },
-  ] = useState({
+  const [reviewBreak, setReviewBreak] = useState({
     ratings: {
       5: '5',
     },
   });
+
+  const getAverage = () => {
+    var avgArray = Object.values(reviewBreak.ratings);
+    var indArray = Object.keys(reviewBreak.ratings);
+    var totalNumOfValues = 0;
+    var sumOfNumbers = 0;
+    var bigOne = 0;
+
+    avgArray.forEach((element, index) => {
+      totalNumOfValues = totalNumOfValues + Number(element);
+      sumOfNumbers = indArray[index] * Number(element);
+      bigOne = bigOne + sumOfNumbers;
+    });
+
+    return Number((bigOne / totalNumOfValues).toFixed(1));
+  };
 
   useEffect(async () => {
     try {
