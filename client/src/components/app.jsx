@@ -31,7 +31,7 @@ const App = function () {
         bigOne = bigOne + sumOfNumbers;
       });
 
-      return (bigOne / totalNumOfValues).toFixed(1);
+      return Number((bigOne / totalNumOfValues).toFixed(1));
     },
   ] = useState({
     ratings: {
