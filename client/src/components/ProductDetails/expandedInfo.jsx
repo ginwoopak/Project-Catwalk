@@ -1,18 +1,15 @@
 /* eslint-disable indent */
 import React, { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../app.jsx';
-import axios from 'axios';
-import { API_KEY } from '../../../../config/config.js';
 import ImageGallery from 'react-image-gallery';
 import HalfRating from '../R&R/Stars.jsx';
 import './productInfo.css';
 import 'regenerator-runtime/runtime';
 
 const ProductInfo = function () {
-  const { currentItem } = useContext(AppContext);
+  const { currentItem, callAPI } = useContext(AppContext);
   const average = 2.5; //THIS NEEDS TO BE IMPORTED FROM R&R SOMEHOW
 
-  //===================
   const [images, setImages] = useState([{}]); //set Images from styles
   const [styles, setStyles] = useState([]); //store all styles data
   const [selected, setSelected] = useState({}); //select one style to populate
@@ -43,24 +40,18 @@ const ProductInfo = function () {
     }
   };
 
+  //====================
   useEffect(() => {
-    axios
-      .get(
-        `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${currentItem.id}/styles`,
-        {
-          headers: {
-            Authorization: API_KEY,
-            'Content-Type': 'application/json',
-          },
-        }
-      )
-      .then((response) => {
-        // console.log('selected style: ', response.data.results[0]);
-        // console.log('Current Item: ', currentItem);
+    try {
+      // console.log(currentItem.id);
+      callAPI(`products/${currentItem.id}/styles`, (response) => {
         setStyles(response.data.results);
         setSelected(response.data.results[0]);
         selectStyle();
       });
+    } catch (error) {
+      console.log(error);
+    }
   }, [currentItem]);
   //====================
 
