@@ -24,7 +24,7 @@ const ListQA = () => {
   });
 
   return (
-    <div>
+    <div className='accordion'>
       <QuestionContext.Provider value={{ questionData }}>
         {list}
       </QuestionContext.Provider>

@@ -4,6 +4,8 @@ import LoadMoreQA from './LoadMoreQA.jsx';
 import MoreAnsweredQuestionsQA from './MoreAnsweredQuestionsQA.jsx';
 import ListQA from './ListQA.jsx';
 import { AppContext } from '../app.jsx';
+import './QA.css';
+
 
 const QuestionsAnswers = () => {
   const { currentItem } = useContext(AppContext);
@@ -14,9 +16,6 @@ const QuestionsAnswers = () => {
       <div>
         <SearchBarQA />
         <ListQA className='align_left' />
-        {/* <IndividualQA />
-        <br></br>
-        <IndividualQA /> */}
       </div>
       <div>
         <LoadMoreQA />

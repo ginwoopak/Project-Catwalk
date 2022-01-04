@@ -2,9 +2,10 @@ import React, { useState, useContext, useEffect } from 'react';
 import QuestionQA from './QuestionQA.jsx';
 import AnswerQA from './AnswerQA.jsx';
 import HelpAddAnswerQA from './HelpAddAnswerQA.jsx';
-import UserHelpReportQA from './UserHelpReportQA.jsx';
 
 const IndividualQA = (props) => {
+  const [isActive, setIsActive] = useState(false);
+
   let answers = Object.values(props.question.answers);
 
   let answerList = answers.map((answer) => {
@@ -12,16 +13,27 @@ const IndividualQA = (props) => {
   });
 
   return (
-    <div className='individual_container border'>
-      <div>
-        <QuestionQA question={props.question.question_body} />
-        <HelpAddAnswerQA />
+    <React.Fragment>
+      <div className='accordion-item'>
+        <div
+          className='accordion-title'
+          onClick={() => {
+            setIsActive(!isActive);
+          }}
+        >
+          <QuestionQA question={props.question.question_body} />
+          <HelpAddAnswerQA />
+          <div>{isActive ? '-' : '+'}</div>
+        </div>
+        {isActive && (
+          <div>
+            <div className='accordion-content'>{answerList}</div>
+          </div>
+        )}
+
       </div>
-      <div className='float_left'>{answerList}</div>
-      <div>
-        <UserHelpReportQA />
-      </div>
-    </div>
+      <hr></hr>
+    </React.Fragment>
   );
 };
 
