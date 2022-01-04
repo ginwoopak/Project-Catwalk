@@ -23,6 +23,8 @@ const ListQA = () => {
     return <IndividualQA question={question} key={`${question.question_id}`} />;
   });
 
+  // console.log('questionData: ', questionData);
+
   return (
     <div className='accordion'>
       <QuestionContext.Provider value={{ questionData }}>

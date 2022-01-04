@@ -2,8 +2,13 @@ import React, { useState, useContext, useEffect } from 'react';
 import QuestionQA from './QuestionQA.jsx';
 import AnswerQA from './AnswerQA.jsx';
 import HelpAddAnswerQA from './HelpAddAnswerQA.jsx';
+import { QuestionContext } from './ListQA.jsx';
 
 const IndividualQA = (props) => {
+  const { questionData } = useContext(QuestionContext);
+
+  console.log('questionData:', questionData);
+
   const [isActive, setIsActive] = useState(false);
 
   let answers = Object.values(props.question.answers);
