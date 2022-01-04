@@ -1,18 +1,16 @@
-import React, { useState, useContext, useEffect, useMemo } from "react";
-import axios from "axios";
-import { API_KEY } from "../../../../../config/config.js";
+import React, { useState, useContext, useEffect, useMemo } from 'react';
 
-import sampleData from "../sampleData.js";
-import Modal from "../modal/Modal.jsx";
-import "./RelatedProducts.css";
-import ProductCard from "./ProductCard.jsx";
-import { AppContext } from "../../app.jsx";
+import sampleData from '../sampleData.js';
+import Modal from '../modal/Modal.jsx';
+import './RelatedProducts.css';
+import ProductCard from './ProductCard.jsx';
+import { AppContext } from '../../app.jsx';
 
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 
 const RelatedProducts = () => {
-  const { currentItem } = useContext(AppContext);
+  const { currentItem, callAPI } = useContext(AppContext);
   const [relatedProducts, setRelatedProducts] = useState(sampleData);
   const [relatedIds, setRelatedIds] = useState([]);
 
@@ -25,25 +23,16 @@ const RelatedProducts = () => {
   };
 
   useEffect(() => {
-    axios
-      .get(
-        `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${currentItem.id}/related`,
-        {
-          headers: {
-            Authorization: API_KEY,
-            "Content-Type": "application/json",
-          },
-        }
-      )
-      .then((response) => {
-        setRelatedIds(response.data);
-      });
+    callAPI(`products/${currentItem.id}/related`, (response) => {
+      setRelatedIds(response.data);
+      console.log(response.data);
+    });
   }, [currentItem]);
 
   return (
     <>
       <h1>Related Products</h1>
-      <div className="gridContainer">
+      <div className='gridContainer'>
         <Carousel
           arrows={true}
           swipeable={false}
@@ -68,11 +57,14 @@ const RelatedProducts = () => {
               </div>
             </div>
           ))} */}
-          {relatedIds.map((id) => (
-            <div className="card" key={id}>
-              <ProductCard productId={id} />
-            </div>
-          ))}
+          {relatedIds.map((id) => {
+            console.log(id);
+            return (
+              <div className='card' key={id}>
+                <ProductCard productId={id} />
+              </div>
+            );
+          })}
         </Carousel>
       </div>
     </>

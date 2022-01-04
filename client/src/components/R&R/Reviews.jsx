@@ -1,7 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { AppContext } from '../app.jsx';
-import axios from 'axios';
-import { API_KEY } from '../../../../config/config.js';
 import Review from './Review.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
 import './Reviews.css';
@@ -9,7 +7,7 @@ import './Reviews.css';
 export const ReviewContext = createContext(null);
 
 const Reviews = function () {
-  const { currentItem } = useContext(AppContext);
+  const { currentItem, callAPI } = useContext(AppContext);
   const [reviews, setReviews] = useState([]);
   const [reviewBreak, setReviewBreak] = useState({
     ratings: {
@@ -36,37 +34,15 @@ const Reviews = function () {
   };
 
   useEffect(() => {
-    axios
-      .get(
-        `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=${currentItem.id}`,
-        {
-          headers: {
-            Authorization: API_KEY,
-            'Content-Type': 'application/json',
-          },
-        }
-      )
-      .then((response) => {
+    if (currentItem.id) {
+      callAPI(`reviews?product_id=${currentItem.id}`, (response) => {
         setReviews(response.data.results);
-      })
-      .then(() => {
-        axios
-          .get(
-            `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta?product_id=${currentItem.id}`,
-            {
-              headers: {
-                Authorization: API_KEY,
-                'Content-Type': 'application/json',
-              },
-            }
-          )
-          .then((response) => {
-            setReviewBreak(response.data);
-          })
-          .then(() => {
-            setAverage(getAverage());
-          });
       });
+      callAPI(`reviews/meta?product_id=${currentItem.id}`, (response) => {
+        setReviewBreak(response.data);
+        setAverage(getAverage());
+      });
+    }
   }, [currentItem]);
 
   return (
