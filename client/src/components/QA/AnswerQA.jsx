@@ -1,15 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 
-const AnswerQA = () => {
-
-  const [answer, setAnswer] = useState('No, this is a hoodie to keep you warm. Will definitely not treat your Psoriasis.');
-
+const AnswerQA = (props) => {
   return (
     <div className='align_left'>
       <b>A: </b>
-      <span className='small_font'>
-        {`${answer}`}
-      </span>
+      <span className='small_font'>{`${props.answer.body}`}</span>
     </div>
   );
 };

@@ -1,11 +1,7 @@
 import React from 'react';
 
 const MoreAnsweredQuestionsQA = () => {
-  return (
-    <button>
-      More Answered Questions
-    </button>
-  );
+  return <button>More Answered Questions</button>;
 };
 
 export default MoreAnsweredQuestionsQA;

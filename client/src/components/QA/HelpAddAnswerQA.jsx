@@ -5,7 +5,7 @@ import AddAnswerQA from './AddAnswerQA.jsx';
 const HelpAddAnswerQA = () => {
   return (
     <span className='float_right small_font'>
-      <HelpfulQA />    |    <AddAnswerQA />
+      <HelpfulQA /> | <AddAnswerQA />
     </span>
   );
 };

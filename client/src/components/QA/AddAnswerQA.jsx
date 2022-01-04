@@ -1,11 +1,14 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 const AddAnswerQA = () => {
-
-  const [addAnswer, setAddAnswer] = useState(null)
+  const [addAnswer, setAddAnswer] = useState(null);
 
   return (
-    <span onClick={() => {setAddAnswer(alert('ADD ANSWER'))}}>
+    <span
+      onClick={() => {
+        setAddAnswer(alert('ADD ANSWER'));
+      }}
+    >
       <u>Add Answer</u>
     </span>
   );
