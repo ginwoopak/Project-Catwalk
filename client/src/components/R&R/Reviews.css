@@ -1,3 +1,27 @@
 .rev {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: aquamarine;
+}
+
+.break {
+  display: flex;
+  flex-direction: column;
+}
+
+.avg {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.num {
+  font-size: 75px;
+}
+
+.re {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

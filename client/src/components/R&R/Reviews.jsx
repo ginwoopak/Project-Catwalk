@@ -29,16 +29,16 @@ const Reviews = function () {
       value={{ reviews, reviewBreak, average, setAverage }}
     >
       <div className='rev'>
-        Review Breakdown is here. Should be left corner.
         <RatingBreakdown />
-        Reviews Section will go here!
-        <div>Sorting</div>
-        <div>List of Reviews</div>
-        <ul>
-          {reviews.map((item) => {
-            return <Review key={item.review_id} rev={item} />;
-          })}
-        </ul>
+        <div>
+          Sorting Section
+          <div></div>
+          <ul>
+            {reviews.map((item) => {
+              return <Review key={item.review_id} rev={item} />;
+            })}
+          </ul>
+        </div>
       </div>
     </ReviewContext.Provider>
   );
