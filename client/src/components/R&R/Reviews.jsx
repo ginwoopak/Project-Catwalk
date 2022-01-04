@@ -4,6 +4,7 @@ import axios from 'axios';
 import { API_KEY } from '../../../../config/config.js';
 import Review from './Review.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
+import './Reviews.css';
 
 export const ReviewContext = createContext(null);
 
@@ -72,7 +73,7 @@ const Reviews = function () {
     <ReviewContext.Provider
       value={{ reviews, reviewBreak, average, setAverage }}
     >
-      <div>
+      <div className='rev'>
         Review Breakdown is here. Should be left corner.
         <RatingBreakdown />
         Reviews Section will go here!
