@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import QuestionQA from './QuestionQA.jsx';
 import AnswerQA from './AnswerQA.jsx';
 import HelpAddAnswerQA from './HelpAddAnswerQA.jsx';
@@ -13,7 +13,6 @@ const IndividualQA = (props) => {
 
   return (
     <div className='individual_container border'>
-      {/* {console.log("from individual QA", question)} */}
       <div>
         <QuestionQA question={props.question.question_body} />
         <HelpAddAnswerQA />

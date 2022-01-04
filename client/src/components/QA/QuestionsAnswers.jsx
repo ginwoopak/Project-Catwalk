@@ -14,6 +14,9 @@ const QuestionsAnswers = () => {
       <div>
         <SearchBarQA />
         <ListQA className='align_left' />
+        {/* <IndividualQA />
+        <br></br>
+        <IndividualQA /> */}
       </div>
       <div>
         <LoadMoreQA />
