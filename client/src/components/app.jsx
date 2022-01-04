@@ -1,5 +1,4 @@
 import React, { useState, createContext, useEffect } from 'react';
-import { API_KEY } from '../../../config/config.js';
 import QuestionsAnswers from './QA/QuestionsAnswers.jsx';
 import Reviews from './R&R/Reviews.jsx';
 import RelatedProducts from './related/related_products/RelatedProducts.jsx';
@@ -9,50 +8,52 @@ import axios from 'axios';
 
 export const AppContext = createContext(null);
 
+const url = 'http://localhost:3000/';
+
 const App = function () {
   const [currentItem, setCurrentItem] = useState({ id: 40344 });
   const [allProducts, setAllProducts] = useState([]);
+  const [callId, setId] = useState(40344);
 
-  useEffect(() => {
-    axios
-      .get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/', {
-        headers: {
-          Authorization: API_KEY,
-          'Content-Type': 'application/json',
-        },
-      })
-      .then((response) => {
-        setAllProducts(response.data);
-        return response.data[0].id;
-      })
-      .then((id) => {
-        axios
-          .get(
-            `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${id}`,
-            {
-              headers: {
-                Authorization: API_KEY,
-                'Content-Type': 'application/json',
-              },
-            }
-          )
-          .then((response) => {
-            setCurrentItem(response.data);
-            // console.log('currentItem updated');
-          });
-      });
-  }, []);
+  useEffect(async () => {
+    try {
+      const response = await axios.get(url + 'products/');
+      setAllProducts(response.data);
+      setCurrentItem(response.data[0]);
+    } catch (error) {
+      console.log(error);
+    }
+  }, [callId]);
+
+  const callAPI = async (params = '', callback) => {
+    try {
+      callback(await axios.get(url + params));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const setNewItem = (item) => {
+    setId(item.id); //This needs to be the new item ID that we wish to populate
+  };
 
   return (
     <AppContext.Provider
-      value={{ currentItem, setCurrentItem, allProducts, setAllProducts }}
+      value={{
+        currentItem,
+        setCurrentItem,
+        allProducts,
+        setAllProducts,
+        callAPI,
+        setNewItem,
+      }}
     >
       <div>
-        <ProductInfo />
-        <RelatedProducts />
-        <Outfits />
-        <QuestionsAnswers />
-        <Reviews />
+        {currentItem ? <ProductInfo /> : null}
+        {currentItem ? <RelatedProducts /> : null}
+        {currentItem ? <Outfits /> : null}
+        {currentItem ? <QuestionsAnswers /> : null}
+        {currentItem ? <Reviews /> : null}
       </div>
     </AppContext.Provider>
   );
