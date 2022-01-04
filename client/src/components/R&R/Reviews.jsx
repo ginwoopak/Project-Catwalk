@@ -2,35 +2,15 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 import { AppContext } from '../app.jsx';
 import Review from './Review.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
+import './Reviews.css';
 
 export const ReviewContext = createContext(null);
 
 const Reviews = function () {
   const { currentItem, callAPI } = useContext(AppContext);
   const [reviews, setReviews] = useState([]);
-  const [reviewBreak, setReviewBreak] = useState({
-    ratings: {
-      5: '5',
-    },
-  });
-  const [average, setAverage] = useState(0);
-
-  //helper function
-  const getAverage = () => {
-    var avgArray = Object.values(reviewBreak.ratings);
-    var indArray = Object.keys(reviewBreak.ratings);
-    var totalNumOfValues = 0;
-    var sumOfNumbers = 0;
-    var bigOne = 0;
-
-    avgArray.forEach((element, index) => {
-      totalNumOfValues = totalNumOfValues + Number(element);
-      sumOfNumbers = indArray[index] * Number(element);
-      bigOne = bigOne + sumOfNumbers;
-    });
-
-    return bigOne / totalNumOfValues;
-  };
+  const { reviewBreak, setReviewBreak } = useContext(AppContext);
+  const { average, setAverage, getAverage } = useContext(AppContext);
 
   useEffect(() => {
     if (currentItem.id) {
@@ -48,7 +28,7 @@ const Reviews = function () {
     <ReviewContext.Provider
       value={{ reviews, reviewBreak, average, setAverage }}
     >
-      <div>
+      <div className='rev'>
         Review Breakdown is here. Should be left corner.
         <RatingBreakdown />
         Reviews Section will go here!
