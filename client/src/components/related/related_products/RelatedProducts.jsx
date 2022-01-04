@@ -1,5 +1,7 @@
 import React, { useState, useContext, useEffect, useMemo } from 'react';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-regular-svg-icons';
 import { API_KEY } from '../../../../../config/config.js';
 
 import sampleData from '../sampleData.js';
@@ -15,6 +17,8 @@ const RelatedProducts = () => {
   const { currentItem } = useContext(AppContext);
   const [relatedProducts, setRelatedProducts] = useState(sampleData);
   const [relatedIds, setRelatedIds] = useState([]);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedId, setSelectedId] = useState(0);
 
   const responsive = {
     desktop: {
@@ -52,28 +56,31 @@ const RelatedProducts = () => {
           responsive={responsive}
           ssr={true}
         >
-          {/* {relatedProducts.map((item) => (
-            <div className="card" key={item.id}>
-              <div className="card__body">
-                <img
-                  className="card__image"
-                  src={item.photos[0].thumbnail_url}
-                  // width="100"
-                  // height="100"
-                />
-                <div className="card__category">{item.category}</div>
-                <div className="card__name">{item.name}</div>
-                <div className="card__price">${item.default_price}</div>
-                <div className="card__rate">rate: {item.rate[0]}</div>
-              </div>
-            </div>
-          ))} */}
           {relatedIds.map((id) => (
             <div className='card' key={id}>
+              <button
+                className='starBtn'
+                aria-label='button'
+                onClick={(e) => {
+                  setModalOpen(true);
+                  setSelectedId(id);
+                  e.stopPropagation();
+                }}
+              >
+                <FontAwesomeIcon icon={faStar} />
+              </button>
               <ProductCard productId={id} />
             </div>
           ))}
         </Carousel>
+        {modalOpen && (
+          <Modal
+            setOpenModal={setModalOpen}
+            relatedIds={relatedIds}
+            selectedId={selectedId}
+            currentId={currentItem.id}
+          />
+        )}
       </div>
     </>
   );

@@ -1,4 +1,6 @@
 import React, { useState, useContext, useEffect, useMemo } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmarkCircle } from '@fortawesome/free-regular-svg-icons';
 import axios from 'axios';
 import { API_KEY } from '../../../../../config/config.js';
 import sampleData from '../sampleData.js';
@@ -44,6 +46,9 @@ const Outfits = () => {
           {relatedProducts.map((item) => (
             <div className='card' key={item.id}>
               <div className='card__body'>
+                <button>
+                  <FontAwesomeIcon icon={faXmarkCircle} />
+                </button>
                 <img
                   className='card__image'
                   src={item.photos[0].thumbnail_url}
