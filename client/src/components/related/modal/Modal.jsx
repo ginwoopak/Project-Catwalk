@@ -85,7 +85,7 @@ const Modal = ({ openModal, setOpenModal, selectedId, currentItem }) => {
             <thead className='tableHeaders'>
               <tr>
                 <th>{currentItem.name}</th>
-                <th>{'...'}</th>
+                <th>{'---'}</th>
                 <th>{selectedItem.name}</th>
               </tr>
             </thead>
