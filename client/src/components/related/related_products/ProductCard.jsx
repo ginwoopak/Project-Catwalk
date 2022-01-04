@@ -1,9 +1,6 @@
 import React, { useState, useContext, useEffect, useMemo } from 'react';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faStar } from '@fortawesome/free-regular-svg-icons';
 import sampleData from '../sampleData.js';
 import './RelatedProducts.css';
-// import Modal from '../modal/Modal.jsx';
 import { AppContext } from '../../app.jsx';
 import HalfRating from '../../R&R/Stars.jsx';
 import axios from 'axios';

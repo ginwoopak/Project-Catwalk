@@ -19,6 +19,7 @@ const RelatedProducts = () => {
   const [relatedIds, setRelatedIds] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
+  const [currentId, setCurrentId] = useState(currentItem.id);
 
   const responsive = {
     desktop: {
@@ -68,16 +69,16 @@ const RelatedProducts = () => {
               >
                 <FontAwesomeIcon icon={faStar} className='starIcon' />
               </button>
-              <ProductCard productId={id} setModalOpen={setModalOpen} />
+              <ProductCard productId={id} />
             </div>
           ))}
         </Carousel>
         {modalOpen && (
           <Modal
+            openModal={modalOpen}
             setOpenModal={setModalOpen}
-            relatedIds={relatedIds}
             selectedId={selectedId}
-            currentId={currentItem.id}
+            currentId={currentId}
           />
         )}
       </div>

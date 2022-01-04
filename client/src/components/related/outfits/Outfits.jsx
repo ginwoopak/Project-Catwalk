@@ -56,7 +56,6 @@ const Outfits = () => {
                 />
                 <div className='card__category'>{item.category}</div>
                 <div className='card__name'>{item.name}</div>
-                {/* <div className='card__price'>${item.default_price}</div> */}
                 <div className='card__price'>
                   {item.sale_price ? (
                     <a className='card__sale_price'>
