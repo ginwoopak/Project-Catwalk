@@ -38,14 +38,16 @@ const Outfits = () => {
           </span>
         )}
         <div className='gridContainer'>
-          <div className='card card__body'>
-            <div className='add_a_outfit'>Add a Outfit</div>
-            <div className='add_outfit_Btn'>
-              <FontAwesomeIcon icon={faSquarePlus} className='plusIcon' />
+          {firstShowIndex === 0 && (
+            <div className='card card__body'>
+              <div className='add_a_outfit'>Add a Outfit</div>
+              <div className='add_outfit_Btn'>
+                <FontAwesomeIcon icon={faSquarePlus} className='plusIcon' />
+              </div>
             </div>
-          </div>
+          )}
           {relatedProducts
-            .slice(firstShowIndex, firstShowIndex + 3)
+            .slice(firstShowIndex, firstShowIndex + 2)
             .map((item) => (
               <div className='card' key={item.id}>
                 <div className='card__body'>

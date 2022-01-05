@@ -46,14 +46,14 @@ h1 {
 .nextArrow {
   position: absolute;
   top: 40%;
-  right: 8rem;
+  right: 4rem;
   font-size: 3rem;
 }
 
 .prevArrow {
   position: absolute;
   top: 50%;
-  left: 8rem;
+  left: 4rem;
   font-size: 3rem;
 }
 
