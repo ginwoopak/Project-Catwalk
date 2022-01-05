@@ -38,6 +38,8 @@ const Reviews = function () {
               return <Review key={item.review_id} rev={item} />;
             })}
           </ul>
+          <button>More Reviews</button>
+          <button>Add a Review</button>
         </div>
       </div>
     </ReviewContext.Provider>
