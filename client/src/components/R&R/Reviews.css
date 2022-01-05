@@ -1,3 +1,54 @@
-.rev {
+.ratingsReviews {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: aquamarine;
+}
+
+.breakDown {
+  display: flex;
+  flex-direction: column;
+}
+
+.avg {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.num {
+  font-size: 75px;
+}
+
+.starDate {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.reviewCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: cadetblue;
+  align-content: space-between;
+  gap: 5px;
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  gap: 5px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  gap: 30px;
+}
+
+ul {
+  list-style-type: none;
 }
