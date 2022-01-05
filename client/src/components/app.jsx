@@ -1,5 +1,5 @@
 import React, { useState, createContext, useEffect, useRef } from 'react';
-import QuestionsAnswers from './QA/QuestionsAnswers.jsx';
+import QuestionContainer from './QA/QuestionContainer.jsx';
 import Reviews from './R&R/Reviews.jsx';
 import RelatedProducts from './related/related_products/RelatedProducts.jsx';
 import Outfits from './related/outfits/Outfits.jsx';
@@ -46,7 +46,7 @@ const App = function () {
     try {
       const response = await axios.get(url + 'products/');
       setAllProducts(response.data);
-      setCurrentItem(response.data[0]);
+      setCurrentItem(response.data[4]);
     } catch (error) {
       console.log(error);
     }
@@ -92,7 +92,7 @@ const App = function () {
         {currentItem ? <ProductInfo /> : null}
         {currentItem ? <RelatedProducts /> : null}
         {currentItem ? <Outfits /> : null}
-        {currentItem ? <QuestionsAnswers /> : null}
+        {currentItem ? <QuestionContainer /> : null}
         <div ref={RevRef}>
           {currentItem ? <Reviews className='rev' /> : null}
         </div>
