@@ -25,7 +25,6 @@ const RelatedProducts = () => {
   useEffect(() => {
     callAPI(`products/${currentItem.id}/related`, (response) => {
       setRelatedIds(response.data);
-      // console.log(response.data);
     });
   }, [currentItem]);
 
@@ -58,7 +57,6 @@ const RelatedProducts = () => {
             </div>
           ))} */}
           {relatedIds.map((id) => {
-            // console.log(id);
             return (
               <div className='card' key={id}>
                 <ProductCard productId={id} />

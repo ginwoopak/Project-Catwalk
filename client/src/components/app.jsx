@@ -1,4 +1,4 @@
-import React, { useState, createContext, useEffect } from 'react';
+import React, { useState, createContext, useEffect, useRef } from 'react';
 import QuestionContainer from './QA/QuestionContainer.jsx';
 import Reviews from './R&R/Reviews.jsx';
 import RelatedProducts from './related/related_products/RelatedProducts.jsx';
@@ -11,7 +11,10 @@ export const AppContext = createContext(null);
 const url = 'http://localhost:3000/';
 
 const App = function () {
-  const [currentItem, setCurrentItem] = useState({ id: 40348 });
+  // document.addEventListener('click', function (event) {
+  //   console.log(event.target);
+  // });
+  const [currentItem, setCurrentItem] = useState({ id: 40344 });
   const [allProducts, setAllProducts] = useState([]);
   const [callId, setId] = useState(40344);
   const [average, setAverage] = useState(0);
@@ -20,6 +23,8 @@ const App = function () {
       5: '5',
     },
   });
+
+  const RevRef = useRef(null);
 
   const getAverage = () => {
     var avgArray = Object.values(reviewBreak.ratings);
@@ -59,6 +64,13 @@ const App = function () {
     setId(item.id); //This needs to be the new item ID that we wish to populate
   };
 
+  const jumpToReviews = () => {
+    window.scrollTo({
+      top: RevRef.current.offsetTop,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -73,14 +85,17 @@ const App = function () {
         reviewBreak,
         setReviewBreak,
         getAverage,
+        jumpToReviews,
       }}
     >
       <div>
-        {/* {currentItem ? <ProductInfo /> : null}
+        {currentItem ? <ProductInfo /> : null}
         {currentItem ? <RelatedProducts /> : null}
-        {currentItem ? <Outfits /> : null} */}
+        {currentItem ? <Outfits /> : null}
         {currentItem ? <QuestionContainer /> : null}
-        {/* {currentItem ? <Reviews className='rev' /> : null} */}
+        <div ref={RevRef}>
+          {currentItem ? <Reviews className='rev' /> : null}
+        </div>
       </div>
     </AppContext.Provider>
   );
