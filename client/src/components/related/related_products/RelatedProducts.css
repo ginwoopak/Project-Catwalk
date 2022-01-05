@@ -22,30 +22,64 @@ h1 {
   font-size: 1.8rem;
 }
 
-/* .gridContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(12rem, 16rem));
-  gap: 2rem;
-  justify-content: center;
-} */
+.productsCardContainer {
+  display: block;
+  position: relative;
+  /* margin-right: 5rem;
+  margin-left: 5rem; */
+  margin: 2rem;
+}
 
 .gridContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 19rem));
+  gap: 4rem;
+  justify-content: center;
+}
+
+/* .gridContainer {
   margin: 2rem;
   margin-left: 10rem;
   margin-right: 10rem;
+} */
+
+.nextArrow {
+  position: absolute;
+  top: 40%;
+  right: 8rem;
+  font-size: 3rem;
 }
 
-.card {
+.prevArrow {
+  position: absolute;
+  top: 50%;
+  left: 8rem;
+  font-size: 3rem;
+}
+
+/* .card {
   overflow: hidden;
   box-shadow: 0 2px 20px #e1e5ee;
   border-radius: 0.2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* cursor: pointer; */
   transition: transform 200ms ease-in;
-  margin: 1.8rem;
   height: 27rem;
+} */
+
+.card {
+  position: relative;
+}
+
+.card__body {
+  position: relative;
+  box-shadow: 0 2px 20px #e1e5ee;
+  height: 27rem;
+  border-radius: 0.8rem;
+  z-index: 2;
+  padding-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 .card__image {
@@ -116,20 +150,22 @@ h1 {
 
 .icon-tag {
   cursor: pointer;
-  position: absolute;
-  top: 15;
-  right: 15;
+  /* position: absolute; */
+  /* display: block;
+  float: right; */
+  /* top: 20%;
+  right: 20%; */
   z-index: 1;
-  width: 2rem;
-  height: 2rem;
-  background-color: rgba(211, 211, 211, 0);
+  /* width: 2rem;
+  height: 2rem; */
+  background-color: rgba(214, 136, 136, 0.993);
   border-color: rgba(211, 211, 211, 0);
 }
 
 .starIcon {
   color: lightgray;
-  width: fit-content;
-  height: fit-content;
+  /* width: fit-content;
+  height: fit-content; */
 }
 
 .starIcon:hover {
@@ -138,10 +174,10 @@ h1 {
 
 .xIcon {
   color: black;
-  width: fit-content;
+  /* width: fit-content;
   height: fit-content;
   border-radius: 50%;
-  background-color: white;
+  background-color: white; */
 }
 
 .xIcon:hover {

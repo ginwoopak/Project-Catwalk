@@ -29,7 +29,14 @@ const ProductCard = ({ productId }) => {
 
   return (
     <div className='card__body'>
-      <img className='card__image' src={imageUrl} />
+      {imageUrl ? (
+        <img className='card__image' src={imageUrl} />
+      ) : (
+        <img
+          className='card__image'
+          src={'./related_product_pics/no_image_available.jpg'}
+        />
+      )}
       <div className='card__category'>{category}</div>
       <div className='card__name'>{name}</div>
       <div className='card__price'>
