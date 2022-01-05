@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: aquamarine;
 }
 
 .breakDown {
@@ -30,7 +29,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  background-color: cadetblue;
   align-content: space-between;
   gap: 5px;
 }
