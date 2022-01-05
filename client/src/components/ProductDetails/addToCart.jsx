@@ -1,5 +1,5 @@
 /* eslint-disable indent */
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { AppContext } from '../app.jsx';
 import HalfRating from '../R&R/Stars.jsx';
 import { OverviewContext } from './expandedInfo.jsx';
@@ -10,20 +10,6 @@ const AddToCart = () => {
   const { selected, styles, sku, setSku, selectStyle } =
     useContext(OverviewContext);
   const { currentItem, average, jumpToReviews } = useContext(AppContext);
-
-  const loadStyles = () => {
-    styles.map((style) => {
-      return (
-        <img
-          className='thumbnail'
-          value={style.style_id}
-          onClick={() => selectStyle(style.style_id)}
-          src={style.photos[0].thumbnail_url}
-          key={style.style_id}
-        ></img>
-      );
-    });
-  };
 
   const loadQuantity = () => {
     let a = [];
