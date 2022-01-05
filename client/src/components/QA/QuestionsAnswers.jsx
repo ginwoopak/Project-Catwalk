@@ -6,9 +6,10 @@ import ListQA from './ListQA.jsx';
 import { AppContext } from '../app.jsx';
 import './QA.css';
 
-
 const QuestionsAnswers = () => {
   const { currentItem } = useContext(AppContext);
+
+  console.log(currentItem)
 
   return (
     <div>

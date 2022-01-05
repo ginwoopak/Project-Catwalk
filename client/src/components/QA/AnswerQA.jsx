@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import UserHelpReportQA from './UserHelpReportQA.jsx';
+import { QuestionContext } from './ListQA.jsx';
+
 
 const AnswerQA = (props) => {
 
-  // console.log(props.answer);
+  // const { questionData } = useContext(QuestionContext);
+
+  // console.log(questionData);
 
   return (
     <div>

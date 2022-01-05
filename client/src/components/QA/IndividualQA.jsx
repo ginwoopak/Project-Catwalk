@@ -7,8 +7,6 @@ import { QuestionContext } from './ListQA.jsx';
 const IndividualQA = (props) => {
   const { questionData } = useContext(QuestionContext);
 
-  console.log('questionData:', questionData);
-
   const [isActive, setIsActive] = useState(false);
 
   let answers = Object.values(props.question.answers);

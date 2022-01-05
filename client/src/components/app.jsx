@@ -11,7 +11,7 @@ export const AppContext = createContext(null);
 const url = 'http://localhost:3000/';
 
 const App = function () {
-  const [currentItem, setCurrentItem] = useState({ id: 40346 });
+  const [currentItem, setCurrentItem] = useState({ id: 40348 });
   const [allProducts, setAllProducts] = useState([]);
   const [callId, setId] = useState(40344);
   const [average, setAverage] = useState(0);
@@ -41,7 +41,7 @@ const App = function () {
     try {
       const response = await axios.get(url + 'products/');
       setAllProducts(response.data);
-      setCurrentItem(response.data[2]);
+      setCurrentItem(response.data[4]);
     } catch (error) {
       console.log(error);
     }
@@ -80,7 +80,7 @@ const App = function () {
         {currentItem ? <RelatedProducts /> : null}
         {currentItem ? <Outfits /> : null} */}
         {currentItem ? <QuestionsAnswers /> : null}
-        {currentItem ? <Reviews className='rev' /> : null}
+        {/* {currentItem ? <Reviews className='rev' /> : null} */}
       </div>
     </AppContext.Provider>
   );

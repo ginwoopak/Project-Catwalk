@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
 
-const UsernameQA = () => {
-  const [username, setUsername] = useState('Ginwoo Pak');
+const UsernameQA = (props) => {
 
-  const [date, setDate] = useState('December 31, 2021');
+  console.log(props.answer)
+  const [username, setUsername] = useState(props.answer.answerer_name);
 
-  return <span>by {`${username}, ${date}`}</span>;
+  const [date, setDate] = useState(props.answer.date);
+
+  let answerDate = new Date(date);
+  const [month, day, year] = [answerDate.toLocaleString('default', {month: 'long'}), answerDate.getDate(), answerDate.getFullYear()];
+
+  return <span>by {`${username}, ${month + ' ' + day + ', ' + year}`}</span>;
 };
 
 export default UsernameQA;
