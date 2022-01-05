@@ -3,6 +3,7 @@ import { AppContext } from '../app.jsx';
 import Review from './Review.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
 import './Reviews.css';
+import { async } from 'regenerator-runtime';
 
 export const ReviewContext = createContext(null);
 
@@ -28,17 +29,16 @@ const Reviews = function () {
     <ReviewContext.Provider
       value={{ reviews, reviewBreak, average, setAverage }}
     >
-      <div className='rev'>
-        Review Breakdown is here. Should be left corner.
+      <div className='ratingsReviews'>
         <RatingBreakdown />
-        Reviews Section will go here!
-        <div>Sorting</div>
-        <div>List of Reviews</div>
-        <ul>
-          {reviews.map((item) => {
-            return <Review key={item.review_id} rev={item} />;
-          })}
-        </ul>
+        <div>
+          Sorting Section
+          <ul className='list'>
+            {reviews.map((item) => {
+              return <Review key={item.review_id} rev={item} />;
+            })}
+          </ul>
+        </div>
       </div>
     </ReviewContext.Provider>
   );
