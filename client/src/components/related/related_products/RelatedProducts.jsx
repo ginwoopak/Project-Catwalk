@@ -10,9 +10,6 @@ import {
   faArrowRight,
 } from '@fortawesome/free-solid-svg-icons';
 
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
-
 const RelatedProducts = () => {
   const { currentItem, callAPI } = useContext(AppContext);
   const [relatedIds, setRelatedIds] = useState([]);
@@ -20,14 +17,6 @@ const RelatedProducts = () => {
   const [selectedId, setSelectedId] = useState(null);
   const [currentDisplayItem, setCurrentDisplayItem] = useState({});
   const [firstShowIndex, setFirstShowIndex] = useState(0);
-
-  const responsive = {
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3,
-      slidesToSlide: 3, // optional, default to 1.
-    },
-  };
 
   const prevClick = () => {
     setFirstShowIndex(firstShowIndex - 1);
