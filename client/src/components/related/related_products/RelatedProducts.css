@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap');
 
 /* color variables */
 /* $clr-primary: #d50000; */
@@ -22,30 +22,64 @@ h1 {
   font-size: 1.8rem;
 }
 
-/* .gridContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(12rem, 16rem));
-  gap: 2rem;
-  justify-content: center;
-} */
+.productsCardContainer {
+  display: block;
+  position: relative;
+  /* margin-right: 5rem;
+  margin-left: 5rem; */
+  margin: 2rem;
+}
 
 .gridContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 19rem));
+  gap: 4rem;
+  justify-content: center;
+}
+
+/* .gridContainer {
   margin: 2rem;
   margin-left: 10rem;
   margin-right: 10rem;
+} */
+
+.nextArrow {
+  position: absolute;
+  top: 40%;
+  right: 4rem;
+  font-size: 3rem;
 }
 
-.card {
+.prevArrow {
+  position: absolute;
+  top: 50%;
+  left: 4rem;
+  font-size: 3rem;
+}
+
+/* .card {
   overflow: hidden;
   box-shadow: 0 2px 20px #e1e5ee;
   border-radius: 0.2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  cursor: pointer;
   transition: transform 200ms ease-in;
-  margin: 1.8rem;
   height: 27rem;
+} */
+
+.card {
+  position: relative;
+}
+
+.card__body {
+  position: relative;
+  box-shadow: 0 2px 20px #e1e5ee;
+  height: 27rem;
+  border-radius: 0.8rem;
+  z-index: 2;
+  padding-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 .card__image {
@@ -56,13 +90,14 @@ h1 {
 
 .card__category {
   padding: 1rem;
-  font-size: 0rem;
+  font-size: 0.8rem;
   color: rgb(148, 148, 148);
 }
 
 .card__name {
   padding: 0 1rem;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .card__price {
@@ -70,10 +105,19 @@ h1 {
   font-size: 1rem;
 }
 
+.card__sale_price {
+  color: red;
+}
+
+.card__sale_price .card__ori_price {
+  color: black;
+  text-decoration: line-through;
+}
+
 .card__rate {
-  padding: 0 1rem;
+  padding: 0 0.7rem;
   font-weight: bold;
-  /* margin-bottom: 2rem; */
+  margin-bottom: 5rem;
 }
 
 .add_a_outfit {
@@ -90,35 +134,52 @@ h1 {
   flex-direction: column;
   justify-content: center;
   height: 30rem;
-  /* border-radius: 1rem; */
   padding-bottom: 2rem;
-  background-color: white;
+  background-color: rgba(228, 141, 141, 0);
   border-color: rgba(255, 255, 255, 0);
   border-style: solid;
 }
 
-#plus_sign {
-  font-size: 14rem;
+.plusIcon {
+  display: flex;
+  align-items: center;
+
+  width: 30%;
+  height: 30%;
 }
 
-/* .add_outfit_Btn svg {
-  font-size: 100px;
-  padding: 20px;
-  color: #2c2e2e;
-} */
-
-/* .icon {
-  display: inline-block;
-  vertical-align: middle;
+.icon-tag {
+  cursor: pointer;
+  /* position: absolute; */
+  /* display: block;
+  float: right; */
+  /* top: 20%;
+  right: 20%; */
+  z-index: 1;
+  /* width: 2rem;
+  height: 2rem; */
+  background-color: rgba(214, 136, 136, 0.993);
+  border-color: rgba(211, 211, 211, 0);
 }
 
-.icon--plus {
-  background-color: cornflowerblue;
+.starIcon {
+  color: lightgray;
+  /* width: fit-content;
+  height: fit-content; */
 }
 
-.icon--plus > path {
-  fill: gold;
-  stroke: gold;
-  stroke-width: 0.1;
-  stroke-linejoin: round;
-} */
+.starIcon:hover {
+  color: rgb(245, 220, 78);
+}
+
+.xIcon {
+  color: black;
+  /* width: fit-content;
+  height: fit-content;
+  border-radius: 50%;
+  background-color: white; */
+}
+
+.xIcon:hover {
+  background-color: rgb(247, 80, 62);
+}
