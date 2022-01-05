@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const AddAnswerQA = () => {
+const AddAnswer = () => {
   const [addAnswer, setAddAnswer] = useState(null);
 
   return (
@@ -14,4 +14,4 @@ const AddAnswerQA = () => {
   );
 };
 
-export default AddAnswerQA;
+export default AddAnswer;

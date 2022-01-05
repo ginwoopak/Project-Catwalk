@@ -1,7 +1,8 @@
 import React from 'react';
 
-const MoreAnsweredQuestionsQA = () => {
+const MoreQuestions = () => {
+
   return <button>More Answered Questions</button>;
 };
 
-export default MoreAnsweredQuestionsQA;
+export default MoreQuestions;

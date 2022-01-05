@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const ReportQA = () => {
+const Report = () => {
   const [reported, setReported] = useState(false);
 
   return (
@@ -14,4 +14,4 @@ const ReportQA = () => {
   );
 };
 
-export default ReportQA;
+export default Report;

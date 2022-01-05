@@ -1,6 +1,6 @@
 import React from 'react';
 
-const LoadMoreQA = () => {
+const LoadAnswers = () => {
   return (
     <div
       onClick={() => {
@@ -12,4 +12,4 @@ const LoadMoreQA = () => {
   );
 };
 
-export default LoadMoreQA;
+export default LoadAnswers;

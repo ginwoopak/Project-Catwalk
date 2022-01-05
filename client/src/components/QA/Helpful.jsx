@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const HelpfulQA = (props) => {
+const Helpful = (props) => {
   const [count, setCount] = useState(props.helpful);
   const [clicked, setClicked] = useState(false);
 
@@ -22,4 +22,4 @@ const HelpfulQA = (props) => {
   );
 };
 
-export default HelpfulQA;
+export default Helpful;
