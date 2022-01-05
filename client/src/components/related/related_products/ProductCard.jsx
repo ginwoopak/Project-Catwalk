@@ -1,10 +1,7 @@
 import React, { useState, useContext, useEffect, useMemo } from 'react';
-import sampleData from '../sampleData.js';
 import './RelatedProducts.css';
-
 import HalfRating from '../../R&R/Stars.jsx';
 import { AppContext } from '../../app.jsx';
-import products from '../sampleData.js';
 
 const ProductCard = ({ productId }) => {
   const { currentItem, callAPI } = useContext(AppContext);
@@ -49,7 +46,6 @@ const ProductCard = ({ productId }) => {
           <a className='card__ori_price'>${price}</a>
         )}
       </div>
-      {/* <div className="card__rate">rate: {rating}</div> */}
       <div className='card__rate'>
         <HalfRating num={rating || 0} />
       </div>
