@@ -3,6 +3,7 @@ import { AppContext } from '../app.jsx';
 import Review from './Review.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
 import './Reviews.css';
+import { async } from 'regenerator-runtime';
 
 export const ReviewContext = createContext(null);
 
@@ -28,12 +29,11 @@ const Reviews = function () {
     <ReviewContext.Provider
       value={{ reviews, reviewBreak, average, setAverage }}
     >
-      <div className='rev'>
+      <div className='ratingsReviews'>
         <RatingBreakdown />
         <div>
           Sorting Section
-          <div></div>
-          <ul>
+          <ul className='list'>
             {reviews.map((item) => {
               return <Review key={item.review_id} rev={item} />;
             })}

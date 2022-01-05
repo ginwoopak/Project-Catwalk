@@ -9,7 +9,7 @@ const RatingBreakdown = function () {
   const { average, setAverage } = useContext(ReviewContext);
 
   return (
-    <div className='break'>
+    <div className='breakDown'>
       <strong>Ratings & Reviews</strong>
       <div className='avg'>
         <div className='num'>{average || 0}</div>

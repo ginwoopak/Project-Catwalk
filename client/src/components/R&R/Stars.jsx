@@ -8,7 +8,7 @@ export default function HalfRating(props) {
       <Rating
         name='half-rating-read'
         value={props.num}
-        precision={0.1}
+        precision={0.25}
         readOnly
       />
     </Stack>
