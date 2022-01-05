@@ -14,7 +14,7 @@ const App = function () {
   // document.addEventListener('click', function (event) {
   //   console.log(event.target);
   // });
-  const [currentItem, setCurrentItem] = useState({ id: 40344 });
+  const [currentItem, setCurrentItem] = useState({ id: 40345 });
   const [allProducts, setAllProducts] = useState([]);
   const [callId, setId] = useState(40344);
   const [average, setAverage] = useState(0);
@@ -46,7 +46,7 @@ const App = function () {
     try {
       const response = await axios.get(url + 'products/');
       setAllProducts(response.data);
-      setCurrentItem(response.data[4]);
+      setCurrentItem(response.data[1]);
     } catch (error) {
       console.log(error);
     }
