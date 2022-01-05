@@ -6,7 +6,8 @@ import Report from './Report.jsx';
 const UserHelpfulReport = (props) => {
   return (
     <span className='float_left small_font'>
-      <Username answer={props.answer}/> | <Helpful helpful={props.answer.helpfulness}/> | <Report />
+      <Username answer={props.answer} /> |{' '}
+      <Helpful helpful={props.answer.helpfulness} /> | <Report />
     </span>
   );
 };
