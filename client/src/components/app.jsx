@@ -46,7 +46,7 @@ const App = function () {
     try {
       const response = await axios.get(url + 'products/');
       setAllProducts(response.data);
-      setCurrentItem(response.data[4]);
+      setCurrentItem(response.data[0]);
     } catch (error) {
       console.log(error);
     }
