@@ -1,4 +1,4 @@
-import React, { useState, createContext, useEffect } from 'react';
+import React, { useState, createContext, useEffect, useRef } from 'react';
 import QuestionsAnswers from './QA/QuestionsAnswers.jsx';
 import Reviews from './R&R/Reviews.jsx';
 import RelatedProducts from './related/related_products/RelatedProducts.jsx';
@@ -11,6 +11,9 @@ export const AppContext = createContext(null);
 const url = 'http://localhost:3000/';
 
 const App = function () {
+  // document.addEventListener('click', function (event) {
+  //   console.log(event.target);
+  // });
   const [currentItem, setCurrentItem] = useState({ id: 40344 });
   const [allProducts, setAllProducts] = useState([]);
   const [callId, setId] = useState(40344);
@@ -20,6 +23,8 @@ const App = function () {
       5: '5',
     },
   });
+
+  const RevRef = useRef(null);
 
   const getAverage = () => {
     var avgArray = Object.values(reviewBreak.ratings);
@@ -59,6 +64,13 @@ const App = function () {
     setId(item.id); //This needs to be the new item ID that we wish to populate
   };
 
+  const jumpToReviews = () => {
+    window.scrollTo({
+      top: RevRef.current.offsetTop,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -73,6 +85,7 @@ const App = function () {
         reviewBreak,
         setReviewBreak,
         getAverage,
+        jumpToReviews,
       }}
     >
       <div>
@@ -80,7 +93,9 @@ const App = function () {
         {currentItem ? <RelatedProducts /> : null}
         {currentItem ? <Outfits /> : null}
         {currentItem ? <QuestionsAnswers /> : null}
-        {currentItem ? <Reviews className='rev' /> : null}
+        <div ref={RevRef}>
+          {currentItem ? <Reviews className='rev' /> : null}
+        </div>
       </div>
     </AppContext.Provider>
   );
