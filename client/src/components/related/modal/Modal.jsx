@@ -3,6 +3,8 @@ import './Modal.css';
 import axios from 'axios';
 import { API_KEY } from '../../../../../config/config.js';
 import { AppContext } from '../../app.jsx';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 const Modal = ({ openModal, setOpenModal, selectedId, currentItem }) => {
   const { callAPI } = useContext(AppContext);
@@ -43,7 +45,7 @@ const Modal = ({ openModal, setOpenModal, selectedId, currentItem }) => {
   }, [selectedItem]);
 
   return (
-    <div className='modalBackground'>
+    <div className='modal'>
       <div className='modalContaner'>
         <button
           className='closeBtn'
@@ -51,30 +53,32 @@ const Modal = ({ openModal, setOpenModal, selectedId, currentItem }) => {
             setOpenModal(false);
           }}
         >
-          x
+          <FontAwesomeIcon icon={faXmark} className='closeXIcon' />
         </button>
-        {console.log('allFeatures:::', allFeats)}
-        {console.log('curr:::', currentFeats)}
-        {console.log('select:::', selectedFeats)}
         <div>
-          <h2>Comparing</h2>
+          <h3>COMPARING</h3>
+          <div className='tableHeaders'>
+            <p className='leftColumnx'>{currentItem.name}</p>
+            <p className='rightColumnx'>{selectedItem.name}</p>
+          </div>
           <table>
-            <thead className='tableHeaders'>
-              <tr>
-                <th>{currentItem.name}</th>
-                <th>{''}</th>
-                <th>{selectedItem.name}</th>
-              </tr>
-            </thead>
             <tbody className='tableBody'>
               {allFeats.map((item, index) => (
                 <tr key={index} className='tableRow'>
-                  <td className='leftCheck'>
-                    {currentFeats.includes(item) ? 'Y' : ''}
+                  <td className='leftColumn'>
+                    {currentFeats.includes(item) ? (
+                      <FontAwesomeIcon icon={faCheck} className='checkIcon' />
+                    ) : (
+                      ''
+                    )}
                   </td>
-                  <td>{item}</td>
-                  <td className='rightCheck'>
-                    {selectedFeats.includes(item) ? 'Y' : ''}
+                  <td className='middleColumn'>{item}</td>
+                  <td className='rightColumn'>
+                    {selectedFeats.includes(item) ? (
+                      <FontAwesomeIcon icon={faCheck} className='checkIcon' />
+                    ) : (
+                      ''
+                    )}
                   </td>
                 </tr>
               ))}

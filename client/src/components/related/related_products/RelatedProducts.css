@@ -132,10 +132,18 @@ h1 {
   height: fit-content;
 }
 
+.starIcon:hover {
+  color: rgb(245, 220, 78);
+}
+
 .xIcon {
   color: black;
   width: fit-content;
   height: fit-content;
   border-radius: 50%;
   background-color: white;
+}
+
+.xIcon:hover {
+  background-color: rgb(247, 80, 62);
 }

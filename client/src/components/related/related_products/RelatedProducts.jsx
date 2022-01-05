@@ -35,6 +35,14 @@ const RelatedProducts = () => {
 
   return (
     <>
+      {modalOpen ? (
+        <Modal
+          openModal={modalOpen}
+          setOpenModal={setModalOpen}
+          selectedId={selectedId}
+          currentItem={currentDisplayItem}
+        />
+      ) : null}
       <h1>Related Products</h1>
       <div className='gridContainer'>
         <Carousel
@@ -45,20 +53,6 @@ const RelatedProducts = () => {
           responsive={responsive}
           ssr={true}
         >
-          {/* {relatedProducts.map((item) => (
-            <div className="card" key={item.id}>
-              <div className="card__body">
-                <img
-                  className="card__image"
-                  src={item.photos[0].thumbnail_url}
-                />
-                <div className="card__category">{item.category}</div>
-                <div className="card__name">{item.name}</div>
-                <div className="card__price">${item.default_price}</div>
-                <div className="card__rate">rate: {item.rate[0]}</div>
-              </div>
-            </div>
-          ))} */}
           {relatedIds.map((id) => {
             return (
               <div className='card' key={id}>
@@ -76,14 +70,14 @@ const RelatedProducts = () => {
             );
           })}
         </Carousel>
-        {modalOpen ? (
+        {/* {modalOpen ? (
           <Modal
             openModal={modalOpen}
             setOpenModal={setModalOpen}
             selectedId={selectedId}
             currentItem={currentDisplayItem}
           />
-        ) : null}
+        ) : null} */}
       </div>
     </>
   );
