@@ -30,7 +30,9 @@ const QuestionContainer = () => {
         <h3>Questions & Answers</h3>
         <div>
           <SearchBar />
-          {questionData.length > 0 ? <QuestionList className='align_left' /> : null}
+          {questionData.length > 0 ? (
+            <QuestionList className='align_left' />
+          ) : null}
         </div>
         <div
           onClick={() => {
