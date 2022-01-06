@@ -73,7 +73,8 @@ const RelatedProducts = () => {
             </div>
           ))}
         </div>
-        {firstShowIndex !== relatedIds.length - 3 && relatedIds.length > 3 ? (
+        {firstShowIndex !== relatedIds.length - 3 &&
+        relatedIds.length - firstShowIndex > 3 ? (
           <span
             className='nextArrow'
             onClick={() => {

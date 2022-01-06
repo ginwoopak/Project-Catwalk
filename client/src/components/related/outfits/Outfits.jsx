@@ -66,7 +66,8 @@ const Outfits = () => {
             </div>
           ))}
         </div>
-        {firstShowIndex !== outfits.length - 2 && outfits.length > 2 ? (
+        {firstShowIndex !== outfits.length - 2 &&
+        outfits.length - firstShowIndex > 2 ? (
           <span
             className='nextArrow'
             onClick={() => {
