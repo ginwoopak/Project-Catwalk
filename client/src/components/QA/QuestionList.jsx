@@ -4,6 +4,7 @@ import QuestionItem from './QuestionItem.jsx';
 
 const QuestionList = () => {
 
+  // eslint-disable-next-line no-unused-vars
   const { questionData, questionLimit, displayData } = useContext(QuestionContext);
 
   let list = displayData.slice(0, questionLimit).map((question) => {

@@ -6,8 +6,10 @@ const axios = require('axios');
 const API_KEY = require('../config/config.js');
 const memo = {};
 
+const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
+
 app.use(express.static(path.join(__dirname + '/../client/dist')));
-app.use(express.json());
+app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
@@ -29,7 +31,7 @@ app.get(/products/, (req, res) => {
         Authorization: API_KEY.Authorization,
         'Content-Type': 'application/json',
       },
-      baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp',
+      baseURL: baseURL,
     })
       .then((response) => {
         memo[req.path] = response.data;
@@ -53,7 +55,7 @@ app.get(/qa/, (req, res) => {
         Authorization: API_KEY.Authorization,
         'Content-Type': 'application/json',
       },
-      baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp',
+      baseURL: baseURL,
     })
       .then((response) => {
         memo[req.path + `?product_id=${req.query.product_id}`] = response.data;
@@ -112,7 +114,7 @@ app.get(/reviews/, (req, res) => {
         Authorization: API_KEY.Authorization,
         'Content-Type': 'application/json',
       },
-      baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp',
+      baseURL: baseURL,
     })
       .then((response) => {
         memo[req.path + `?product_id=${req.query.product_id}`] = response.data;
@@ -123,4 +125,24 @@ app.get(/reviews/, (req, res) => {
         console.log(error);
       });
   }
+});
+
+app.post(/interactions/, (req, res) => {
+  axios({
+    method: 'post',
+    url: req.url,
+    headers: {
+      Authorization: API_KEY.Authorization,
+      'Content-Type': 'application/json',
+    },
+    data: req.body,
+    baseURL: baseURL,
+  })
+    .then((response) => {
+      console.log(response.data);
+      res.sendStatus(201);
+    })
+    .catch((error) => {
+      res.send(error);
+    });
 });

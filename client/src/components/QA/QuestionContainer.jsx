@@ -20,7 +20,7 @@ const QuestionContainer = () => {
     try {
       callAPI(`qa/questions?product_id=${currentItem.id}`, (response) => {
         setQuestionData(response.data.results);
-        setDisplayData(response.data.results)
+        setDisplayData(response.data.results);
       });
     } catch (error) {
       console.log(error);
@@ -49,7 +49,9 @@ const QuestionContainer = () => {
         <h2>Questions & Answers</h2>
         <div>
           <SearchBar />
-          {displayData.length > 0 ? <QuestionList className='align_left' /> : null}
+          {questionData.length > 0 ? (
+            <QuestionList className='align_left' />
+          ) : null}
         </div>
         <div
           onClick={() => {
