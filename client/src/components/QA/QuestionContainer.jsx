@@ -13,32 +13,43 @@ const QuestionContainer = () => {
 
   const [questionData, setQuestionData] = useState([]);
   const [questionLimit, setQuestionLimit] = useState(2);
+  const [displayData, setDisplayData] = useState([]);
+  const [searchInput, setSearchInput] = useState('');
 
   useEffect(() => {
     try {
       callAPI(`qa/questions?product_id=${currentItem.id}`, (response) => {
         setQuestionData(response.data.results);
+        setDisplayData(response.data.results)
       });
     } catch (error) {
       console.log(error);
     }
   }, [currentItem]);
 
-  // let handleChange = (e) => {
-  //   e.preventDefault();
+  let handleChange = (e) => {
+    e.preventDefault();
+    setSearchInput(e.target.value);
+  };
 
-  //   const searchResult = questionData.filter((question) => {question.})
-  // };
+  // console.log('searchResult:', searchData);
 
-  console.log(questionData);
+  useEffect(() => {
+    const searchResult = questionData.filter((question) => {
+      return question.question_body.includes(searchInput);
+    });
+
+    setDisplayData(searchResult);
+  }, [searchInput]);
+
 
   return (
     <div>
-      <QuestionContext.Provider value={{ questionData, questionLimit }}>
+      <QuestionContext.Provider value={{ questionData, questionLimit, handleChange, displayData }}>
         <h2>Questions & Answers</h2>
         <div>
           <SearchBar />
-          {questionData.length > 0 ? <QuestionList className='align_left' /> : null}
+          {displayData.length > 0 ? <QuestionList className='align_left' /> : null}
         </div>
         <div
           onClick={() => {
