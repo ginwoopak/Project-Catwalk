@@ -24,6 +24,10 @@ const QuestionContainer = () => {
     }
   }, [currentItem]);
 
+  let handleChange = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div>
       <QuestionContext.Provider value={{ questionData, questionLimit }}>
