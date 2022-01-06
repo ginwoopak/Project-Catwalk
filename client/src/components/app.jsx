@@ -14,6 +14,7 @@ const App = function () {
   // document.addEventListener('click', function (event) {
   //   console.log(event.target);
   // });
+  const [outfits, setOutfits] = useState([40344]);
   const [currentItem, setCurrentItem] = useState({ id: 40344 });
   const [allProducts, setAllProducts] = useState([]);
   const [callId, setId] = useState(40344);
@@ -46,7 +47,9 @@ const App = function () {
     try {
       const response = await axios.get(url + 'products/');
       setAllProducts(response.data);
-      setCurrentItem(response.data[4]);
+
+      const response2 = await axios.get(`${url}products/${callId}`);
+      setCurrentItem(response2.data);
     } catch (error) {
       console.log(error);
     }
@@ -61,7 +64,7 @@ const App = function () {
   };
 
   const setNewItem = (item) => {
-    setId(item.id); //This needs to be the new item ID that we wish to populate
+    setId(item); //This needs to be the new item ID that we wish to populate
   };
 
   const jumpToReviews = () => {
@@ -69,6 +72,16 @@ const App = function () {
       top: RevRef.current.offsetTop,
       behavior: 'smooth',
     });
+  };
+
+  const addOutfit = async () => {
+    let tempOutfits = [...outfits];
+    tempOutfits.unshift(currentItem.id);
+    setOutfits(Array.from(new Set(tempOutfits)));
+  };
+
+  const removeOutfit = (outfitId) => {
+    setOutfits(outfits.filter((id) => id !== outfitId));
   };
 
   return (
@@ -79,6 +92,7 @@ const App = function () {
         allProducts,
         setAllProducts,
         callAPI,
+        setId,
         setNewItem,
         average,
         setAverage,
@@ -86,10 +100,14 @@ const App = function () {
         setReviewBreak,
         getAverage,
         jumpToReviews,
+        outfits,
+        addOutfit,
+        removeOutfit,
       }}
     >
+      {console.log('from app.jsx:::', callId)}
       <div>
-        {currentItem ? <ProductInfo /> : null}
+        {/* {currentItem ? <ProductInfo /> : null} */}
         {currentItem ? <RelatedProducts /> : null}
         {currentItem ? <Outfits /> : null}
         {currentItem ? <QuestionContainer /> : null}
