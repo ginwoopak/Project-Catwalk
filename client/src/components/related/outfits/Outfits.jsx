@@ -12,8 +12,8 @@ import HalfRating from '../../R&R/Stars.jsx';
 import OutfitCard from './OutfitCard.jsx';
 
 const Outfits = () => {
-  const { currentItem } = useContext(AppContext);
-  const [outfits, setOutfits] = useState(sampleData);
+  const { currentItem, outfits, addOutfit, removeOutfit } =
+    useContext(AppContext);
   const [firstShowIndex, setFirstShowIndex] = useState(0);
 
   const prevClick = () => {
@@ -42,17 +42,27 @@ const Outfits = () => {
           {firstShowIndex === 0 && (
             <div className='card card__body'>
               <div className='add_a_outfit'>Add a Outfit</div>
-              <div className='add_outfit_Btn'>
+              <div
+                className='add_outfit_Btn'
+                onClick={() => {
+                  addOutfit();
+                }}
+              >
                 <FontAwesomeIcon icon={faSquarePlus} className='plusIcon' />
               </div>
             </div>
           )}
-          {outfits.slice(firstShowIndex, firstShowIndex + 2).map((item) => (
-            <div className='card' key={item.id}>
-              <span className='icon-tag'>
+          {outfits.slice(firstShowIndex, firstShowIndex + 2).map((id) => (
+            <div className='card' key={id}>
+              <span
+                className='icon-tag'
+                onClick={() => {
+                  removeOutfit(id);
+                }}
+              >
                 <FontAwesomeIcon icon={faXmarkCircle} className='xIcon' />
               </span>
-              <OutfitCard item={item} />
+              <OutfitCard productId={id} />
             </div>
           ))}
         </div>

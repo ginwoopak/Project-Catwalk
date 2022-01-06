@@ -14,6 +14,7 @@ const App = function () {
   // document.addEventListener('click', function (event) {
   //   console.log(event.target);
   // });
+  const [outfits, setOutfits] = useState([40344]);
   const [currentItem, setCurrentItem] = useState({ id: 40344 });
   const [allProducts, setAllProducts] = useState([]);
   const [callId, setId] = useState(40344);
@@ -46,6 +47,7 @@ const App = function () {
     try {
       const response = await axios.get(url + 'products/');
       setAllProducts(response.data);
+      // setCurrentItem(response.data[4]);
       setCurrentItem(response.data[4]);
     } catch (error) {
       console.log(error);
@@ -71,6 +73,16 @@ const App = function () {
     });
   };
 
+  const addOutfit = async () => {
+    let tempOutfits = [...outfits];
+    tempOutfits.unshift(currentItem.id);
+    setOutfits(Array.from(new Set(tempOutfits)));
+  };
+
+  const removeOutfit = (outfitId) => {
+    setOutfits(outfits.filter((id) => id !== outfitId));
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -79,6 +91,7 @@ const App = function () {
         allProducts,
         setAllProducts,
         callAPI,
+        setId,
         setNewItem,
         average,
         setAverage,
@@ -86,6 +99,9 @@ const App = function () {
         setReviewBreak,
         getAverage,
         jumpToReviews,
+        outfits,
+        addOutfit,
+        removeOutfit,
       }}
     >
       <div>
