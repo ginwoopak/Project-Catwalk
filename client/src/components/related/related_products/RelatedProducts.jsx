@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import React, { useState, useContext, useEffect, useMemo } from 'react';
 import Modal from '../modal/Modal.jsx';
 import './RelatedProducts.css';

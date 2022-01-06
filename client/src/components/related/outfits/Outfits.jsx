@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import React, { useState, useContext, useEffect, useMemo } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {

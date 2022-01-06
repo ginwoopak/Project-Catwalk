@@ -6,7 +6,7 @@ import { AppContext } from '../../app.jsx';
 import products from '../sampleData.js';
 
 const OutfitCard = ({ productId }) => {
-  const { currentItem, callAPI, getAverage } = useContext(AppContext);
+  const { currentItem, callAPI, getAverage, setId } = useContext(AppContext);
   const [imageUrl, setImageUrl] = useState('');
   const [category, setCategory] = useState('');
   const [name, setName] = useState('');
@@ -62,7 +62,14 @@ const OutfitCard = ({ productId }) => {
         />
       )}
       <div className='card__category'>{category}</div>
-      <div className='card__name'>{name}</div>
+      <div
+        className='card__name'
+        onClick={() => {
+          setId(productId);
+        }}
+      >
+        {name}
+      </div>
       <div className='card__price'>
         {salesPrice ? (
           <a className='card__sale_price'>
