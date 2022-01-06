@@ -13,6 +13,7 @@ const Reviews = function () {
   const [reviews, setReviews] = useState([]);
   const { reviewBreak, setReviewBreak } = useContext(AppContext);
   const { average, setAverage, getAverage } = useContext(AppContext);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     if (currentItem.id) {
@@ -40,8 +41,15 @@ const Reviews = function () {
             })}
           </ul>
           <button>More Reviews</button>
-          <button className='revModal'>Add a Review</button>
-          <Modal />
+          <button
+            className='revModal'
+            onClick={() => {
+              setOpen(true);
+            }}
+          >
+            Add a Review
+          </button>
+          {open && <Modal state={open} func={setOpen} />}
         </div>
       </div>
     </ReviewContext.Provider>
