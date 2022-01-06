@@ -30,9 +30,12 @@ const Review = (props) => {
         <b>{props.rev.summary}</b>
         {props.rev.body}
       </div>
-      <div>{props.rev.recommend ? 'I recommend this product' : null}</div>
+      <div>{props.rev.recommend ? '✓' + 'I recommend this product' : null}</div>
       <div>{props.rev.response}</div>
-      <div>Was this review helpful? Yes: {props.rev.helpfulness} | Report</div>
+      <div>
+        Was this review helpful? <button>Yes:</button> {props.rev.helpfulness}{' '}
+        <button>No:</button> 0 | <button>Report</button>
+      </div>
     </li>
   );
 };
