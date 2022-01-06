@@ -47,13 +47,9 @@ const App = function () {
     try {
       const response = await axios.get(url + 'products/');
       setAllProducts(response.data);
-      setCurrentItem(response.data[4]);
-      // //Try1
-      // setCurrentItem(response.data.filter((item) => item.id === callId));
 
-      // //Try2
-      // const response = await axios.get(url + `products/${callId}`);
-      // setCurrentItem(response.data);
+      const response2 = await axios.get(`${url}products/${callId}`);
+      setCurrentItem(response2.data);
     } catch (error) {
       console.log(error);
     }
@@ -68,7 +64,7 @@ const App = function () {
   };
 
   const setNewItem = (item) => {
-    setId(item.id); //This needs to be the new item ID that we wish to populate
+    setId(item); //This needs to be the new item ID that we wish to populate
   };
 
   const jumpToReviews = () => {
@@ -109,9 +105,9 @@ const App = function () {
         removeOutfit,
       }}
     >
-      {/* {console.log('from app.jsx:::', callId, currentItem.id)} */}
+      {console.log('from app.jsx:::', callId)}
       <div>
-        {currentItem ? <ProductInfo /> : null}
+        {/* {currentItem ? <ProductInfo /> : null} */}
         {currentItem ? <RelatedProducts /> : null}
         {currentItem ? <Outfits /> : null}
         {currentItem ? <QuestionContainer /> : null}
