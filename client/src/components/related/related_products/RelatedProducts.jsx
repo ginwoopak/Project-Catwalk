@@ -73,7 +73,7 @@ const RelatedProducts = () => {
             </div>
           ))}
         </div>
-        {firstShowIndex !== relatedIds.length - 3 && (
+        {firstShowIndex !== relatedIds.length - 3 && relatedIds.length > 3 ? (
           <span
             className='nextArrow'
             onClick={() => {
@@ -82,6 +82,8 @@ const RelatedProducts = () => {
           >
             <FontAwesomeIcon icon={faArrowRight} />
           </span>
+        ) : (
+          <div></div>
         )}
       </div>
     </>

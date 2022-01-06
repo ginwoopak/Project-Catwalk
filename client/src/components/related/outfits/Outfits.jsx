@@ -13,7 +13,7 @@ import OutfitCard from './OutfitCard.jsx';
 
 const Outfits = () => {
   const { currentItem } = useContext(AppContext);
-  const [relatedProducts, setRelatedProducts] = useState(sampleData);
+  const [outfits, setOutfits] = useState(sampleData);
   const [firstShowIndex, setFirstShowIndex] = useState(0);
 
   const prevClick = () => {
@@ -47,18 +47,16 @@ const Outfits = () => {
               </div>
             </div>
           )}
-          {relatedProducts
-            .slice(firstShowIndex, firstShowIndex + 2)
-            .map((item) => (
-              <div className='card' key={item.id}>
-                <span className='icon-tag'>
-                  <FontAwesomeIcon icon={faXmarkCircle} className='xIcon' />
-                </span>
-                <OutfitCard item={item} />
-              </div>
-            ))}
+          {outfits.slice(firstShowIndex, firstShowIndex + 2).map((item) => (
+            <div className='card' key={item.id}>
+              <span className='icon-tag'>
+                <FontAwesomeIcon icon={faXmarkCircle} className='xIcon' />
+              </span>
+              <OutfitCard item={item} />
+            </div>
+          ))}
         </div>
-        {firstShowIndex !== relatedProducts.length - 3 && (
+        {firstShowIndex !== outfits.length - 2 && outfits.length > 2 ? (
           <span
             className='nextArrow'
             onClick={() => {
@@ -67,6 +65,8 @@ const Outfits = () => {
           >
             <FontAwesomeIcon icon={faArrowRight} />
           </span>
+        ) : (
+          <div></div>
         )}
       </div>
     </>
