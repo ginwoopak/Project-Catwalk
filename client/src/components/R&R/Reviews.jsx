@@ -4,6 +4,7 @@ import Review from './Review.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
 import './Reviews.css';
 import { async } from 'regenerator-runtime';
+import Modal from './Modal.jsx';
 
 export const ReviewContext = createContext(null);
 
@@ -39,7 +40,8 @@ const Reviews = function () {
             })}
           </ul>
           <button>More Reviews</button>
-          <button>Add a Review</button>
+          <button className='revModal'>Add a Review</button>
+          <Modal />
         </div>
       </div>
     </ReviewContext.Provider>
