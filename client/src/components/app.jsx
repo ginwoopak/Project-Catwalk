@@ -14,7 +14,7 @@ const App = function () {
   // document.addEventListener('click', function (event) {
   //   console.log(event.target);
   // });
-  const [currentItem, setCurrentItem] = useState({ id: 40344 });
+  const [currentItem, setCurrentItem] = useState({ id: 40347 });
   const [allProducts, setAllProducts] = useState([]);
   const [callId, setId] = useState(40344);
   const [average, setAverage] = useState(0);
@@ -46,7 +46,7 @@ const App = function () {
     try {
       const response = await axios.get(url + 'products/');
       setAllProducts(response.data);
-      setCurrentItem(response.data[0]);
+      setCurrentItem(response.data[3]);
     } catch (error) {
       console.log(error);
     }
@@ -89,13 +89,13 @@ const App = function () {
       }}
     >
       <div>
-        {currentItem ? <ProductInfo /> : null}
+        {/* {currentItem ? <ProductInfo /> : null}
         {currentItem ? <RelatedProducts /> : null}
-        {currentItem ? <Outfits /> : null}
+        {currentItem ? <Outfits /> : null} */}
         {currentItem ? <QuestionContainer /> : null}
-        <div ref={RevRef}>
+        {/* <div ref={RevRef}>
           {currentItem ? <Reviews className='rev' /> : null}
-        </div>
+        </div> */}
       </div>
     </AppContext.Provider>
   );
