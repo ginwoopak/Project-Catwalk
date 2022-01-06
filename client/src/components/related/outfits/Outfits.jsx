@@ -9,10 +9,11 @@ import sampleData from '../sampleData.js';
 import { AppContext } from '../../app.jsx';
 import '../related_products//RelatedProducts.css';
 import HalfRating from '../../R&R/Stars.jsx';
+import OutfitCard from './OutfitCard.jsx';
 
 const Outfits = () => {
-  const { currentItem } = useContext(AppContext);
-  const [relatedProducts, setRelatedProducts] = useState(sampleData);
+  const { currentItem, outfits, addOutfit, removeOutfit } =
+    useContext(AppContext);
   const [firstShowIndex, setFirstShowIndex] = useState(0);
 
   const prevClick = () => {
@@ -25,7 +26,7 @@ const Outfits = () => {
 
   return (
     <>
-      <h1>Outfits</h1>
+      <h2 className='riocTitle'>Outfits</h2>
       <div className='productsCardContainer'>
         {firstShowIndex !== 0 && (
           <span
@@ -41,45 +42,31 @@ const Outfits = () => {
           {firstShowIndex === 0 && (
             <div className='card card__body'>
               <div className='add_a_outfit'>Add a Outfit</div>
-              <div className='add_outfit_Btn'>
+              <div
+                className='add_outfit_Btn'
+                onClick={() => {
+                  addOutfit();
+                }}
+              >
                 <FontAwesomeIcon icon={faSquarePlus} className='plusIcon' />
               </div>
             </div>
           )}
-          {relatedProducts
-            .slice(firstShowIndex, firstShowIndex + 2)
-            .map((item) => (
-              <div className='card' key={item.id}>
-                <div className='card__body'>
-                  <button className='icon-tag'>
-                    <FontAwesomeIcon icon={faXmarkCircle} className='xIcon' />
-                  </button>
-                  <img
-                    className='card__image'
-                    src={item.photos[0].thumbnail_url}
-                  />
-                  <div className='card__category'>{item.category}</div>
-                  <div className='card__name'>{item.name}</div>
-                  <div className='card__price'>
-                    {item.sale_price ? (
-                      <a className='card__sale_price'>
-                        ${item.sale_price} &nbsp;
-                        <a className='card__ori_price'>
-                          ${item.original_price}
-                        </a>
-                      </a>
-                    ) : (
-                      <a className='card__ori_price'>${item.original_price}</a>
-                    )}
-                  </div>
-                  <div className='card__rate'>
-                    <HalfRating num={item.rate[0] || 0} />
-                  </div>
-                </div>
-              </div>
-            ))}
+          {outfits.slice(firstShowIndex, firstShowIndex + 2).map((id) => (
+            <div className='card' key={id}>
+              <span
+                className='icon-tag'
+                onClick={() => {
+                  removeOutfit(id);
+                }}
+              >
+                <FontAwesomeIcon icon={faXmarkCircle} className='xIcon' />
+              </span>
+              <OutfitCard productId={id} />
+            </div>
+          ))}
         </div>
-        {firstShowIndex !== relatedProducts.length - 3 && (
+        {firstShowIndex !== outfits.length - 2 && outfits.length > 2 ? (
           <span
             className='nextArrow'
             onClick={() => {
@@ -88,6 +75,8 @@ const Outfits = () => {
           >
             <FontAwesomeIcon icon={faArrowRight} />
           </span>
+        ) : (
+          <div></div>
         )}
       </div>
     </>

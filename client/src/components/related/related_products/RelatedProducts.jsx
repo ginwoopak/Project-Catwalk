@@ -28,7 +28,7 @@ const RelatedProducts = () => {
 
   useEffect(() => {
     callAPI(`products/${currentItem.id}/related`, (response) => {
-      setRelatedIds(response.data);
+      setRelatedIds(Array.from(new Set(response.data)));
     });
     callAPI(`products/${currentItem.id}`, (response) => {
       setCurrentDisplayItem(response.data);
@@ -45,7 +45,7 @@ const RelatedProducts = () => {
           currentItem={currentDisplayItem}
         />
       ) : null}
-      <h1>Related Products</h1>
+      <h2 className='riocTitle'>Related Products</h2>
       <div className='productsCardContainer'>
         {firstShowIndex !== 0 && (
           <span
@@ -73,7 +73,7 @@ const RelatedProducts = () => {
             </div>
           ))}
         </div>
-        {firstShowIndex !== relatedIds.length - 3 && (
+        {firstShowIndex !== relatedIds.length - 3 && relatedIds.length > 3 ? (
           <span
             className='nextArrow'
             onClick={() => {
@@ -82,6 +82,8 @@ const RelatedProducts = () => {
           >
             <FontAwesomeIcon icon={faArrowRight} />
           </span>
+        ) : (
+          <div></div>
         )}
       </div>
     </>
