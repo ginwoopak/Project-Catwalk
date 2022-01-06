@@ -24,14 +24,18 @@ const QuestionContainer = () => {
     }
   }, [currentItem]);
 
-  let handleChange = (e) => {
-    e.preventDefault();
-  };
+  // let handleChange = (e) => {
+  //   e.preventDefault();
+
+  //   const searchResult = questionData.filter((question) => {question.})
+  // };
+
+  console.log(questionData);
 
   return (
     <div>
       <QuestionContext.Provider value={{ questionData, questionLimit }}>
-        <h3>Questions & Answers</h3>
+        <h2>Questions & Answers</h2>
         <div>
           <SearchBar />
           {questionData.length > 0 ? <QuestionList className='align_left' /> : null}

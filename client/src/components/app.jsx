@@ -105,7 +105,6 @@ const App = function () {
         removeOutfit,
       }}
     >
-      {console.log('from app.jsx:::', callId)}
       <div>
         {/* {currentItem ? <ProductInfo /> : null} */}
         {currentItem ? <RelatedProducts /> : null}
