@@ -27,12 +27,16 @@ const ProductInfo = function () {
         }
       }
     }
-    if (styles[n] && styles[n].photos) {
+    if ((await styles[n]) && styles[n].photos) {
       let gallery = [];
       for (let i in styles[n].photos) {
         gallery.push({
-          original: styles[n].photos[i].url,
-          thumbnail: styles[n].photos[i].thumbnail_url,
+          original:
+            styles[n].photos[i].url ||
+            './related_product_pics/no_image_available.jpg',
+          thumbnail:
+            styles[n].photos[i].thumbnail_url ||
+            './related_product_pics/no_image_available.jpg',
         });
       }
       // console.log('style: ', styles[n]);
@@ -42,14 +46,18 @@ const ProductInfo = function () {
     }
   };
 
+  useEffect(() => {
+    selectStyle();
+  }, [styles]);
+
   //====================
   useEffect(() => {
     try {
       // console.log(currentItem.id);
       callAPI(`products/${currentItem.id}/styles`, (response) => {
         setStyles(response.data.results);
-        setSelected(response.data.results[0]);
-        selectStyle();
+        // setSelected(response.data.results[0]);
+        // selectStyle();
       });
     } catch (error) {
       console.log(error);
@@ -64,7 +72,7 @@ const ProductInfo = function () {
       <div id='product-info'>
         <div className='product'>
           <div className='gallery-container'>
-            <ImgGallery />
+            {images ? <ImgGallery /> : null}
           </div>
           <div className='add-to-cart'>
             <AddToCart />

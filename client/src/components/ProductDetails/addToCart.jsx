@@ -56,7 +56,10 @@ const AddToCart = () => {
               className='thumbnail'
               value={style.style_id}
               onClick={() => selectStyle(style.style_id)}
-              src={style.photos[0].thumbnail_url}
+              src={
+                style.photos[0].thumbnail_url ||
+                './related_product_pics/no_image_available.jpg'
+              }
               key={style.style_id}
             ></img>
           );
@@ -74,7 +77,10 @@ const AddToCart = () => {
             : ''}
         </select>
         <label htmlFor='quantity-select'>Quantity</label>
-        {selected && selected.skus && sku && selected.skus[sku].quantity > 0 ? (
+        {selected &&
+        selected.skus &&
+        selected.skus[sku] &&
+        selected.skus[sku].quantity > 0 ? (
           <select id='quantity-select'>{loadQuantity()}</select>
         ) : (
           <select>-</select>

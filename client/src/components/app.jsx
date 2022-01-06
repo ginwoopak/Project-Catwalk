@@ -112,7 +112,7 @@ const App = function () {
     >
       {console.log('from app.jsx:::', callId)}
       <div>
-        {/* <div id='Product-Overview'>{currentItem ? <ProductInfo /> : null}</div> */}
+        <div id='Product-Overview'>{currentItem ? <ProductInfo /> : null}</div>
         <div id='Related'>
           {currentItem ? <RelatedProducts /> : null}
           {currentItem ? <Outfits /> : null}
