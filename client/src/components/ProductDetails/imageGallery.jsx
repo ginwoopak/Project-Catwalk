@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import ImageGallery from 'react-image-gallery';
 import { OverviewContext } from './expandedInfo.jsx';
 
@@ -6,10 +6,6 @@ import './productInfo.css';
 
 const ImgGallery = () => {
   const { images } = useContext(OverviewContext);
-
-  useEffect(() => {
-    console.log(images[0].original);
-  }, [images]);
 
   // const slide = (event) => {
   //   event.target.style.transform = `translateX(${-100}%)`;

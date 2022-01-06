@@ -3,6 +3,16 @@ import React, { useContext } from 'react';
 import { AppContext } from '../app.jsx';
 import HalfRating from '../R&R/Stars.jsx';
 import { OverviewContext } from './expandedInfo.jsx';
+import {
+  faHeart,
+  faCrow,
+  faCameraRetro,
+  faBook,
+  faParking,
+  faPauseCircle,
+  faRobot,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import './productInfo.css';
 
@@ -25,6 +35,10 @@ const AddToCart = () => {
 
   const sizeSelect = (event) => {
     setSku(event.target.value);
+  };
+
+  const toggleFave = (event) => {
+    event.target.classList.toggle('favorited');
   };
 
   return (
@@ -86,9 +100,26 @@ const AddToCart = () => {
           <select>-</select>
         )}
       </div>
-      <button>Add to Cart</button>
-      <button>Favorite</button>
-      <div>Share on social media</div>
+      <span>
+        <button>Add to Cart</button>
+        {' Add To Favorites '}
+        <FontAwesomeIcon
+          id='favorite'
+          icon={faHeart}
+          onClick={() => toggleFave(event)}
+        />
+      </span>
+      <div>
+        <div>Share on social media:</div>
+        <span className='icons'>
+          <FontAwesomeIcon className='icon' icon={faCrow} />
+          <FontAwesomeIcon className='icon' icon={faCameraRetro} />
+          <FontAwesomeIcon className='icon' icon={faBook} />
+          <FontAwesomeIcon className='icon' icon={faParking} />
+          <FontAwesomeIcon className='icon' icon={faRobot} />
+          <FontAwesomeIcon className='icon' icon={faPauseCircle} />
+        </span>
+      </div>
     </>
   );
 };
