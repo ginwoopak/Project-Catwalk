@@ -4,6 +4,7 @@ import Review from './Review.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
 import './Reviews.css';
 import { async } from 'regenerator-runtime';
+import Modal from './Modal.jsx';
 
 export const ReviewContext = createContext(null);
 
@@ -12,6 +13,7 @@ const Reviews = function () {
   const [reviews, setReviews] = useState([]);
   const { reviewBreak, setReviewBreak } = useContext(AppContext);
   const { average, setAverage, getAverage } = useContext(AppContext);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     if (currentItem.id) {
@@ -38,6 +40,16 @@ const Reviews = function () {
               return <Review key={item.review_id} rev={item} />;
             })}
           </ul>
+          <button>More Reviews</button>
+          <button
+            className='revModal'
+            onClick={() => {
+              setOpen(true);
+            }}
+          >
+            Add a Review
+          </button>
+          {open && <Modal state={open} func={setOpen} />}
         </div>
       </div>
     </ReviewContext.Provider>
