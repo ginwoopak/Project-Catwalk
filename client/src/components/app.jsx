@@ -47,8 +47,13 @@ const App = function () {
     try {
       const response = await axios.get(url + 'products/');
       setAllProducts(response.data);
-      // setCurrentItem(response.data[4]);
       setCurrentItem(response.data[4]);
+      // //Try1
+      // setCurrentItem(response.data.filter((item) => item.id === callId));
+
+      // //Try2
+      // const response = await axios.get(url + `products/${callId}`);
+      // setCurrentItem(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -104,6 +109,7 @@ const App = function () {
         removeOutfit,
       }}
     >
+      {/* {console.log('from app.jsx:::', callId, currentItem.id)} */}
       <div>
         {currentItem ? <ProductInfo /> : null}
         {currentItem ? <RelatedProducts /> : null}
