@@ -56,7 +56,6 @@ app.get(/qa/, (req, res) => {
       baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp',
     })
       .then((response) => {
-        console.log('id:', req.query.product_id)
         memo[req.path + `?product_id=${req.query.product_id}`] = response.data;
         // console.log('API CALLED');
         res.send(response.data);
@@ -79,7 +78,6 @@ app.put(/qa/, (req, res) => {
     baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp',
   })
     .then((response) => {
-      console.log(req.body.id);
       axios({
         url: `/qa/questions/?product_id=${req.body.id}`,
         method: 'GET',
@@ -90,8 +88,6 @@ app.put(/qa/, (req, res) => {
         baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp',
       })
         .then((response) => {
-          console.log('data:', response.data)
-
           memo[`/qa/questions?product_id=${req.body.id}`] = response.data;
           // console.log('API CALLED');
           res.send(response.data.results);

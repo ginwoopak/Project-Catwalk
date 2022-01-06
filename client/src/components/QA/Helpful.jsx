@@ -7,11 +7,9 @@ const url = 'http://localhost:3000/';
 const Helpful = (props) => {
   const [count, setCount] = useState(props.helpful);
   const [clicked, setClicked] = useState(false);
-  const [questionID, setID] = useState(props.questionID)
+  const [questionID, setID] = useState(props.questionID);
 
   const { currentItem, callAPI } = useContext(AppContext);
-
-  // console.log('productID:', currentItem.id);
 
   const postAPI = async (params = '', callback) => {
     try {
