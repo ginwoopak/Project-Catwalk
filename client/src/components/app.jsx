@@ -14,7 +14,7 @@ const App = function () {
   // document.addEventListener('click', function (event) {
   //   console.log(event.target);
   // });
-  const [outfits, setOutfits] = useState([40344]);
+  const [outfits, setOutfits] = useState([]);
   const [currentItem, setCurrentItem] = useState({ id: 40344 });
   const [allProducts, setAllProducts] = useState([]);
   const [callId, setId] = useState(40344);
@@ -50,6 +50,9 @@ const App = function () {
 
       const response2 = await axios.get(`${url}products/${callId}`);
       setCurrentItem(response2.data);
+
+      const response3 = await axios.get(url + 'outfits');
+      setOutfits(Object.keys(response3.data).reverse());
     } catch (error) {
       console.log(error);
     }
@@ -63,10 +66,6 @@ const App = function () {
     }
   };
 
-  const setNewItem = (item) => {
-    setId(item); //This needs to be the new item ID that we wish to populate
-  };
-
   const jumpToReviews = () => {
     window.scrollTo({
       top: RevRef.current.offsetTop,
@@ -75,13 +74,15 @@ const App = function () {
   };
 
   const addOutfit = async () => {
-    let tempOutfits = [...outfits];
-    tempOutfits.unshift(currentItem.id);
-    setOutfits(Array.from(new Set(tempOutfits)));
+    const newData = { id: currentItem.id };
+    const getResp = await axios.post(`${url}outfits`, newData);
+    setOutfits(Object.keys(getResp.data).reverse());
   };
 
-  const removeOutfit = (outfitId) => {
-    setOutfits(outfits.filter((id) => id !== outfitId));
+  const removeOutfit = async (outfitId) => {
+    const removeData = { data: { id: outfitId } };
+    const deleteResp = await axios.delete(`${url}outfits`, removeData);
+    setOutfits(Object.keys(deleteResp.data).reverse());
   };
 
   return (
@@ -93,7 +94,6 @@ const App = function () {
         setAllProducts,
         callAPI,
         setId,
-        setNewItem,
         average,
         setAverage,
         reviewBreak,

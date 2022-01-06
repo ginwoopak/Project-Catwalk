@@ -57,7 +57,7 @@ const Outfits = () => {
               <span
                 className='icon-tag'
                 onClick={() => {
-                  removeOutfit(id);
+                  removeOutfit(Number(id));
                 }}
               >
                 <FontAwesomeIcon icon={faXmarkCircle} className='xIcon' />
