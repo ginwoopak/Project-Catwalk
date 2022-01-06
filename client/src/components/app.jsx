@@ -117,9 +117,9 @@ const App = function () {
           {currentItem ? <Outfits /> : null}
         </div>
         <div id='QA'>{currentItem ? <QuestionContainer /> : null}</div>
-        <div id='Reviews' ref={RevRef}>
+        {/* <div id='Reviews' ref={RevRef}>
           {currentItem ? <Reviews className='rev' /> : null}
-        </div>
+        </div> */}
       </div>
     </AppContext.Provider>
   );

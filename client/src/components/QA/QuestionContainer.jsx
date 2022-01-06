@@ -35,11 +35,15 @@ const QuestionContainer = () => {
   // console.log('searchResult:', searchData);
 
   useEffect(() => {
-    const searchResult = questionData.filter((question) => {
-      return question.question_body.includes(searchInput);
-    });
+    if (searchInput.length < 3) {
+      setDisplayData(questionData);
+    } else {
+      const searchResult = questionData.filter((question) => {
+        return question.question_body.includes(searchInput);
+      });
 
-    setDisplayData(searchResult);
+      setDisplayData(searchResult);
+    }
   }, [searchInput]);
 
 
