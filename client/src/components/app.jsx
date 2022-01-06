@@ -11,9 +11,6 @@ export const AppContext = createContext(null);
 const url = 'http://localhost:3000/';
 
 const App = function () {
-  // document.addEventListener('click', function (event) {
-  //   console.log(event.target);
-  // });
   const [currentItem, setCurrentItem] = useState({ id: 40344 });
   const [allProducts, setAllProducts] = useState([]);
   const [callId, setId] = useState(40344);
@@ -46,7 +43,7 @@ const App = function () {
     try {
       const response = await axios.get(url + 'products/');
       setAllProducts(response.data);
-      setCurrentItem(response.data[4]);
+      setCurrentItem(response.data[0]);
     } catch (error) {
       console.log(error);
     }
@@ -55,6 +52,14 @@ const App = function () {
   const callAPI = async (params = '', callback) => {
     try {
       callback(await axios.get(url + params));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const postAPI = async (params = '', callback) => {
+    try {
+      callback(await axios.post(url + params));
     } catch (error) {
       console.log(error);
     }
@@ -89,11 +94,13 @@ const App = function () {
       }}
     >
       <div>
-        {currentItem ? <ProductInfo /> : null}
-        {currentItem ? <RelatedProducts /> : null}
-        {currentItem ? <Outfits /> : null}
-        {currentItem ? <QuestionContainer /> : null}
-        <div ref={RevRef}>
+        <div id='Product-Overview'>{currentItem ? <ProductInfo /> : null}</div>
+        <div id='Related'>
+          {currentItem ? <RelatedProducts /> : null}
+          {currentItem ? <Outfits /> : null}
+        </div>
+        <div id='QA'>{currentItem ? <QuestionContainer /> : null}</div>
+        <div id='Reviews' ref={RevRef}>
           {currentItem ? <Reviews className='rev' /> : null}
         </div>
       </div>
