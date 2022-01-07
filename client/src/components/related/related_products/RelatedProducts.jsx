@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import React, { useState, useContext, useEffect, useMemo } from 'react';
 import Modal from '../modal/Modal.jsx';
 import './RelatedProducts.css';
@@ -73,7 +74,8 @@ const RelatedProducts = () => {
             </div>
           ))}
         </div>
-        {firstShowIndex !== relatedIds.length - 3 && relatedIds.length > 3 ? (
+        {firstShowIndex !== relatedIds.length - 3 &&
+        relatedIds.length - firstShowIndex > 3 ? (
           <span
             className='nextArrow'
             onClick={() => {

@@ -47,6 +47,9 @@ const App = function () {
 
       const response2 = await axios.get(`${url}products/${callId}`);
       setCurrentItem(response2.data);
+
+      const response3 = await axios.get(url + 'outfits');
+      setOutfits(Object.keys(response3.data).reverse());
     } catch (error) {
       console.log(error);
     }
@@ -80,13 +83,15 @@ const App = function () {
   };
 
   const addOutfit = async () => {
-    let tempOutfits = [...outfits];
-    tempOutfits.unshift(currentItem.id);
-    setOutfits(Array.from(new Set(tempOutfits)));
+    const newData = { id: currentItem.id };
+    const getResp = await axios.post(`${url}outfits`, newData);
+    setOutfits(Object.keys(getResp.data).reverse());
   };
 
-  const removeOutfit = (outfitId) => {
-    setOutfits(outfits.filter((id) => id !== outfitId));
+  const removeOutfit = async (outfitId) => {
+    const removeData = { data: { id: outfitId } };
+    const deleteResp = await axios.delete(`${url}outfits`, removeData);
+    setOutfits(Object.keys(deleteResp.data).reverse());
   };
 
   return (
@@ -98,7 +103,6 @@ const App = function () {
         setAllProducts,
         callAPI,
         setId,
-        setNewItem,
         average,
         setAverage,
         reviewBreak,

@@ -5,6 +5,7 @@ const PORT = 3000;
 const axios = require('axios');
 const API_KEY = require('../config/config.js');
 const memo = {};
+const outfitsMemo = {};
 
 const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
 
@@ -125,6 +126,20 @@ app.get(/reviews/, (req, res) => {
         console.log(error);
       });
   }
+});
+
+app.get('/outfits', (req, res) => {
+  res.send(outfitsMemo);
+});
+
+app.post('/outfits', (req, res) => {
+  outfitsMemo[req.body.id] = req.body.id;
+  res.send(outfitsMemo);
+});
+
+app.delete('/outfits', (req, res) => {
+  delete outfitsMemo[req.body.id];
+  res.send(outfitsMemo);
 });
 
 app.post(/interactions/, (req, res) => {
