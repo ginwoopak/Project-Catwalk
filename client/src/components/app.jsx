@@ -7,6 +7,10 @@ import ProductInfo from './ProductDetails/expandedInfo.jsx';
 import Nav from './nav/Nav.jsx';
 import axios from 'axios';
 
+import { ThemeProvider } from 'styled-components';
+import { useDarkMode } from '../styles/useDarkMode.js';
+import { GlobalStyles, lightTheme, darkTheme } from '../styles/globalStyles.js';
+
 export const AppContext = createContext(null);
 
 const App = function () {
@@ -20,6 +24,11 @@ const App = function () {
       5: '5',
     },
   });
+
+  const [theme, toggleTheme, mountedComponent] = useDarkMode();
+  const themeMode = theme === 'light' ? lightTheme : darkTheme;
+
+  // if(!mountedComponent) return <div/>
 
   const RevRef = useRef(null);
 
@@ -86,38 +95,43 @@ const App = function () {
   };
 
   return (
-    <AppContext.Provider
-      value={{
-        currentItem,
-        setCurrentItem,
-        allProducts,
-        setAllProducts,
-        callAPI,
-        setId,
-        average,
-        setAverage,
-        reviewBreak,
-        setReviewBreak,
-        getAverage,
-        jumpToReviews,
-        outfits,
-        addOutfit,
-        removeOutfit,
-      }}
-    >
-      <div>
-        <div id='Nav'>{currentItem ? <Nav /> : null}</div>
-        <div id='Product-Overview'>{currentItem ? <ProductInfo /> : null}</div>
-        <div id='Related'>
-          {currentItem ? <RelatedProducts /> : null}
-          {currentItem ? <Outfits /> : null}
+    <ThemeProvider theme={themeMode}>
+      <GlobalStyles />
+      <AppContext.Provider
+        value={{
+          currentItem,
+          setCurrentItem,
+          allProducts,
+          setAllProducts,
+          callAPI,
+          setId,
+          average,
+          setAverage,
+          reviewBreak,
+          setReviewBreak,
+          getAverage,
+          jumpToReviews,
+          outfits,
+          addOutfit,
+          removeOutfit,
+        }}
+      >
+        <div>
+          <div id='Nav'>{currentItem ? <Nav theme={theme} toggleTheme={toggleTheme} /> : null}</div>
+          <div id='Product-Overview'>
+            {currentItem ? <ProductInfo /> : null}
+          </div>
+          <div id='Related'>
+            {currentItem ? <RelatedProducts /> : null}
+            {currentItem ? <Outfits /> : null}
+          </div>
+          <div id='QA'>{currentItem ? <QuestionContainer /> : null}</div>
+          <div id='Reviews' ref={RevRef}>
+            {currentItem ? <Reviews className='rev' /> : null}
+          </div>
         </div>
-        <div id='QA'>{currentItem ? <QuestionContainer /> : null}</div>
-        <div id='Reviews' ref={RevRef}>
-          {currentItem ? <Reviews className='rev' /> : null}
-        </div>
-      </div>
-    </AppContext.Provider>
+      </AppContext.Provider>
+    </ThemeProvider>
   );
 };
 
