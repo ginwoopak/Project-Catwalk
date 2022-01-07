@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import React, { useState, useContext, useEffect, useMemo } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -41,7 +42,7 @@ const Outfits = () => {
         <div className='gridContainer'>
           {firstShowIndex === 0 && (
             <div className='card card__body'>
-              <div className='add_a_outfit'>Add a Outfit</div>
+              <div className='add_an_outfit'>Add an Outfit</div>
               <div
                 className='add_outfit_Btn'
                 onClick={() => {
@@ -57,7 +58,12 @@ const Outfits = () => {
               <span
                 className='icon-tag'
                 onClick={() => {
-                  removeOutfit(id);
+                  removeOutfit(Number(id));
+                  if (outfits.length - firstShowIndex === 1) {
+                    var tempoIndex =
+                      firstShowIndex >= 2 ? firstShowIndex - 2 : 0;
+                    setFirstShowIndex(tempoIndex);
+                  }
                 }}
               >
                 <FontAwesomeIcon icon={faXmarkCircle} className='xIcon' />
@@ -66,11 +72,13 @@ const Outfits = () => {
             </div>
           ))}
         </div>
-        {firstShowIndex !== outfits.length - 2 && outfits.length > 2 ? (
+        {firstShowIndex !== outfits.length - 2 &&
+        outfits.length - firstShowIndex > 2 ? (
           <span
             className='nextArrow'
             onClick={() => {
               nextClick();
+              console.log('next l, i:', outfits.length, firstShowIndex);
             }}
           >
             <FontAwesomeIcon icon={faArrowRight} />

@@ -64,7 +64,6 @@ const ProductCard = ({ productId }) => {
         className='card__name'
         onClick={() => {
           setId(productId);
-          console.log('callId has been changed from productcard component');
         }}
       >
         {name}
