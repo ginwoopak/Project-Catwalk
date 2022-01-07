@@ -1,20 +1,24 @@
 import React, { useState, useEffect, useContext } from 'react';
 import './QA.css';
 import { AppContext } from '../app.jsx';
+import { QuestionContext } from './QuestionContainer.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 
-const ModalQuestion = ({ questionModalOpen, setQuestionModalOpen }) => {
+const url = 'http://localhost:3000/';
+
+const ModalAnswer = ( { answerModalOpen, setAnswerModalOpen } ) => {
+
   const { currentItem, callAPI } = useContext(AppContext);
 
-  const [questionInput, setQuestionInput] = useState('');
+  const [answerInput, setAnswerInput] = useState('');
   const [nicknameInput, setNicknameInput] = useState('');
   const [emailInput, setEmailInput] = useState('');
 
-  const handleQuestion = (e) => {
+  const handleAnswer = (e) => {
     e.preventDefault();
-    setQuestionInput(e.target.value);
+    setAnswerInput(e.target.value);
   };
 
   const handleNickname = (e) => {
@@ -27,25 +31,25 @@ const ModalQuestion = ({ questionModalOpen, setQuestionModalOpen }) => {
     setEmailInput(e.target.value);
   };
 
-  const postQuestion = () => {
-    axios
-      .post('qa/questions', {
-        body: questionInput,
-        name: nicknameInput,
-        email: emailInput,
-        product_id: currentItem.id,
-      })
-      .then((response) => {
-        console.log('from modal:', response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  // const postAnswer = () => {
+  //   axios
+  //     .post(url + 'qa/questions', {
+  //       body: answerInput,
+  //       name: nicknameInput,
+  //       email: emailInput,
+  //     })
+  //     .then((response) => {
+  //       console.log('from modal:', response);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    postQuestion();
+    // postAnswer();
+    console.log('Submitted');
   };
 
   return (
@@ -54,27 +58,26 @@ const ModalQuestion = ({ questionModalOpen, setQuestionModalOpen }) => {
         <button
           className='closeBtn'
           onClick={() => {
-            setQuestionModalOpen(false);
+            setAnswerModalOpen(false);
           }}
         >
           <FontAwesomeIcon icon={faXmark} className='closeXIcon' />
         </button>
         <div>
-          <h2>Ask Your Question</h2>
+          <h2>Submit your answer</h2>
           <div>
-            <h3>About the {currentItem.name}</h3>
+            <h3>{currentItem.name}</h3>
           </div>
         </div>
         <div>
-          Question:
+          Answer:
           <div>
             <textarea
               onChange={(e) => {
-                handleQuestion(e);
+                handleAnswer(e);
               }}
               rows='3'
               cols='25'
-              placeholder='Example: Why did the chicken cross the road?'
               maxLength='1000'
               required
             ></textarea>
@@ -90,7 +93,7 @@ const ModalQuestion = ({ questionModalOpen, setQuestionModalOpen }) => {
               type='text'
               size='30'
               maxLength='60'
-              placeholder='Example: jackson11!'
+              placeholder='Example: jack543!'
               required
             />
           </div>
@@ -108,18 +111,21 @@ const ModalQuestion = ({ questionModalOpen, setQuestionModalOpen }) => {
               type='email'
               size='30'
               maxLength='60'
-              placeholder='Example: aol@aol.com'
+              placeholder='Example: jack@email.com'
               required
             />
           </div>
           <div>For authentication reasons, you will not be emailed.</div>
         </div>
         <div>
-          <input type='submit' value='Submit' />
+          <input
+            type='submit'
+            value='Submit'
+          />
         </div>
       </form>
     </div>
   );
 };
 
-export default ModalQuestion;
+export default ModalAnswer;

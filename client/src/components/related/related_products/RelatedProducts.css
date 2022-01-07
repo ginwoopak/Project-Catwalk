@@ -71,7 +71,7 @@ body {
 
 .card {
   position: relative;
-  box-shadow: 0 2px 20px #e1e5ee;
+  box-shadow: 0 2px 20px #dadde4;
   height: 27rem;
   border-radius: 0.8rem;
   z-index: 2;

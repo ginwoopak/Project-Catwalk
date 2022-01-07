@@ -60,6 +60,14 @@
 
 /* Please add margin: 2rem in your biggest container for your widget*/
 
+.QAspace {
+  margin-bottom: 7rem;
+}
+
+.QAtitle {
+  margin-left: 7rem;
+};
+
 h1 {
   text-align: center;
   margin: 2rem 0 4rem 0;
@@ -76,11 +84,11 @@ h1 {
   justify-content: space-between;
   cursor: pointer;
   /* background-color: #21aeca; */
-  background-color: #eee;
+  background-color: #c5c8cf;
 }
 
 .accordion-title:hover {
-  background-color: #b9bbbb;
+  background-color: #cdcfd4;
 }
 
 .accordion-title,
@@ -90,7 +98,7 @@ h1 {
 
 .accordion-content {
   /* background-color: #39b9d2; */
-  background-color: rgb(250, 248, 248);
+  background-color: #dadde4;
 }
 
 @media screen and (max-width: 700px) {
@@ -106,7 +114,7 @@ h1 {
 .accordion hr {
   width: 100;
   margin-left: 0;
-  border: 1px solid grey;
+  border: 1px solid rgb(170, 168, 168);
 }
 
 .modal {
@@ -123,6 +131,10 @@ h1 {
   height: 380px;
   max-height: 90%;
   z-index: 1000;
+}
+
+.darktitle {
+  color: rgb(48, 47, 47);
 }
 
 .modalContainer {
@@ -157,4 +169,8 @@ h1 {
 
 .closeXIcon:hover {
   color: tomato;
+}
+
+body {
+  font-family: Oxygen, sans-serif;
 }

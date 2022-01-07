@@ -12,6 +12,7 @@ import {
   faHeart,
 } from '@fortawesome/free-solid-svg-icons';
 import './Nav.css';
+<<<<<<< HEAD
 import { AppContext } from '../app.jsx';
 import Cart from './cart.jsx';
 
@@ -51,6 +52,24 @@ const Nav = () => {
             cartItems={cartItems}
           />
         ) : null}
+=======
+import Toggle from '../Toggle.js';
+
+const Nav = ({ theme, toggleTheme }) => {
+  return (
+    <header className='nav'>
+      <span className='teamlogo'>Lil Bo-Peep</span>
+      <span className='dark'>
+        <Toggle theme={theme} toggleTheme={toggleTheme} />
+      </span>
+      <div className='navIcons'>
+        <span className='fav'>
+          <FontAwesomeIcon icon={faHeart} />
+        </span>
+        <span className='cart'>
+          <FontAwesomeIcon icon={faShoppingBag} />
+        </span>
+>>>>>>> main
       </div>
     </>
   );

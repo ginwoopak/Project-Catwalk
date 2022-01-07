@@ -28,6 +28,11 @@
   cursor: pointer;
 }
 
+.dark {
+  margin: 1rem;
+  cursor: pointer;
+}
+
 .cart {
   margin: 1rem;
 }
