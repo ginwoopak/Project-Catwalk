@@ -84,11 +84,11 @@ h1 {
   justify-content: space-between;
   cursor: pointer;
   /* background-color: #21aeca; */
-  background-color: rgb(212, 211, 211);
+  background-color: #c5c8cf;
 }
 
 .accordion-title:hover {
-  background-color: #a8a7a7;
+  background-color: #cdcfd4;
 }
 
 .accordion-title,
@@ -98,7 +98,7 @@ h1 {
 
 .accordion-content {
   /* background-color: #39b9d2; */
-  background-color: rgb(221, 218, 218);
+  background-color: #dadde4;
 }
 
 @media screen and (max-width: 700px) {
@@ -114,7 +114,7 @@ h1 {
 .accordion hr {
   width: 100;
   margin-left: 0;
-  border: 1px solid grey;
+  border: 1px solid rgb(170, 168, 168);
 }
 
 .modal {

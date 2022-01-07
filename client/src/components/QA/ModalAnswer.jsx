@@ -31,28 +31,29 @@ const ModalAnswer = ( { answerModalOpen, setAnswerModalOpen } ) => {
     setEmailInput(e.target.value);
   };
 
-  const postAnswer = () => {
-    axios
-      .post(url + 'qa/questions', {
-        body: answerInput,
-        name: nicknameInput,
-        email: emailInput,
-      })
-      .then((response) => {
-        console.log('from modal:', response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  // const postAnswer = () => {
+  //   axios
+  //     .post(url + 'qa/questions', {
+  //       body: answerInput,
+  //       name: nicknameInput,
+  //       email: emailInput,
+  //     })
+  //     .then((response) => {
+  //       console.log('from modal:', response);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    postAnswer();
+    // postAnswer();
+    console.log('Submitted');
   };
 
   return (
-    <div className='modal'>
+    <div className='modal darktitle'>
       <form onSubmit={handleSubmit} className='modalContainer'>
         <button
           className='closeBtn'
@@ -63,9 +64,9 @@ const ModalAnswer = ( { answerModalOpen, setAnswerModalOpen } ) => {
           <FontAwesomeIcon icon={faXmark} className='closeXIcon' />
         </button>
         <div>
-          <h2>Ask Your Question</h2>
+          <h2>Submit your answer</h2>
           <div>
-            <h3>About the {currentItem.name}</h3>
+            <h3>{currentItem.name}</h3>
           </div>
         </div>
         <div>
@@ -77,7 +78,6 @@ const ModalAnswer = ( { answerModalOpen, setAnswerModalOpen } ) => {
               }}
               rows='3'
               cols='25'
-              placeholder='Example: Why did the chicken cross the road?'
               maxLength='1000'
               required
             ></textarea>
@@ -93,7 +93,7 @@ const ModalAnswer = ( { answerModalOpen, setAnswerModalOpen } ) => {
               type='text'
               size='30'
               maxLength='60'
-              placeholder='Example: jackson11!'
+              placeholder='Example: jack543!'
               required
             />
           </div>
@@ -111,7 +111,7 @@ const ModalAnswer = ( { answerModalOpen, setAnswerModalOpen } ) => {
               type='email'
               size='30'
               maxLength='60'
-              placeholder='Example: aol@aol.com'
+              placeholder='Example: jack@email.com'
               required
             />
           </div>

@@ -41,12 +41,16 @@ const QuestionContainer = () => {
       setDisplayData(questionData);
     } else {
       const searchResult = questionData.filter((question) => {
-        return question.question_body.includes(searchInput);
+        return question.question_body.toLowerCase().includes(searchInput.toLowerCase());
       });
 
       setDisplayData(searchResult);
     }
   }, [searchInput]);
+
+  useEffect(() => {
+    setQuestionLimit(2);
+  }, [currentItem]);
 
   return (
     <div className='QAspace'>
@@ -57,10 +61,10 @@ const QuestionContainer = () => {
           questionModalOpen={questionModalOpen}
           setQuestionModalOpen={setQuestionModalOpen}
         />) : null}
-        {/* {answerModalOpen ? (<ModalAnswer
+        {answerModalOpen ? (<ModalAnswer
           answerModalOpen={answerModalOpen}
           setAnswerModalOpen={setAnswerModalOpen}
-        />) : null} */}
+        />) : null}
         <h2 className='QAtitle'>Questions & Answers</h2>
         <div className='QAtitle'>
           <SearchBar />
