@@ -4,6 +4,7 @@ import Reviews from './R&R/Reviews.jsx';
 import RelatedProducts from './related/related_products/RelatedProducts.jsx';
 import Outfits from './related/outfits/Outfits.jsx';
 import ProductInfo from './ProductDetails/expandedInfo.jsx';
+import Nav from './nav/Nav.jsx';
 import axios from 'axios';
 
 export const AppContext = createContext(null);
@@ -107,6 +108,7 @@ const App = function () {
       }}
     >
       <div>
+        <div id='Nav'>{currentItem ? <Nav /> : null}</div>
         <div id='Product-Overview'>{currentItem ? <ProductInfo /> : null}</div>
         <div id='Related'>
           {currentItem ? <RelatedProducts /> : null}

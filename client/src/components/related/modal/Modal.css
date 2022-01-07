@@ -6,11 +6,6 @@
   padding: 0;
 }
 
-body {
-  font-family: Oxygen, sans-serif;
-  margin: 2rem;
-}
-
 .modal {
   background-color: whitesmoke;
   box-shadow: 0 2px 20px #e0e4ec;
@@ -22,7 +17,7 @@ body {
   margin: auto;
   width: 600px;
   max-width: 90%;
-  height: 380px;
+  height: 410px;
   max-height: 90%;
   z-index: 1000;
 }

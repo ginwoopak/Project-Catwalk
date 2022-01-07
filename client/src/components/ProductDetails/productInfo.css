@@ -3,6 +3,7 @@
 .product {
   display: flex;
   padding: 50px;
+  margin: 2rem;
 }
 
 #product-info {
