@@ -46,7 +46,7 @@ const RelatedProducts = () => {
           currentItem={currentDisplayItem}
         />
       ) : null}
-      <h2 className='riocTitle'>Related Products</h2>
+      <h2 className='riocTitle relatedProductTitle'>Related Products</h2>
       <div className='productsCardContainer'>
         {firstShowIndex !== 0 && (
           <span

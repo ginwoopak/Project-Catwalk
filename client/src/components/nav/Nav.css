@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Qwitcher+Grypen&display=swap');
+
+.nav {
+  background-color: black;
+  color: #f3f3f3;
+  margin: 0px;
+  border: 0px;
+  width: 100%;
+  height: 80px;
+  margin-bottom: 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+}
+
+.teamlogo {
+  margin-left: 1.5rem;
+  color: #f3f3f3;
+  font-size: 3rem;
+  font-family: 'Qwitcher Grypen', cursive;
+}
+
+.navIcons {
+  font-size: 2rem;
+  margin-right: 2rem;
+  cursor: pointer;
+}
+
+.cart {
+  margin: 1rem;
+}
+
+.fav {
+  margin: 1rem;
+}
+
+.cart:hover {
+  font-size: 2.2rem;
+}
+
+.fav:hover {
+  font-size: 2.2rem;
+}

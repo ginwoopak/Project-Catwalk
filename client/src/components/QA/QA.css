@@ -58,6 +58,8 @@
   );
 } */
 
+/* Please add margin: 2rem in your biggest container for your widget*/
+
 h1 {
   text-align: center;
   margin: 2rem 0 4rem 0;
@@ -106,6 +108,7 @@ h1 {
   margin-left: 0;
   border: 1px solid grey;
 }
+<<<<<<< HEAD
 
 .modal {
   background-color: whitesmoke;
@@ -156,3 +159,5 @@ h1 {
 .closeXIcon:hover {
   color: tomato;
 }
+=======
+>>>>>>> main

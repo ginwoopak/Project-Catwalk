@@ -10,19 +10,22 @@
 
 body {
   font-family: Oxygen, sans-serif;
-  margin: 2rem;
 }
 
 .riocTitle {
   margin: 5rem;
-  margin-left: 6rem;
+  margin-left: 7rem;
   font-size: 1.8rem;
+}
+
+.relatedProductTitle {
+  margin-top: 9rem;
 }
 
 .productsCardContainer {
   display: block;
   position: relative;
-  margin: 2rem;
+  margin: 4rem;
 }
 
 .gridContainer {
