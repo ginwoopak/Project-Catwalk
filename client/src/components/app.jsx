@@ -60,13 +60,13 @@ const App = function () {
     }
   };
 
-  const postAPI = async (params = '', callback) => {
-    try {
-      callback(await axios.post(url + params));
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const postAPI = async (params = '', callback) => {
+  //   try {
+  //     callback(await axios.post(url + params));
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   const setNewItem = (item) => {
     setId(item); //This needs to be the new item ID that we wish to populate
@@ -110,9 +110,8 @@ const App = function () {
         removeOutfit,
       }}
     >
-      {console.log('from app.jsx:::', callId)}
       <div>
-        {/* <div id='Product-Overview'>{currentItem ? <ProductInfo /> : null}</div> */}
+        <div id='Product-Overview'>{currentItem ? <ProductInfo /> : null}</div>
         <div id='Related'>
           {currentItem ? <RelatedProducts /> : null}
           {currentItem ? <Outfits /> : null}
