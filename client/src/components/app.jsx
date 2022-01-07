@@ -11,7 +11,7 @@ export const AppContext = createContext(null);
 const url = 'http://localhost:3000/';
 
 const App = function () {
-  const [outfits, setOutfits] = useState([40344]);
+  const [outfits, setOutfits] = useState([]);
   const [currentItem, setCurrentItem] = useState({ id: 40344 });
   const [allProducts, setAllProducts] = useState([]);
   const [callId, setId] = useState(40344);
@@ -111,11 +111,11 @@ const App = function () {
       }}
     >
       <div>
-        <div id='Product-Overview'>{currentItem ? <ProductInfo /> : null}</div>
+        {/* <div id='Product-Overview'>{currentItem ? <ProductInfo /> : null}</div>
         <div id='Related'>
-          {/* {currentItem ? <RelatedProducts /> : null}
-          {currentItem ? <Outfits /> : null} */}
-        </div>
+          {currentItem ? <RelatedProducts /> : null}
+          {currentItem ? <Outfits /> : null}
+        </div> */}
         <div id='QA'>{currentItem ? <QuestionContainer /> : null}</div>
         {/* <div id='Reviews' ref={RevRef}>
           {currentItem ? <Reviews className='rev' /> : null}

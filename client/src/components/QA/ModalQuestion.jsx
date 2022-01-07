@@ -27,7 +27,34 @@ const ModalQuestion = () => {
         </div>
         <div>
           Nickname:
-          <input type='text' size='30' placeholder='Example:'/>
+          <div>
+            <input
+              type='text'
+              size='30'
+              maxLength='60'
+              placeholder='Example: jackson11!'
+            />
+          </div>
+          <div>
+            For privacy reasons, do not use your full name or email address.
+          </div>
+        </div>
+        <div>
+          Email:
+          <div>
+            <input
+              type='text'
+              size='30'
+              maxLength='60'
+              placeholder='Example: aol@aol.com'
+            />
+          </div>
+          <div>
+            For authentication reasons, you will not be emailed.
+          </div>
+        </div>
+        <div>
+          <input type='submit' value='Submit'/>
         </div>
       </form>
     </div>
