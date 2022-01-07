@@ -38,6 +38,7 @@ const QuestionItem = (props) => {
               <div>
                 {answers.length > 2 && (
                   <div
+                    className='darktitle'
                     onClick={() => {
                       setLimit(limit + 2);
                     }}

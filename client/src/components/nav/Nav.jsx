@@ -7,11 +7,15 @@ import {
   faHeart,
 } from '@fortawesome/free-solid-svg-icons';
 import './Nav.css';
+import Toggle from '../Toggle.js';
 
-const Nav = () => {
+const Nav = ({ theme, toggleTheme }) => {
   return (
     <header className='nav'>
       <span className='teamlogo'>Lil Bo-Peep</span>
+      <span className='dark'>
+        <Toggle theme={theme} toggleTheme={toggleTheme} />
+      </span>
       <div className='navIcons'>
         <span className='fav'>
           <FontAwesomeIcon icon={faHeart} />

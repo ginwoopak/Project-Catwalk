@@ -49,7 +49,7 @@ const ModalQuestion = ({ questionModalOpen, setQuestionModalOpen }) => {
   };
 
   return (
-    <div className='modal'>
+    <div className='modal darktitle'>
       <form onSubmit={handleSubmit} className='modalContainer'>
         <button
           className='closeBtn'

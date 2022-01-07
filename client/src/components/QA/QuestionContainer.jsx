@@ -49,7 +49,7 @@ const QuestionContainer = () => {
   }, [searchInput]);
 
   return (
-    <div>
+    <div className='QAspace'>
       <QuestionContext.Provider
         value={{ questionData, questionLimit, handleChange, displayData, setAnswerModalOpen }}
       >
@@ -61,21 +61,22 @@ const QuestionContainer = () => {
           answerModalOpen={answerModalOpen}
           setAnswerModalOpen={setAnswerModalOpen}
         />) : null} */}
-        <h2>Questions & Answers</h2>
-        <div>
+        <h2 className='QAtitle'>Questions & Answers</h2>
+        <div className='QAtitle'>
           <SearchBar />
           {questionData.length > 0 ? (
             <QuestionList className='align_left' />
           ) : null}
         </div>
         <div
+          className='QAtitle'
           onClick={() => {
             setQuestionLimit(questionLimit + 2);
           }}
         >
           {questionData.length > 2 && <MoreQuestions />}
         </div>
-        <div>
+        <div className='QAtitle'>
           <AddQuestion setQuestionModalOpen={setQuestionModalOpen} />
         </div>
       </QuestionContext.Provider>
