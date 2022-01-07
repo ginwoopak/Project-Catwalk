@@ -18,7 +18,9 @@ const Cart = ({ setOpenCart, openCart, cartItems }) => {
           <h3>Your Cart:</h3>
           <table>
             <tbody className='tableBody'>
-              {cartItems ? cartItems.map((item) => <a>{item.name}</a>) : null}
+              {cartItems
+                ? cartItems.map((item) => <a key={item}>{item.name}</a>)
+                : null}
             </tbody>
           </table>
         </div>
