@@ -113,11 +113,11 @@ const App = function () {
         <div id='Related'>
           {currentItem ? <RelatedProducts /> : null}
           {currentItem ? <Outfits /> : null}
-        </div> */}
+        </div>
         <div id='QA'>{currentItem ? <QuestionContainer /> : null}</div>
-        {/* <div id='Reviews' ref={RevRef}>
+        <div id='Reviews' ref={RevRef}>
           {currentItem ? <Reviews className='rev' /> : null}
-        </div> */}
+        </div>
       </div>
     </AppContext.Provider>
   );
