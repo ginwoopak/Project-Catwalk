@@ -29,7 +29,7 @@ const QuestionItem = (props) => {
         </div>
         <div className='accordion-content'>
           <div>
-            <HelpfulAddAnswer question={props.question}/>
+            <HelpfulAddAnswer question={props.question} />
           </div>
           {isActive && (
             <div>
