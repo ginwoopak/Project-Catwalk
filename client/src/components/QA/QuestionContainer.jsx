@@ -3,6 +3,8 @@ import SearchBar from './SearchBar.jsx';
 // import LoadAnswers from './LoadAnswers.jsx';
 import MoreQuestions from './MoreQuestions.jsx';
 import QuestionList from './QuestionList.jsx';
+import AddQuestion from './AddQuestion.jsx';
+import ModalQuestion from './ModalQuestion.jsx';
 import { AppContext } from '../app.jsx';
 import './QA.css';
 
@@ -15,6 +17,8 @@ const QuestionContainer = () => {
   const [questionLimit, setQuestionLimit] = useState(2);
   const [displayData, setDisplayData] = useState([]);
   const [searchInput, setSearchInput] = useState('');
+
+  // console.log('currentItem', currentItem)
 
   useEffect(() => {
     try {
@@ -50,7 +54,7 @@ const QuestionContainer = () => {
   return (
     <div>
       <QuestionContext.Provider value={{ questionData, questionLimit, handleChange, displayData }}>
-        <h2>Questions & Answers</h2>
+        {/* <h2>Questions & Answers</h2>
         <div>
           <SearchBar />
           {questionData.length > 0 ? (
@@ -63,6 +67,12 @@ const QuestionContainer = () => {
           }}
         >
           {questionData.length > 2 && <MoreQuestions />}
+        </div>
+        <div>
+          <AddQuestion />
+        </div> */}
+        <div>
+          <ModalQuestion />
         </div>
       </QuestionContext.Provider>
     </div>
