@@ -11,10 +11,7 @@ export const AppContext = createContext(null);
 const url = 'http://localhost:3000/';
 
 const App = function () {
-  // document.addEventListener('click', function (event) {
-  //   console.log(event.target);
-  // });
-  const [outfits, setOutfits] = useState([]);
+  const [outfits, setOutfits] = useState([40344]);
   const [currentItem, setCurrentItem] = useState({ id: 40344 });
   const [allProducts, setAllProducts] = useState([]);
   const [callId, setId] = useState(40344);
@@ -66,6 +63,18 @@ const App = function () {
     }
   };
 
+  // const postAPI = async (params = '', callback) => {
+  //   try {
+  //     callback(await axios.post(url + params));
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+  const setNewItem = (item) => {
+    setId(item); //This needs to be the new item ID that we wish to populate
+  };
+
   const jumpToReviews = () => {
     window.scrollTo({
       top: RevRef.current.offsetTop,
@@ -105,13 +114,14 @@ const App = function () {
         removeOutfit,
       }}
     >
-      {console.log('from app.jsx:::', callId)}
       <div>
-        {/* {currentItem ? <ProductInfo /> : null} */}
-        {currentItem ? <RelatedProducts /> : null}
-        {currentItem ? <Outfits /> : null}
-        {currentItem ? <QuestionContainer /> : null}
-        <div ref={RevRef}>
+        <div id='Product-Overview'>{currentItem ? <ProductInfo /> : null}</div>
+        <div id='Related'>
+          {currentItem ? <RelatedProducts /> : null}
+          {currentItem ? <Outfits /> : null}
+        </div>
+        <div id='QA'>{currentItem ? <QuestionContainer /> : null}</div>
+        <div id='Reviews' ref={RevRef}>
           {currentItem ? <Reviews className='rev' /> : null}
         </div>
       </div>
