@@ -48,7 +48,7 @@ const RelatedProducts = () => {
       ) : null}
       <h2 className='riocTitle relatedProductTitle'>Related Products</h2>
       <div className='productsCardContainer'>
-        {firstShowIndex !== 0 && (
+        {firstShowIndex !== 0 && relatedIds.length > 0 ? (
           <span
             className='prevArrow'
             onClick={() => {
@@ -57,6 +57,8 @@ const RelatedProducts = () => {
           >
             <FontAwesomeIcon icon={faArrowLeft} />
           </span>
+        ) : (
+          <div></div>
         )}
         <div className='gridContainer'>
           {relatedIds.slice(firstShowIndex, firstShowIndex + 3).map((id) => (
