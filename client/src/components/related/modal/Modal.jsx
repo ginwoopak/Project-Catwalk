@@ -46,7 +46,7 @@ const Modal = ({ openModal, setOpenModal, selectedId, currentItem }) => {
 
   return (
     <div className='modal'>
-      <div className='modalContaner'>
+      <div className='modalContainer'>
         <button
           className='closeBtn'
           onClick={() => {
