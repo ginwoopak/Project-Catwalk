@@ -91,8 +91,23 @@
   object-fit: fill;
 }
 
-.button {
+#favorite {
+  font-size: larger;
 }
 
-.menu {
+#favorite:hover,
+.icon:hover {
+  color: gold;
+}
+
+.favorited {
+  color: rgb(241, 21, 194);
+}
+
+.icons {
+  font-size: xx-large;
+}
+
+.icon {
+  padding: 10px;
 }
