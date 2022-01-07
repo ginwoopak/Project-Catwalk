@@ -182,3 +182,23 @@ app.post(/interactions/, (req, res) => {
       res.send(error);
     });
 });
+
+app.post(/cart/, (req, res) => {
+  axios({
+    method: 'post',
+    url: req.url,
+    headers: {
+      Authorization: API_KEY.Authorization,
+      'Content-Type': 'application/json',
+    },
+    data: req.body,
+    baseURL: baseURL,
+  })
+    .then((response) => {
+      console.log(response.data);
+      res.sendStatus(201);
+    })
+    .catch((error) => {
+      res.send(error);
+    });
+});
