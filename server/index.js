@@ -69,6 +69,62 @@ app.get(/qa/, (req, res) => {
   }
 });
 
+app.post('/qa/questions', (req, res) => {
+  axios({
+    method: 'POST',
+    url: req.url,
+    headers: {
+      Authorization: API_KEY.Authorization,
+      'Content-Type': 'application/json',
+    },
+    data: req.body,
+    baseURL: baseURL,
+  })
+    .then(() => {
+      console.log('response');
+      res.status(201).send('Success');
+    })
+    .catch((error) => {
+      console.log(error);
+      res.send(error);
+    });
+});
+
+app.put(/qa/, (req, res) => {
+  axios({
+    url: req.url,
+    body: req.body,
+    method: 'PUT',
+    headers: {
+      Authorization: API_KEY.Authorization,
+      'Content-Type': 'application/json',
+    },
+    baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp',
+  })
+    .then((response) => {
+      axios({
+        url: `/qa/questions/?product_id=${req.body.id}`,
+        method: 'GET',
+        headers: {
+          Authorization: API_KEY.Authorization,
+          'Content-Type': 'application/json',
+        },
+        baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp',
+      })
+        .then((response) => {
+          memo[`/qa/questions?product_id=${req.body.id}`] = response.data;
+          // console.log('API CALLED');
+          res.send(response.data.results);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
 app.get(/reviews/, (req, res) => {
   // console.log(req.path + `?product_id=${req.query.product_id}`);
   if (memo[req.path + `?product_id=${req.query.product_id}`]) {
