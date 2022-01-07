@@ -8,6 +8,7 @@ const QuestionItem = (props) => {
 
   const [isActive, setIsActive] = useState(false);
   const [limit, setLimit] = useState(2);
+  const [questionID, setQuestionID] = useState(props.question.question_id);
 
   let answers = Object.values(props.question.answers);
 

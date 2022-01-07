@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const AddAnswer = () => {
+const AddAnswer = ( { setAnswerModalOpen } ) => {
   const [addAnswer, setAddAnswer] = useState(null);
 
   return (
@@ -12,6 +12,16 @@ const AddAnswer = () => {
       <u>Add Answer</u>
     </span>
   );
+
+  // return (
+  //   <span
+  //     onClick={() => {
+  //       setAnswerModalOpen(true);
+  //     }}
+  //   >
+  //     <u>Add Answer</u>
+  //   </span>
+  // );
 };
 
 export default AddAnswer;

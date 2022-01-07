@@ -108,16 +108,16 @@ const App = function () {
       }}
     >
       <div>
-        <div id='Nav'>{currentItem ? <Nav /> : null}</div>
+        {/* <div id='Nav'>{currentItem ? <Nav /> : null}</div>
         <div id='Product-Overview'>{currentItem ? <ProductInfo /> : null}</div>
         <div id='Related'>
           {currentItem ? <RelatedProducts /> : null}
           {currentItem ? <Outfits /> : null}
-        </div>
+        </div> */}
         <div id='QA'>{currentItem ? <QuestionContainer /> : null}</div>
-        <div id='Reviews' ref={RevRef}>
+        {/* <div id='Reviews' ref={RevRef}>
           {currentItem ? <Reviews className='rev' /> : null}
-        </div>
+        </div> */}
       </div>
     </AppContext.Provider>
   );

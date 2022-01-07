@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState, createContext } from 'react';
 import SearchBar from './SearchBar.jsx';
-// import LoadAnswers from './LoadAnswers.jsx';
 import MoreQuestions from './MoreQuestions.jsx';
 import QuestionList from './QuestionList.jsx';
 import AddQuestion from './AddQuestion.jsx';
 import ModalQuestion from './ModalQuestion.jsx';
+import ModalAnswer from './ModalAnswer.jsx';
 import { AppContext } from '../app.jsx';
 import './QA.css';
 
@@ -18,8 +18,7 @@ const QuestionContainer = () => {
   const [displayData, setDisplayData] = useState([]);
   const [searchInput, setSearchInput] = useState('');
   const [questionModalOpen, setQuestionModalOpen] = useState(false);
-
-  // console.log('currentItem', currentItem)
+  const [answerModalOpen, setAnswerModalOpen] = useState(false);
 
   useEffect(() => {
     try {
@@ -37,8 +36,6 @@ const QuestionContainer = () => {
     setSearchInput(e.target.value);
   };
 
-  // console.log('searchResult:', searchData);
-
   useEffect(() => {
     if (searchInput.length < 3) {
       setDisplayData(questionData);
@@ -54,12 +51,16 @@ const QuestionContainer = () => {
   return (
     <div>
       <QuestionContext.Provider
-        value={{ questionData, questionLimit, handleChange, displayData }}
+        value={{ questionData, questionLimit, handleChange, displayData, setAnswerModalOpen }}
       >
         {questionModalOpen ? (<ModalQuestion
           questionModalOpen={questionModalOpen}
           setQuestionModalOpen={setQuestionModalOpen}
         />) : null}
+        {/* {answerModalOpen ? (<ModalAnswer
+          answerModalOpen={answerModalOpen}
+          setAnswerModalOpen={setAnswerModalOpen}
+        />) : null} */}
         <h2>Questions & Answers</h2>
         <div>
           <SearchBar />

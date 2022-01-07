@@ -158,3 +158,14 @@ h1 {
 .closeXIcon:hover {
   color: tomato;
 }
+
+body {
+  font-family: Oxygen, sans-serif;
+}
+
+.riocTitle {
+  margin: 5rem;
+  margin-left: 7rem;
+  font-size: 1.8rem;
+  margin-top: 9rem;
+}
