@@ -11,7 +11,7 @@ export const AppContext = createContext(null);
 const url = 'http://localhost:3000/';
 
 const App = function () {
-  const [outfits, setOutfits] = useState([40344]);
+  const [outfits, setOutfits] = useState([]);
   const [currentItem, setCurrentItem] = useState({ id: 40344 });
   const [allProducts, setAllProducts] = useState([]);
   const [callId, setId] = useState(40344);
@@ -60,16 +60,8 @@ const App = function () {
     }
   };
 
-  // const postAPI = async (params = '', callback) => {
-  //   try {
-  //     callback(await axios.post(url + params));
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
   const setNewItem = (item) => {
-    setId(item); //This needs to be the new item ID that we wish to populate
+    setId(item);
   };
 
   const jumpToReviews = () => {
