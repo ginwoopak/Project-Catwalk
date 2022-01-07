@@ -15,6 +15,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import './productInfo.css';
+import axios from 'axios';
 
 const AddToCart = () => {
   const { selected, styles, sku, setSku, selectStyle } =
@@ -25,7 +26,7 @@ const AddToCart = () => {
     let a = [];
     for (let i = 1; i <= selected.skus[sku].quantity && i <= 15; i++) {
       a.push(
-        <option value='amt' key={i}>
+        <option value={i} key={i}>
           {i}
         </option>
       );
@@ -41,7 +42,16 @@ const AddToCart = () => {
     event.target.classList.toggle('favorited');
   };
 
-  const addToCart = () => {};
+  const addToCart = async () => {
+    try {
+      await axios.post('cart', {
+        sku_id: sku,
+        quantity: document.getElementById('quantity-select').value,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -106,7 +116,7 @@ const AddToCart = () => {
         )}
       </div>
       <span>
-        <button onClick={addToCart()}>Add to Cart</button>
+        <button onClick={() => addToCart()}>Add to Cart</button>
         {' Add To Favorites '}
         <FontAwesomeIcon
           id='favorite'
