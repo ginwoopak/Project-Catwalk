@@ -5,8 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 
-const url = 'http://localhost:3000/';
-
 const ModalQuestion = ({ questionModalOpen, setQuestionModalOpen }) => {
   const { currentItem, callAPI } = useContext(AppContext);
 
@@ -31,7 +29,7 @@ const ModalQuestion = ({ questionModalOpen, setQuestionModalOpen }) => {
 
   const postQuestion = () => {
     axios
-      .post(url + 'qa/questions', {
+      .post('qa/questions', {
         body: questionInput,
         name: nicknameInput,
         email: emailInput,
@@ -117,10 +115,7 @@ const ModalQuestion = ({ questionModalOpen, setQuestionModalOpen }) => {
           <div>For authentication reasons, you will not be emailed.</div>
         </div>
         <div>
-          <input
-            type='submit'
-            value='Submit'
-          />
+          <input type='submit' value='Submit' />
         </div>
       </form>
     </div>
