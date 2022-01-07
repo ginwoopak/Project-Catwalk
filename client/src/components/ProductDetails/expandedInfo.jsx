@@ -39,7 +39,6 @@ const ProductInfo = function () {
             './related_product_pics/no_image_available.jpg',
         });
       }
-      // console.log('style: ', styles[n]);
       setSelected(styles[n]);
       setImages(gallery);
       setSku(Object.keys(styles[n].skus)[0]);
