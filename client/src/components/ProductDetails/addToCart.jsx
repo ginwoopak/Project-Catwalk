@@ -43,14 +43,25 @@ const AddToCart = () => {
   };
 
   const addToCart = async () => {
+    if (document.getElementById('notice').classList.contains('fade-out')) {
+      document.getElementById('notice').classList.toggle('fade-out');
+    }
     try {
       await axios.post('cart', {
+        item: currentItem,
+        style: selected,
         sku_id: sku,
         quantity: document.getElementById('quantity-select').value,
       });
+      document.getElementById('notice').classList.toggle('fade-out');
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const fadeOut = (element, val) => {
+    // element.style = { display: 1 / val };
+    console.log(element);
   };
 
   return (
