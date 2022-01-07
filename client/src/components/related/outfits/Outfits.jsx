@@ -42,7 +42,7 @@ const Outfits = () => {
         <div className='gridContainer'>
           {firstShowIndex === 0 && (
             <div className='card card__body'>
-              <div className='add_a_outfit'>Add a Outfit</div>
+              <div className='add_an_outfit'>Add an Outfit</div>
               <div
                 className='add_outfit_Btn'
                 onClick={() => {
@@ -59,6 +59,11 @@ const Outfits = () => {
                 className='icon-tag'
                 onClick={() => {
                   removeOutfit(Number(id));
+                  if (outfits.length - firstShowIndex === 1) {
+                    var tempoIndex =
+                      firstShowIndex >= 2 ? firstShowIndex - 2 : 0;
+                    setFirstShowIndex(tempoIndex);
+                  }
                 }}
               >
                 <FontAwesomeIcon icon={faXmarkCircle} className='xIcon' />
@@ -73,6 +78,7 @@ const Outfits = () => {
             className='nextArrow'
             onClick={() => {
               nextClick();
+              console.log('next l, i:', outfits.length, firstShowIndex);
             }}
           >
             <FontAwesomeIcon icon={faArrowRight} />
