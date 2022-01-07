@@ -58,6 +58,8 @@
   );
 } */
 
+/* Please add margin: 2rem in your biggest container for your widget*/
+
 h1 {
   text-align: center;
   margin: 2rem 0 4rem 0;
