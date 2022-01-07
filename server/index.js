@@ -6,6 +6,7 @@ const axios = require('axios');
 const API_KEY = require('../config/config.js');
 const memo = {};
 const outfitsMemo = {};
+const cart = {};
 
 const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
 
@@ -99,7 +100,7 @@ app.put(/qa/, (req, res) => {
       Authorization: API_KEY.Authorization,
       'Content-Type': 'application/json',
     },
-    baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp',
+    baseURL: baseURL,
   })
     .then((response) => {
       axios({
@@ -109,7 +110,7 @@ app.put(/qa/, (req, res) => {
           Authorization: API_KEY.Authorization,
           'Content-Type': 'application/json',
         },
-        baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp',
+        baseURL: baseURL,
       })
         .then((response) => {
           memo[`/qa/questions?product_id=${req.body.id}`] = response.data;
@@ -175,7 +176,6 @@ app.post(/interactions/, (req, res) => {
     baseURL: baseURL,
   })
     .then((response) => {
-      console.log(response.data);
       res.sendStatus(201);
     })
     .catch((error) => {
@@ -195,10 +195,25 @@ app.post(/cart/, (req, res) => {
     baseURL: baseURL,
   })
     .then((response) => {
-      console.log(response.data);
+      if (cart[req.body.sku_id]) {
+        cart[req.body.sku_id].quantity += parseInt(req.body.quantity);
+      } else {
+        cart[req.body.sku_id] = {
+          item: req.body.item.name,
+          style: req.body.style.name,
+          price: req.body.style.sale_price || req.body.style.original_price,
+          pic: req.body.style.photos[0].thumbnail_url,
+          size: req.body.style.skus[req.body.sku_id].size,
+          quantity: parseInt(req.body.quantity),
+        };
+      }
       res.sendStatus(201);
     })
     .catch((error) => {
       res.send(error);
     });
+});
+
+app.get(/cart/, (req, res) => {
+  res.send(cart);
 });

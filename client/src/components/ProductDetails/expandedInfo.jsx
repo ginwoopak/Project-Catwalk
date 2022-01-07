@@ -52,11 +52,8 @@ const ProductInfo = function () {
   //====================
   useEffect(() => {
     try {
-      // console.log(currentItem.id);
       callAPI(`products/${currentItem.id}/styles`, (response) => {
         setStyles(response.data.results);
-        // setSelected(response.data.results[0]);
-        // selectStyle();
       });
     } catch (error) {
       console.log(error);
