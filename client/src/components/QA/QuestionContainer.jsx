@@ -17,12 +17,13 @@ const QuestionContainer = () => {
   const [questionLimit, setQuestionLimit] = useState(2);
   const [displayData, setDisplayData] = useState([]);
   const [searchInput, setSearchInput] = useState('');
+  const [questionModalOpen, setQuestionModalOpen] = useState(false);
 
   // console.log('currentItem', currentItem)
 
   useEffect(() => {
     try {
-      callAPI(`qa/questions?product_id=${currentItem.id}`, (response) => {
+      callAPI(`qa/questions?product_id=${currentItem.id}&count=50`, (response) => {
         setQuestionData(response.data.results);
         setDisplayData(response.data.results);
       });
@@ -50,11 +51,16 @@ const QuestionContainer = () => {
     }
   }, [searchInput]);
 
-
   return (
     <div>
-      <QuestionContext.Provider value={{ questionData, questionLimit, handleChange, displayData }}>
-        {/* <h2>Questions & Answers</h2>
+      <QuestionContext.Provider
+        value={{ questionData, questionLimit, handleChange, displayData }}
+      >
+        {questionModalOpen ? (<ModalQuestion
+          questionModalOpen={questionModalOpen}
+          setQuestionModalOpen={setQuestionModalOpen}
+        />) : null}
+        <h2>Questions & Answers</h2>
         <div>
           <SearchBar />
           {questionData.length > 0 ? (
@@ -69,10 +75,7 @@ const QuestionContainer = () => {
           {questionData.length > 2 && <MoreQuestions />}
         </div>
         <div>
-          <AddQuestion />
-        </div> */}
-        <div>
-          <ModalQuestion />
+          <AddQuestion setQuestionModalOpen={setQuestionModalOpen} />
         </div>
       </QuestionContext.Provider>
     </div>

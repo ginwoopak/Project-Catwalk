@@ -1,9 +1,10 @@
 import React from 'react';
 
-const AddQuestion = () => {
+const AddQuestion = ( { setQuestionModalOpen } ) => {
+
   return (
-    <button>
-      This works?
+    <button onClick={() => { setQuestionModalOpen(true); }}>
+      Add Question
     </button>
   );
 };

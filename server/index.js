@@ -69,6 +69,27 @@ app.get(/qa/, (req, res) => {
   }
 });
 
+app.post('/qa/questions', (req, res) => {
+  axios({
+    method: 'POST',
+    url: req.url,
+    headers: {
+      Authorization: API_KEY.Authorization,
+      'Content-Type': 'application/json',
+    },
+    data: req.body,
+    baseURL: baseURL,
+  })
+    .then(() => {
+      console.log('response');
+      res.status(201).send('Success');
+    })
+    .catch((error) => {
+      console.log(error);
+      res.send(error);
+    });
+});
+
 app.put(/qa/, (req, res) => {
   axios({
     url: req.url,

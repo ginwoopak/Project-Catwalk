@@ -11,7 +11,7 @@ const Helpful = (props) => {
 
   const { currentItem, callAPI } = useContext(AppContext);
 
-  const postAPI = async (params = '', callback) => {
+  const putAPI = async (params = '', callback) => {
     try {
       callback(await axios.put(url + params, {id: currentItem.id}));
     } catch (error) {
@@ -21,7 +21,7 @@ const Helpful = (props) => {
 
   let handleHelp = () => {
     if (!clicked) {
-      postAPI(`qa/questions/${questionID}/helpful`, (response) => {
+      putAPI(`qa/questions/${questionID}/helpful`, (response) => {
 
         let index = 0;
 
