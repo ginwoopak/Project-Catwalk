@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState, createContext } from 'react';
 import SearchBar from './SearchBar.jsx';
-// import LoadAnswers from './LoadAnswers.jsx';
 import MoreQuestions from './MoreQuestions.jsx';
 import QuestionList from './QuestionList.jsx';
 import AddQuestion from './AddQuestion.jsx';
 import ModalQuestion from './ModalQuestion.jsx';
+import ModalAnswer from './ModalAnswer.jsx';
 import { AppContext } from '../app.jsx';
 import './QA.css';
 
@@ -18,8 +18,7 @@ const QuestionContainer = () => {
   const [displayData, setDisplayData] = useState([]);
   const [searchInput, setSearchInput] = useState('');
   const [questionModalOpen, setQuestionModalOpen] = useState(false);
-
-  // console.log('currentItem', currentItem)
+  const [answerModalOpen, setAnswerModalOpen] = useState(false);
 
   useEffect(() => {
     try {
@@ -37,44 +36,51 @@ const QuestionContainer = () => {
     setSearchInput(e.target.value);
   };
 
-  // console.log('searchResult:', searchData);
-
   useEffect(() => {
     if (searchInput.length < 3) {
       setDisplayData(questionData);
     } else {
       const searchResult = questionData.filter((question) => {
-        return question.question_body.includes(searchInput);
+        return question.question_body.toLowerCase().includes(searchInput.toLowerCase());
       });
 
       setDisplayData(searchResult);
     }
   }, [searchInput]);
 
+  useEffect(() => {
+    setQuestionLimit(2);
+  }, [currentItem]);
+
   return (
-    <div>
+    <div className='QAspace'>
       <QuestionContext.Provider
-        value={{ questionData, questionLimit, handleChange, displayData }}
+        value={{ questionData, questionLimit, handleChange, displayData, setAnswerModalOpen }}
       >
         {questionModalOpen ? (<ModalQuestion
           questionModalOpen={questionModalOpen}
           setQuestionModalOpen={setQuestionModalOpen}
         />) : null}
-        <h2>Questions & Answers</h2>
-        <div>
+        {answerModalOpen ? (<ModalAnswer
+          answerModalOpen={answerModalOpen}
+          setAnswerModalOpen={setAnswerModalOpen}
+        />) : null}
+        <h2 className='QAtitle'>Questions & Answers</h2>
+        <div className='QAtitle'>
           <SearchBar />
           {questionData.length > 0 ? (
             <QuestionList className='align_left' />
           ) : null}
         </div>
         <div
+          className='QAtitle'
           onClick={() => {
             setQuestionLimit(questionLimit + 2);
           }}
         >
           {questionData.length > 2 && <MoreQuestions />}
         </div>
-        <div>
+        <div className='QAtitle'>
           <AddQuestion setQuestionModalOpen={setQuestionModalOpen} />
         </div>
       </QuestionContext.Provider>

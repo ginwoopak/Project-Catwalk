@@ -9,7 +9,7 @@ const HelpfulAddAnswer = (props) => {
         helpful={props.question.question_helpfulness}
         questionID={props.question.question_id}
       />{' '}
-      | <AddAnswer />
+      | <AddAnswer questionID={props.question.question_id} />
     </span>
   );
 };
