@@ -1,9 +1,8 @@
+/* eslint-disable indent */
 import axios from 'axios';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/app.jsx';
-
-const url = 'http://localhost:3000/';
 
 document.addEventListener('click', function (event) {
   let listener = {};
@@ -24,7 +23,7 @@ document.addEventListener('click', function (event) {
   }
 
   axios
-    .post(url + 'interactions', listener)
+    .post('interactions', listener)
     .then(() => {
       listener.widget ? console.log(listener.widget) : null;
     })

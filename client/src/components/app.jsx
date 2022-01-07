@@ -8,8 +8,6 @@ import axios from 'axios';
 
 export const AppContext = createContext(null);
 
-const url = 'http://localhost:3000/';
-
 const App = function () {
   const [outfits, setOutfits] = useState([]);
   const [currentItem, setCurrentItem] = useState({ id: 40344 });
@@ -42,13 +40,13 @@ const App = function () {
 
   useEffect(async () => {
     try {
-      const response = await axios.get(url + 'products/');
+      const response = await axios.get('products/');
       setAllProducts(response.data);
 
-      const response2 = await axios.get(`${url}products/${callId}`);
+      const response2 = await axios.get(`products/${callId}`);
       setCurrentItem(response2.data);
 
-      const response3 = await axios.get(url + 'outfits');
+      const response3 = await axios.get('outfits');
       setOutfits(Object.keys(response3.data).reverse());
     } catch (error) {
       console.log(error);
@@ -57,7 +55,7 @@ const App = function () {
 
   const callAPI = async (params = '', callback) => {
     try {
-      callback(await axios.get(url + params));
+      callback(await axios.get(params));
     } catch (error) {
       console.log(error);
     }
@@ -76,13 +74,13 @@ const App = function () {
 
   const addOutfit = async () => {
     const newData = { id: currentItem.id };
-    const getResp = await axios.post(`${url}outfits`, newData);
+    const getResp = await axios.post('outfits', newData);
     setOutfits(Object.keys(getResp.data).reverse());
   };
 
   const removeOutfit = async (outfitId) => {
     const removeData = { data: { id: outfitId } };
-    const deleteResp = await axios.delete(`${url}outfits`, removeData);
+    const deleteResp = await axios.delete('outfits', removeData);
     setOutfits(Object.keys(deleteResp.data).reverse());
   };
 

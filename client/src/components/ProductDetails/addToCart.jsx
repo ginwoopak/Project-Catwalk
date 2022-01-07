@@ -20,7 +20,6 @@ const AddToCart = () => {
   const { selected, styles, sku, setSku, selectStyle } =
     useContext(OverviewContext);
   const { currentItem, average, jumpToReviews } = useContext(AppContext);
-  // const [currentSelection, setCurrentSelection] = useState(null);
 
   const loadQuantity = () => {
     let a = [];
@@ -41,6 +40,8 @@ const AddToCart = () => {
   const toggleFave = (event) => {
     event.target.classList.toggle('favorited');
   };
+
+  const addToCart = () => {};
 
   return (
     <>
@@ -105,7 +106,7 @@ const AddToCart = () => {
         )}
       </div>
       <span>
-        <button>Add to Cart</button>
+        <button onClick={addToCart()}>Add to Cart</button>
         {' Add To Favorites '}
         <FontAwesomeIcon
           id='favorite'
