@@ -6,6 +6,7 @@ The client is experiencing lower sales due to the outdated client-facing retail 
 # Overview
 
 # Related Products
+The Related Product module consists of two parts —  Related Products and Outfits. Related products is the list of products related to the current displayed item by overview component and it updates accordingly. The products will be in card styles in a carousel which allow the users to navigate between the cards. If clicking on a star button,  a modal would pop up which compares the features between the related card and the current item from the overview widget. Once the product name on the card gets clicked, it would change the overview item as well. The second part is the Outfits section, which will be a personal unique “wardrobe” stored for each user. It gives the user the ability to save and delete the current product item. Similar to the Related Product section, the Outfits will be shown in cards carousel.
 
 # Questions and Answers
 
