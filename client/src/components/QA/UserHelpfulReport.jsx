@@ -5,7 +5,7 @@ import Report from './Report.jsx';
 
 const UserHelpfulReport = (props) => {
   return (
-    <span className='float_left small_font'>
+    <span className='left-header small_font'>
       <Username answer={props.answer} /> |{' '}
       <Helpful helpful={props.answer.helpfulness} /> | <Report />
     </span>

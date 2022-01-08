@@ -68,21 +68,21 @@ const QuestionContainer = () => {
         <h2 className='QAtitle'>Questions & Answers</h2>
         <div className='QAtitle'>
           <SearchBar />
-          {questionData.length > 0 ? (
+          {displayData.length > 0 ? (
             <QuestionList className='align_left' />
           ) : null}
         </div>
-        <div
+        <span className='QAtitle'>
+          <AddQuestion setQuestionModalOpen={setQuestionModalOpen} />
+        </span>
+        <span
           className='QAtitle'
           onClick={() => {
             setQuestionLimit(questionLimit + 2);
           }}
         >
-          {questionData.length > 2 && <MoreQuestions />}
-        </div>
-        <div className='QAtitle'>
-          <AddQuestion setQuestionModalOpen={setQuestionModalOpen} />
-        </div>
+          {displayData.length > 2 && <MoreQuestions />}
+        </span>
       </QuestionContext.Provider>
     </div>
   );

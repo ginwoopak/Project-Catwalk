@@ -6,12 +6,13 @@ const Answer = (props) => {
     <div>
       <div className='align_left'>
         <b className='darktitle'>A: </b>
-        <span className='small_font'>{`${props.answer.body}`}</span>
+        <span className='darktitle'>{`${props.answer.body}`}</span>
         <div>
           <UserHelpfulReport answer={props.answer}/>
         </div>
       </div>
       <hr></hr>
+      <br></br>
     </div>
   );
 };

@@ -1,64 +1,95 @@
-/* .rowQuestion {
-  display: flex;
-  flex-direction:row;
-}
-#big_image {
-  width: 500px;
-}
+/* ========= SearchBar ========= */
 
-.thumbnail {
-  width: 100px;
-}
-
-.align_left {
-  text-align: left;
-}
-
-.float_left {
-  float: left;
-}
-
-.float_right {
-  float: right;
-}
-
-.individual_container {
-  display: grid;
-  padding: 10px;
-  row-gap: 10px;
-  margin: 0 auto;
-} */
-
-.small_font {
-  font-size: small;
-  color: gray;
-}
-
-/* .center {
-  margin: auto;
-  padding: 10px;
+.search {
   width: 50%;
-  text-align: center;
-} */
+  padding: 12px 24px;
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  background-color: transparent;
+  transition: transform 250ms ease-in-out;
+  font-size: 14px;
+  line-height: 18px;
+
+  color: #575756;
+  background-color: transparent;
+
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 18px 18px;
+  background-position: 95% center;
+  border-radius: 50px;
+  border: 1px solid #575756;
+  transition: all 250ms ease-in-out;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+
+  color: color(#575756 a(0.8));
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+
+  padding: 12px 0;
+  outline: 0;
+  border: 1px solid transparent;
+  border-bottom: 1px solid #575756;
+  border-radius: 0;
+  background-position: 100% center;
 }
 
-/* body {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 20px;
-  background: rgb(238, 174, 202);
-  background: radial-gradient(
-    circle,
-    rgba(238, 174, 202, 1) 0%,
-    rgba(199, 233, 148, 1) 100%
-  );
-} */
+/* ========= Helpful / Add Answer ========= */
 
-/* Please add margin: 2rem in your biggest container for your widget*/
+.right_header {
+  float: left;
+  margin-top: 5px;
+  margin-left: 630px;
+}
+
+/* ========= User / Helpful / Reported ========= */
+
+.left-header {
+  margin-left: 20px;
+}
+
+/* ========= Load More Answers ========= */
+
+.centerLoadAnswers {
+  text-align: center;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+/* ========= Buttons ========= */
+
+.button2 {
+  display:inline-block;
+  padding:0.5em 3em;
+  border:0.16em solid #FFFFFF;
+  margin:0 0.3em 0.3em 0;
+  box-sizing: border-box;
+  text-decoration:none;
+  text-transform:uppercase;
+  font-family:'Roboto',sans-serif;
+  font-weight:400;
+  color:#FFFFFF;
+  text-align:center;
+  transition: all 0.15s;
+}
+.button2:hover {
+  color:#DDDDDD;
+  border-color:#DDDDDD;
+}
+.button2:active {
+  color:#BBBBBB;
+  border-color:#BBBBBB;
+}
+
+@media all and (max-width:30em) {
+  .button2 {
+  display:block;
+  margin:0.4em auto;
+  }
+}
+
+/* ========= QA margins ========= */
+
 
 .QAspace {
   margin-bottom: 7rem;
@@ -66,16 +97,18 @@
 
 .QAtitle {
   margin-left: 7rem;
-};
+}
 
 h1 {
   text-align: center;
   margin: 2rem 0 4rem 0;
 }
 
+/* ========= Accordion ========= */
+
 .accordion {
-  max-width: 600px;
-  margin: 2rem auto;
+  max-width: 830px;
+  margin: 4rem;
 }
 
 .accordion-title {
@@ -83,7 +116,6 @@ h1 {
   flex-direction: row;
   justify-content: space-between;
   cursor: pointer;
-  /* background-color: #21aeca; */
   background-color: #c5c8cf;
 }
 
@@ -117,6 +149,8 @@ h1 {
   border: 1px solid rgb(170, 168, 168);
 }
 
+/* ========= Modal ========= */
+
 .modal {
   background-color: whitesmoke;
   box-shadow: 0 2px 20px #e0e4ec;
@@ -133,10 +167,6 @@ h1 {
   z-index: 1000;
 }
 
-.darktitle {
-  color: rgb(48, 47, 47);
-}
-
 .modalContainer {
   position: absolute;
   top: 0;
@@ -146,6 +176,8 @@ h1 {
   padding: 20px 20px 20px 20px;
   overflow: auto;
 }
+
+/* ========= Close Button ========= */
 
 .closeBtn {
   width: 1.7rem;
@@ -171,6 +203,28 @@ h1 {
   color: tomato;
 }
 
+.addQuestionSpace {
+  margin-top: 20px;
+  color: rgb(48, 47, 47);
+}
+
+/* ========= Fonts ========= */
+
+.small_font {
+  font-size: small;
+  color: gray;
+}
+
+.darktitle {
+  color: rgb(48, 47, 47);
+}
+
 body {
   font-family: Oxygen, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
