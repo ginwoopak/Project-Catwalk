@@ -10,7 +10,7 @@ The Related Product module consists of two parts —  Related Products and Outfi
 
 # Questions and Answers
 
-# Ratings and Reviews
+# Ratings and Reviews - Jake Hawkins
 The Ratings & Reviews module will allow viewing and submission of reviews for the product selected. All displayed information is provided by users of the site. This component will extend the ability to write, read, and browse through reviews for the current product. All reviews will be saved per product.  Specific styles of any given product will not be accounted for within the review module. Clicking on any breakdown information will serve to filter product review information within expectations. 
 
 # How to Install and Run the Project
