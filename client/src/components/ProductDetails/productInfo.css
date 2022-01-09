@@ -15,14 +15,6 @@
   margin-right: auto;
 }
 
-/* .image-gallery {
-  width: 400px;
-  height: 500px;
-  object-fit: cover;
-  border-style: solid;
-  border-color: cyan;
-} */
-
 .image-gallery {
   width: 500px;
   height: 600px;
@@ -55,25 +47,6 @@
 .sale-price .default-price {
   color: black;
   text-decoration: line-through;
-}
-
-.parent {
-  display: flex;
-  align-items: center;
-  box-sizing: content-box;
-  margin-left: 100px;
-  height: 500px;
-  width: 400px;
-  border-style: solid;
-  border-color: chartreuse;
-  overflow: hidden;
-}
-
-.slide-reel {
-  display: flex;
-  align-content: flex-start;
-  border-style: solid;
-  border-color: red;
 }
 
 .styles {
@@ -120,7 +93,7 @@
   border-color: rgb(0, 255, 242);
 }
 
-button {
+.button {
   background-color: rgb(118, 118, 118);
   border: none;
   color: white;
@@ -130,7 +103,7 @@ button {
   border-radius: 5%;
 }
 
-button:hover {
+.button:hover {
   background-color: turquoise;
   cursor: pointer;
 }

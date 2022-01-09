@@ -12,9 +12,9 @@ export const OverviewContext = createContext(null);
 const ProductInfo = function () {
   const { currentItem, callAPI } = useContext(AppContext);
 
-  const [images, setImages] = useState([{}]); //set Images from styles
-  const [styles, setStyles] = useState([]); //store all styles data
-  const [selected, setSelected] = useState({}); //select one style to populate
+  const [images, setImages] = useState([{}]);
+  const [styles, setStyles] = useState([]);
+  const [selected, setSelected] = useState({});
   const [sku, setSku] = useState(0);
 
   const selectStyle = async (styleId) => {
@@ -49,7 +49,6 @@ const ProductInfo = function () {
     selectStyle();
   }, [styles]);
 
-  //====================
   useEffect(() => {
     try {
       callAPI(`products/${currentItem.id}/styles`, (response) => {
@@ -59,7 +58,6 @@ const ProductInfo = function () {
       console.log(error);
     }
   }, [currentItem]);
-  //====================
 
   return (
     <OverviewContext.Provider

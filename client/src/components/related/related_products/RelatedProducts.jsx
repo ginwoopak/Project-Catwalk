@@ -1,5 +1,5 @@
 /* eslint-disable indent */
-import React, { useState, useContext, useEffect, useMemo } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import Modal from '../modal/Modal.jsx';
 import './RelatedProducts.css';
 import ProductCard from './ProductCard.jsx';

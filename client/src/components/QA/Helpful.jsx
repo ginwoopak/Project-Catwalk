@@ -5,9 +5,8 @@ import { AppContext } from '../app.jsx';
 const Helpful = (props) => {
   const [count, setCount] = useState(props.helpful);
   const [clicked, setClicked] = useState(false);
-  const [questionID, setID] = useState(props.questionID);
 
-  const { currentItem, callAPI } = useContext(AppContext);
+  const { currentItem } = useContext(AppContext);
 
   const putAPI = async (params = '', callback) => {
     try {
@@ -19,11 +18,11 @@ const Helpful = (props) => {
 
   let handleHelp = () => {
     if (!clicked) {
-      putAPI(`qa/questions/${questionID}/helpful`, (response) => {
+      putAPI(`qa/questions/${props.questionID}/helpful`, (response) => {
         let index = 0;
 
         for (var i = 0; i < response.data.length; i++) {
-          if (response.data[i].question_id === questionID) {
+          if (response.data[i].question_id === props.questionID) {
             index = i;
           }
         }

@@ -1,12 +1,10 @@
-import React, { useState, useEffect, useContext, useRef } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './Modal.css';
-import axios from 'axios';
-import { API_KEY } from '../../../../../config/config.js';
 import { AppContext } from '../../app.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
 
-const Modal = ({ openModal, setOpenModal, selectedId, currentItem }) => {
+const Modal = ({ setOpenModal, selectedId, currentItem }) => {
   const { callAPI } = useContext(AppContext);
   const [allFeats, setAllFeats] = useState([]);
   const [currentFeats, setCurrentFeats] = useState([]);
