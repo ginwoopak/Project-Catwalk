@@ -20,9 +20,11 @@ const QuestionContainer = () => {
   const [questionModalOpen, setQuestionModalOpen] = useState(false);
   const [answerModalOpen, setAnswerModalOpen] = useState(false);
 
+  const [questionID, setQuestionID] = useState(0);
+
   useEffect(() => {
     try {
-      callAPI(`qa/questions?product_id=${currentItem.id}&count=50`, (response) => {
+      callAPI(`qa/questions?product_id=${currentItem.id}&count=1000`, (response) => {
         setQuestionData(response.data.results);
         setDisplayData(response.data.results);
       });
@@ -55,7 +57,7 @@ const QuestionContainer = () => {
   return (
     <div className='QAspace'>
       <QuestionContext.Provider
-        value={{ questionData, questionLimit, handleChange, displayData, setAnswerModalOpen }}
+        value={{ questionData, questionLimit, handleChange, displayData, setAnswerModalOpen, setQuestionID, questionID }}
       >
         {questionModalOpen ? (<ModalQuestion
           questionModalOpen={questionModalOpen}
