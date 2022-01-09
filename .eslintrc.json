@@ -42,7 +42,7 @@
     "no-use-before-define": 2,
     /* Minuta */
     "comma-style": [2, "last"],
-    "quotes": [1, "single"],
-    "no-unused-vars": "off"
+    "quotes": [1, "single"]
+    // "no-unused-vars": "off"
   }
 }
