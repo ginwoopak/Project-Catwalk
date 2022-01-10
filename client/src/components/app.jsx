@@ -21,20 +21,18 @@ const App = function () {
   const [average, setAverage] = useState(0);
   const [reviewBreak, setReviewBreak] = useState({
     ratings: {
-      5: '5',
+      5: '0',
     },
   });
 
-  const [theme, toggleTheme, mountedComponent] = useDarkMode();
+  const [theme, toggleTheme] = useDarkMode();
   const themeMode = theme === 'light' ? lightTheme : darkTheme;
-
-  // if(!mountedComponent) return <div/>
 
   const RevRef = useRef(null);
 
-  const getAverage = () => {
-    var avgArray = Object.values(reviewBreak.ratings);
-    var indArray = Object.keys(reviewBreak.ratings);
+  const getAverage = (revData = reviewBreak.ratings) => {
+    var avgArray = Object.values(revData);
+    var indArray = Object.keys(revData);
     var totalNumOfValues = 0;
     var sumOfNumbers = 0;
     var bigOne = 0;
@@ -69,10 +67,6 @@ const App = function () {
     } catch (error) {
       console.log(error);
     }
-  };
-
-  const setNewItem = (item) => {
-    setId(item);
   };
 
   const jumpToReviews = () => {
@@ -117,7 +111,11 @@ const App = function () {
         }}
       >
         <div>
-          <div id='Nav'>{currentItem ? <Nav theme={theme} toggleTheme={toggleTheme} /> : null}</div>
+          <div id='Nav'>
+            {currentItem ? (
+              <Nav theme={theme} toggleTheme={toggleTheme} />
+            ) : null}
+          </div>
           <div id='Product-Overview'>
             {currentItem ? <ProductInfo /> : null}
           </div>

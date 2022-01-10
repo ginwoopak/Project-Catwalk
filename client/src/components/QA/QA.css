@@ -59,37 +59,36 @@
 /* ========= Buttons ========= */
 
 .button2 {
-  display:inline-block;
-  padding:0.5em 3em;
-  border:0.16em solid #FFFFFF;
-  margin:0 0.3em 0.3em 0;
+  display: inline-block;
+  padding: 0.5em 3em;
+  border: 0.16em solid #ffffff;
+  margin: 0 0.3em 0.3em 0;
   box-sizing: border-box;
-  text-decoration:none;
-  text-transform:uppercase;
-  font-family:'Roboto',sans-serif;
-  font-weight:400;
-  color:#FFFFFF;
-  text-align:center;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: #ffffff;
+  text-align: center;
   transition: all 0.15s;
 }
 .button2:hover {
-  color:#DDDDDD;
-  border-color:#DDDDDD;
+  color: #dddddd;
+  border-color: #dddddd;
 }
 .button2:active {
-  color:#BBBBBB;
-  border-color:#BBBBBB;
+  color: #bbbbbb;
+  border-color: #bbbbbb;
 }
 
-@media all and (max-width:30em) {
+@media all and (max-width: 30em) {
   .button2 {
-  display:block;
-  margin:0.4em auto;
+    display: block;
+    margin: 0.4em auto;
   }
 }
 
 /* ========= QA margins ========= */
-
 
 .QAspace {
   margin-bottom: 7rem;
@@ -129,7 +128,6 @@ h1 {
 }
 
 .accordion-content {
-  /* background-color: #39b9d2; */
   background-color: #dadde4;
 }
 
