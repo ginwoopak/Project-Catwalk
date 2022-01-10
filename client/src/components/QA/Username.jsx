@@ -1,13 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const Username = (props) => {
-  // eslint-disable-next-line no-unused-vars
-  const [username, setUsername] = useState(props.answer.answerer_name);
-
-  // eslint-disable-next-line no-unused-vars
-  const [date, setDate] = useState(props.answer.date);
-
-  let answerDate = new Date(date);
+  let answerDate = new Date(props.answer.date);
   const [month, day, year] = [
     answerDate.toLocaleString('default', { month: 'long' }),
     answerDate.getDate(),
@@ -17,9 +11,12 @@ const Username = (props) => {
   return (
     <span>
       by
-      {username === 'Seller' ? <b>{` ${username}`}</b> : <span>{` ${username}`}</span>}
-      {/* <b>{` ${username}`}</b> */}
-      {`, ${month + ' ' + day + ', ' + year}`}
+      {props.answer.answerer_name === 'Seller' ? (
+        <b>{` ${props.answer.answerer_name}`}</b>
+      ) : (
+        <span>{` ${props.answer.answerer_name}`}</span>
+      )}
+      {`, ${month} ${day}, ${year}`}
     </span>
   );
 };

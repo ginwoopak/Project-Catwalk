@@ -1,18 +1,14 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import './QA.css';
 import { AppContext } from '../app.jsx';
 import { QuestionContext } from './QuestionContainer.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 
-const url = 'http://localhost:3000/';
-
-const ModalAnswer = ( { answerModalOpen, setAnswerModalOpen } ) => {
-
-  const { currentItem, callAPI } = useContext(AppContext);
-  const { questionID } = useContext(QuestionContext);
-
+const ModalAnswer = ({ setAnswerModalOpen }) => {
+  const { currentItem } = useContext(AppContext);
+  const { question } = useContext(QuestionContext);
 
   const [answerInput, setAnswerInput] = useState('');
   const [nicknameInput, setNicknameInput] = useState('');
@@ -35,14 +31,12 @@ const ModalAnswer = ( { answerModalOpen, setAnswerModalOpen } ) => {
 
   const postAnswer = () => {
     axios
-      .post(url + 'qa/questions', {
-        questionID: questionID,
+      .post(`qa/questions/${question.question_id}/answers`, {
+        item: currentItem.id,
         body: answerInput,
         name: nicknameInput,
         email: emailInput,
-      })
-      .then((response) => {
-        console.log('from modal:', response);
+        photos: [],
       })
       .catch((error) => {
         console.log(error);
@@ -124,10 +118,7 @@ const ModalAnswer = ( { answerModalOpen, setAnswerModalOpen } ) => {
         </div>
         <br></br>
         <div>
-          <input
-            type='submit'
-            value='Submit'
-          />
+          <input type='submit' value='Submit' />
         </div>
       </form>
     </div>
