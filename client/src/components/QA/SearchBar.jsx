@@ -1,7 +1,5 @@
 import React, { useContext } from 'react';
 import { QuestionContext } from './QuestionContainer.jsx';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 const SearchBar = () => {
 
@@ -10,12 +8,12 @@ const SearchBar = () => {
   return (
     <form>
       <input
+        className='search'
         type='text'
         size='45'
         placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...'
         onChange={(e) => handleChange(e)}
       />
-      <FontAwesomeIcon icon={faSearch} />
     </form>
   );
 };

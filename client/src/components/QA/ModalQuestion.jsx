@@ -65,6 +65,7 @@ const ModalQuestion = ({ questionModalOpen, setQuestionModalOpen }) => {
             <h3>About the {currentItem.name}</h3>
           </div>
         </div>
+        <br></br>
         <div>
           Question:
           <div>
@@ -80,6 +81,7 @@ const ModalQuestion = ({ questionModalOpen, setQuestionModalOpen }) => {
             ></textarea>
           </div>
         </div>
+        <br></br>
         <div>
           Nickname:
           <div>
@@ -98,6 +100,7 @@ const ModalQuestion = ({ questionModalOpen, setQuestionModalOpen }) => {
             For privacy reasons, do not use your full name or email address.
           </div>
         </div>
+        <br></br>
         <div>
           Email:
           <div>
@@ -114,6 +117,7 @@ const ModalQuestion = ({ questionModalOpen, setQuestionModalOpen }) => {
           </div>
           <div>For authentication reasons, you will not be emailed.</div>
         </div>
+        <br></br>
         <div>
           <input type='submit' value='Submit' />
         </div>

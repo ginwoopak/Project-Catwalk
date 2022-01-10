@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { QuestionContext } from './QuestionContainer.jsx';
 
-const AddAnswer = () => {
+const AddAnswer = (props) => {
   // const [addAnswer, setAddAnswer] = useState(null);
 
   // return (
@@ -14,12 +14,13 @@ const AddAnswer = () => {
   //   </span>
   // );
 
-  const { setAnswerModalOpen } = useContext(QuestionContext);
+  const { setAnswerModalOpen, setQuestionID } = useContext(QuestionContext);
 
   return (
     <span
       onClick={() => {
         setAnswerModalOpen(true);
+        setQuestionID(props.questionID);
       }}
     >
       <u>Add Answer</u>

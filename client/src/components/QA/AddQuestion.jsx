@@ -3,7 +3,7 @@ import React from 'react';
 const AddQuestion = ( { setQuestionModalOpen } ) => {
 
   return (
-    <button onClick={() => { setQuestionModalOpen(true); }}>
+    <button className='button2 addQuestionSpace' onClick={() => { setQuestionModalOpen(true); }}>
       Add Question
     </button>
   );

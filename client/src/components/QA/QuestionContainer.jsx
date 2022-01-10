@@ -20,9 +20,11 @@ const QuestionContainer = () => {
   const [questionModalOpen, setQuestionModalOpen] = useState(false);
   const [answerModalOpen, setAnswerModalOpen] = useState(false);
 
+  const [questionID, setQuestionID] = useState(0);
+
   useEffect(() => {
     try {
-      callAPI(`qa/questions?product_id=${currentItem.id}&count=50`, (response) => {
+      callAPI(`qa/questions?product_id=${currentItem.id}&count=1000`, (response) => {
         setQuestionData(response.data.results);
         setDisplayData(response.data.results);
       });
@@ -55,7 +57,7 @@ const QuestionContainer = () => {
   return (
     <div className='QAspace'>
       <QuestionContext.Provider
-        value={{ questionData, questionLimit, handleChange, displayData, setAnswerModalOpen }}
+        value={{ questionData, questionLimit, handleChange, displayData, setAnswerModalOpen, setQuestionID, questionID }}
       >
         {questionModalOpen ? (<ModalQuestion
           questionModalOpen={questionModalOpen}
@@ -68,21 +70,21 @@ const QuestionContainer = () => {
         <h2 className='QAtitle'>Questions & Answers</h2>
         <div className='QAtitle'>
           <SearchBar />
-          {questionData.length > 0 ? (
+          {displayData.length > 0 ? (
             <QuestionList className='align_left' />
           ) : null}
         </div>
-        <div
+        <span className='QAtitle'>
+          <AddQuestion setQuestionModalOpen={setQuestionModalOpen} />
+        </span>
+        <span
           className='QAtitle'
           onClick={() => {
             setQuestionLimit(questionLimit + 2);
           }}
         >
-          {questionData.length > 2 && <MoreQuestions />}
-        </div>
-        <div className='QAtitle'>
-          <AddQuestion setQuestionModalOpen={setQuestionModalOpen} />
-        </div>
+          {displayData.length > 2 && <MoreQuestions />}
+        </span>
       </QuestionContext.Provider>
     </div>
   );

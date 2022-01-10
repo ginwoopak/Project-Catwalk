@@ -11,6 +11,8 @@ const url = 'http://localhost:3000/';
 const ModalAnswer = ( { answerModalOpen, setAnswerModalOpen } ) => {
 
   const { currentItem, callAPI } = useContext(AppContext);
+  const { questionID } = useContext(QuestionContext);
+
 
   const [answerInput, setAnswerInput] = useState('');
   const [nicknameInput, setNicknameInput] = useState('');
@@ -31,25 +33,25 @@ const ModalAnswer = ( { answerModalOpen, setAnswerModalOpen } ) => {
     setEmailInput(e.target.value);
   };
 
-  // const postAnswer = () => {
-  //   axios
-  //     .post(url + 'qa/questions', {
-  //       body: answerInput,
-  //       name: nicknameInput,
-  //       email: emailInput,
-  //     })
-  //     .then((response) => {
-  //       console.log('from modal:', response);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // };
+  const postAnswer = () => {
+    axios
+      .post(url + 'qa/questions', {
+        questionID: questionID,
+        body: answerInput,
+        name: nicknameInput,
+        email: emailInput,
+      })
+      .then((response) => {
+        console.log('from modal:', response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // postAnswer();
-    console.log('Submitted');
+    postAnswer();
   };
 
   return (
@@ -68,6 +70,7 @@ const ModalAnswer = ( { answerModalOpen, setAnswerModalOpen } ) => {
           <div>
             <h3>{currentItem.name}</h3>
           </div>
+          <br></br>
         </div>
         <div>
           Answer:
@@ -83,6 +86,7 @@ const ModalAnswer = ( { answerModalOpen, setAnswerModalOpen } ) => {
             ></textarea>
           </div>
         </div>
+        <br></br>
         <div>
           Nickname:
           <div>
@@ -101,6 +105,7 @@ const ModalAnswer = ( { answerModalOpen, setAnswerModalOpen } ) => {
             For privacy reasons, do not use your full name or email address.
           </div>
         </div>
+        <br></br>
         <div>
           Email:
           <div>
@@ -117,6 +122,7 @@ const ModalAnswer = ( { answerModalOpen, setAnswerModalOpen } ) => {
           </div>
           <div>For authentication reasons, you will not be emailed.</div>
         </div>
+        <br></br>
         <div>
           <input
             type='submit'

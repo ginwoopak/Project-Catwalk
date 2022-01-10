@@ -5,7 +5,6 @@ import HelpfulAddAnswer from './HelpfulAddAnswer.jsx';
 // import LoadAnswers from './LoadAnswers.jsx';
 
 const QuestionItem = (props) => {
-
   const [isActive, setIsActive] = useState(false);
   const [limit, setLimit] = useState(2);
   const [questionID, setQuestionID] = useState(props.question.question_id);
@@ -28,22 +27,22 @@ const QuestionItem = (props) => {
           <Question question={props.question.question_body} />
           <div>{isActive ? '-' : '+'}</div>
         </div>
+        <div>
+          <HelpfulAddAnswer question={props.question} />
+        </div>
         <div className='accordion-content'>
-          <div>
-            <HelpfulAddAnswer question={props.question} />
-          </div>
           {isActive && (
             <div>
               <div>{answerList}</div>
               <div>
                 {answers.length > 2 && (
                   <div
-                    className='darktitle'
+                    className='darktitle centerLoadAnswers'
                     onClick={() => {
                       setLimit(limit + 2);
                     }}
                   >
-                    Load More Answers
+                    <u>Load More Answers</u>
                   </div>
                 )}
               </div>

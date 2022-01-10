@@ -4,7 +4,7 @@ import AddAnswer from './AddAnswer.jsx';
 
 const HelpfulAddAnswer = (props) => {
   return (
-    <span className='float_right small_font'>
+    <span className='right_header small_font'>
       <Helpful
         helpful={props.question.question_helpfulness}
         questionID={props.question.question_id}
