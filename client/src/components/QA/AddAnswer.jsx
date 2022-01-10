@@ -1,26 +1,14 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { QuestionContext } from './QuestionContainer.jsx';
 
 const AddAnswer = (props) => {
-  // const [addAnswer, setAddAnswer] = useState(null);
-
-  // return (
-  //   <span
-  //     onClick={() => {
-  //       setAddAnswer(alert('ADD ANSWER'));
-  //     }}
-  //   >
-  //     <u>Add Answer</u>
-  //   </span>
-  // );
-
-  const { setAnswerModalOpen, setQuestionID } = useContext(QuestionContext);
+  const { setAnswerModalOpen, setQuestion } = useContext(QuestionContext);
 
   return (
     <span
       onClick={() => {
         setAnswerModalOpen(true);
-        setQuestionID(props.questionID);
+        setQuestion(props.question);
       }}
     >
       <u>Add Answer</u>

@@ -1,10 +1,6 @@
 import React from 'react';
 import HalfRating from './Stars.jsx';
 
-/*
-{props.rev.date.toLocaleDateString()}
-*/
-
 const Review = (props) => {
   var yearMonthDay = props.rev.date.split('-');
 
