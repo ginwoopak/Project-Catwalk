@@ -1,11 +1,23 @@
-import React, { useState, useEffect, useContext, useRef } from 'react';
+/* eslint-disable react/jsx-key */
+/* eslint-disable indent */
+import React, { useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { CartContext } from './Nav.jsx';
 
-const Cart = ({ setOpenCart, openCart, cartItems }) => {
+const Cart = ({ setOpenCart, cartItems }) => {
+  const { total } = useContext(CartContext);
+
+  const cartDisplay = () => {
+    return <div>{`Your Total: $${total}`}</div>;
+  };
+
   return (
-    <div className='modal'>
-      <div className='modalContainer'>
+    <div className='cartOpen'>
+      <div
+        className='cartContainer'
+        style={{ height: `calc(39px + 54px * ${cartItems.length} + 65px)` }}
+      >
         <button
           className='closeBtn'
           onClick={() => {
@@ -16,13 +28,40 @@ const Cart = ({ setOpenCart, openCart, cartItems }) => {
         </button>
         <div>
           <h3>Your Cart:</h3>
-          <table>
-            <tbody className='tableBody'>
-              {cartItems
-                ? cartItems.map((item) => <a key={item}>{item.name}</a>)
-                : null}
-            </tbody>
-          </table>
+          <div style={{ position: 'absolute' }}>
+            <div className='tableBody'>
+              {cartItems && cartItems.length > 0 ? (
+                cartItems.map((item) => (
+                  <div>
+                    <div>
+                      <div className='cartItem'>
+                        <img className='cartThumb' src={item.pic}></img>
+                        <div className='itemDesc'>
+                          <div className='itemStyle'>
+                            <span>{item.name}</span>
+                            <span>{' - ' + item.style}</span>
+                          </div>
+                          <div className='priceSize'>
+                            <span>{'$' + item.price}</span>
+                            <span>{'Size: ' + item.size}</span>
+                            <span>{'Qty: ' + item.quantity}</span>
+                            <span>
+                              {'Total: $' + item.price * item.quantity}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <div>
+                  <span>Your Cart is Empty</span>
+                </div>
+              )}
+              <div className='total'>{total ? cartDisplay() : null}</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

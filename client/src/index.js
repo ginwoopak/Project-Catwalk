@@ -22,14 +22,9 @@ document.addEventListener('click', function (event) {
     }
   }
 
-  axios
-    .post('interactions', listener)
-    .then(() => {
-      listener.widget ? console.log(listener.widget) : null;
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  axios.post('interactions', listener).catch((error) => {
+    console.log(error);
+  });
 });
 
 ReactDOM.render(<App />, document.getElementById('app'));

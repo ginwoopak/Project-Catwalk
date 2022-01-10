@@ -1,5 +1,5 @@
 /* eslint-disable indent */
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { AppContext } from '../app.jsx';
 import HalfRating from '../R&R/Stars.jsx';
 import { OverviewContext } from './expandedInfo.jsx';
@@ -57,11 +57,6 @@ const AddToCart = () => {
     } catch (error) {
       console.log(error);
     }
-  };
-
-  const fadeOut = (element, val) => {
-    // element.style = { display: 1 / val };
-    console.log(element);
   };
 
   return (
@@ -127,7 +122,9 @@ const AddToCart = () => {
         )}
       </div>
       <span>
-        <button onClick={() => addToCart()}>Add to Cart</button>
+        <button className='button' onClick={() => addToCart()}>
+          Add to Cart
+        </button>
         {' Add To Favorites '}
         <FontAwesomeIcon
           id='favorite'
