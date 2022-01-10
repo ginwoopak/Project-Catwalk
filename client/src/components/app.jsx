@@ -25,14 +25,16 @@ const App = function () {
     },
   });
 
-  const [theme, toggleTheme] = useDarkMode();
+  const [theme, toggleTheme, mountedComponent] = useDarkMode();
   const themeMode = theme === 'light' ? lightTheme : darkTheme;
+
+  // if(!mountedComponent) return <div/>
 
   const RevRef = useRef(null);
 
-  const getAverage = (revData = reviewBreak.ratings) => {
-    var avgArray = Object.values(revData);
-    var indArray = Object.keys(revData);
+  const getAverage = () => {
+    var avgArray = Object.values(reviewBreak.ratings);
+    var indArray = Object.keys(reviewBreak.ratings);
     var totalNumOfValues = 0;
     var sumOfNumbers = 0;
     var bigOne = 0;
@@ -67,6 +69,10 @@ const App = function () {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const setNewItem = (item) => {
+    setId(item);
   };
 
   const jumpToReviews = () => {
@@ -111,11 +117,7 @@ const App = function () {
         }}
       >
         <div>
-          <div id='Nav'>
-            {currentItem ? (
-              <Nav theme={theme} toggleTheme={toggleTheme} />
-            ) : null}
-          </div>
+          <div id='Nav'>{currentItem ? <Nav theme={theme} toggleTheme={toggleTheme} /> : null}</div>
           <div id='Product-Overview'>
             {currentItem ? <ProductInfo /> : null}
           </div>

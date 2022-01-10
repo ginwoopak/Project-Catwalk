@@ -1,17 +1,33 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useMemo } from 'react';
 import './RelatedProducts.css';
 import HalfRating from '../../R&R/Stars.jsx';
 import { AppContext } from '../../app.jsx';
 
 const ProductCard = ({ productId }) => {
-  const { callAPI, getAverage, setId } = useContext(AppContext);
+  const { currentItem, callAPI, getAverage, setId } = useContext(AppContext);
   const [imageUrl, setImageUrl] = useState('');
   const [category, setCategory] = useState('');
   const [name, setName] = useState('');
   const [price, setPrice] = useState(0);
-  const [ratingAvg, setRatingAvg] = useState(0);
+  const [ratingAvg, setRatingAvg] = useState(0); // refactor needed
   const [salesPrice, setSalesPrice] = useState(0);
   const [ratingData, setRatingData] = useState({});
+
+  const getAvg = () => {
+    var avgArray = Object.values(ratingData);
+    var indArray = Object.keys(ratingData);
+    var totalNumOfValues = 0;
+    var sumOfNumbers = 0;
+    var bigOne = 0;
+
+    avgArray.forEach((element, index) => {
+      totalNumOfValues = totalNumOfValues + Number(element);
+      sumOfNumbers = indArray[index] * Number(element);
+      bigOne = bigOne + sumOfNumbers;
+    });
+
+    return Number((bigOne / totalNumOfValues).toFixed(1));
+  };
 
   useEffect(() => {
     callAPI(`products/${productId}/styles`, (response) => {
@@ -25,11 +41,12 @@ const ProductCard = ({ productId }) => {
     });
     callAPI(`reviews/meta?product_id=${productId}`, (response) => {
       setRatingData(response.data.ratings);
+      getAvg();
     });
   }, [productId]);
 
   useEffect(() => {
-    setRatingAvg(getAverage(ratingData));
+    setRatingAvg(getAvg());
   }, [ratingData]);
 
   return (

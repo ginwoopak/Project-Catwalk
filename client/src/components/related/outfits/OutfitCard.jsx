@@ -1,11 +1,12 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useMemo } from 'react';
 import '../related_products//RelatedProducts.css';
 
 import HalfRating from '../../R&R/Stars.jsx';
 import { AppContext } from '../../app.jsx';
+import products from '../sampleData.js';
 
 const OutfitCard = ({ productId }) => {
-  const { callAPI, setId } = useContext(AppContext);
+  const { currentItem, callAPI, getAverage, setId } = useContext(AppContext);
   const [imageUrl, setImageUrl] = useState('');
   const [category, setCategory] = useState('');
   const [name, setName] = useState('');

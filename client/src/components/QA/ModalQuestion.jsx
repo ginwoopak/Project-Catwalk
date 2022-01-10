@@ -1,12 +1,12 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './QA.css';
 import { AppContext } from '../app.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 
-const ModalQuestion = ({ setQuestionModalOpen }) => {
-  const { currentItem } = useContext(AppContext);
+const ModalQuestion = ({ questionModalOpen, setQuestionModalOpen }) => {
+  const { currentItem, callAPI } = useContext(AppContext);
 
   const [questionInput, setQuestionInput] = useState('');
   const [nicknameInput, setNicknameInput] = useState('');
