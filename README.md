@@ -26,9 +26,10 @@ The Ratings & Reviews widget will allow viewing and submission of reviews for th
 
 # How to Install and Run the Project
 
-1. Run `npm install` in the commmand line within the `lilSebastian` folder location.
-2. Run `npm run watch` for webpack in a terminal once, then stop it.
-3. Run `npm start` to start server
+1. Replace `YOUR_API_KEY_HERE` in `config.example.js` with your own API key and save as `config.js`.
+2. Run `npm install` in the commmand line within the `lilSebastian` folder location.
+3. Run `npm run watch` for webpack in a terminal once, then stop it.
+4. Run `npm start` to start server
 
 # Contributor
 
