@@ -1,17 +1,20 @@
 /* eslint-disable indent */
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect, useMemo } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faXmarkCircle,
   faSquarePlus,
 } from '@fortawesome/free-regular-svg-icons';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import sampleData from '../sampleData.js';
 import { AppContext } from '../../app.jsx';
 import '../related_products//RelatedProducts.css';
+import HalfRating from '../../R&R/Stars.jsx';
 import OutfitCard from './OutfitCard.jsx';
 
 const Outfits = () => {
-  const { outfits, addOutfit, removeOutfit } = useContext(AppContext);
+  const { currentItem, outfits, addOutfit, removeOutfit } =
+    useContext(AppContext);
   const [firstShowIndex, setFirstShowIndex] = useState(0);
 
   const prevClick = () => {

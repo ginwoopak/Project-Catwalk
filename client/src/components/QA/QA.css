@@ -1,7 +1,45 @@
+/* .rowQuestion {
+  display: flex;
+  flex-direction:row;
+}
+#big_image {
+  width: 500px;
+}
+
+.thumbnail {
+  width: 100px;
+}
+
+.align_left {
+  text-align: left;
+}
+
+.float_left {
+  float: left;
+}
+
+.float_right {
+  float: right;
+}
+
+.individual_container {
+  display: grid;
+  padding: 10px;
+  row-gap: 10px;
+  margin: 0 auto;
+} */
+
 .small_font {
   font-size: small;
   color: gray;
 }
+
+/* .center {
+  margin: auto;
+  padding: 10px;
+  width: 50%;
+  text-align: center;
+} */
 
 * {
   margin: 0;
@@ -9,13 +47,26 @@
   box-sizing: border-box;
 }
 
+/* body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 20px;
+  background: rgb(238, 174, 202);
+  background: radial-gradient(
+    circle,
+    rgba(238, 174, 202, 1) 0%,
+    rgba(199, 233, 148, 1) 100%
+  );
+} */
+
+/* Please add margin: 2rem in your biggest container for your widget*/
+
 .QAspace {
   margin-bottom: 7rem;
 }
 
 .QAtitle {
   margin-left: 7rem;
-}
+};
 
 h1 {
   text-align: center;
@@ -32,6 +83,7 @@ h1 {
   flex-direction: row;
   justify-content: space-between;
   cursor: pointer;
+  /* background-color: #21aeca; */
   background-color: #c5c8cf;
 }
 
@@ -45,6 +97,7 @@ h1 {
 }
 
 .accordion-content {
+  /* background-color: #39b9d2; */
   background-color: #dadde4;
 }
 

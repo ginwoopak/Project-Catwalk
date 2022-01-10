@@ -20,17 +20,12 @@ const QuestionContainer = () => {
   const [questionModalOpen, setQuestionModalOpen] = useState(false);
   const [answerModalOpen, setAnswerModalOpen] = useState(false);
 
-  const [question, setQuestion] = useState(0);
-
   useEffect(() => {
     try {
-      callAPI(
-        `qa/questions?product_id=${currentItem.id}&count=1000`,
-        (response) => {
-          setQuestionData(response.data.results);
-          setDisplayData(response.data.results);
-        }
-      );
+      callAPI(`qa/questions?product_id=${currentItem.id}&count=50`, (response) => {
+        setQuestionData(response.data.results);
+        setDisplayData(response.data.results);
+      });
     } catch (error) {
       console.log(error);
     }
@@ -46,9 +41,7 @@ const QuestionContainer = () => {
       setDisplayData(questionData);
     } else {
       const searchResult = questionData.filter((question) => {
-        return question.question_body
-          .toLowerCase()
-          .includes(searchInput.toLowerCase());
+        return question.question_body.toLowerCase().includes(searchInput.toLowerCase());
       });
 
       setDisplayData(searchResult);
@@ -62,29 +55,17 @@ const QuestionContainer = () => {
   return (
     <div className='QAspace'>
       <QuestionContext.Provider
-        value={{
-          questionData,
-          questionLimit,
-          handleChange,
-          displayData,
-          setAnswerModalOpen,
-          question,
-          setQuestion,
-        }}
+        value={{ questionData, questionLimit, handleChange, displayData, setAnswerModalOpen }}
       >
-        {questionModalOpen ? (
-          <ModalQuestion
-            questionModalOpen={questionModalOpen}
-            setQuestionModalOpen={setQuestionModalOpen}
-          />
-        ) : null}
-        {answerModalOpen ? (
-          <ModalAnswer
-            answerModalOpen={answerModalOpen}
-            setAnswerModalOpen={setAnswerModalOpen}
-          />
-        ) : null}
-        <h2 className='QAtitle'>{`Questions ${'&'} Answers`}</h2>
+        {questionModalOpen ? (<ModalQuestion
+          questionModalOpen={questionModalOpen}
+          setQuestionModalOpen={setQuestionModalOpen}
+        />) : null}
+        {answerModalOpen ? (<ModalAnswer
+          answerModalOpen={answerModalOpen}
+          setAnswerModalOpen={setAnswerModalOpen}
+        />) : null}
+        <h2 className='QAtitle'>Questions & Answers</h2>
         <div className='QAtitle'>
           <SearchBar />
           {questionData.length > 0 ? (

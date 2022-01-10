@@ -3,6 +3,7 @@ import { AppContext } from '../app.jsx';
 import Review from './Review.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
 import './Reviews.css';
+import { async } from 'regenerator-runtime';
 import Modal from './Modal.jsx';
 
 export const ReviewContext = createContext(null);

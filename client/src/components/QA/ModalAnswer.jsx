@@ -1,14 +1,16 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './QA.css';
 import { AppContext } from '../app.jsx';
 import { QuestionContext } from './QuestionContainer.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 
-const ModalAnswer = ({ setAnswerModalOpen }) => {
-  const { currentItem } = useContext(AppContext);
-  const { question } = useContext(QuestionContext);
+const url = 'http://localhost:3000/';
+
+const ModalAnswer = ( { answerModalOpen, setAnswerModalOpen } ) => {
+
+  const { currentItem, callAPI } = useContext(AppContext);
 
   const [answerInput, setAnswerInput] = useState('');
   const [nicknameInput, setNicknameInput] = useState('');
@@ -29,23 +31,24 @@ const ModalAnswer = ({ setAnswerModalOpen }) => {
     setEmailInput(e.target.value);
   };
 
-  const postAnswer = () => {
-    axios
-      .post(`qa/questions/${question.question_id}/answers`, {
-        item: currentItem.id,
-        body: answerInput,
-        name: nicknameInput,
-        email: emailInput,
-        photos: [],
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  // const postAnswer = () => {
+  //   axios
+  //     .post(url + 'qa/questions', {
+  //       body: answerInput,
+  //       name: nicknameInput,
+  //       email: emailInput,
+  //     })
+  //     .then((response) => {
+  //       console.log('from modal:', response);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    postAnswer();
+    // postAnswer();
     console.log('Submitted');
   };
 
@@ -63,7 +66,7 @@ const ModalAnswer = ({ setAnswerModalOpen }) => {
         <div>
           <h2>Submit your answer</h2>
           <div>
-            <h3>{`${currentItem.name} : ${question.question_body}`}</h3>
+            <h3>{currentItem.name}</h3>
           </div>
         </div>
         <div>
@@ -115,7 +118,10 @@ const ModalAnswer = ({ setAnswerModalOpen }) => {
           <div>For authentication reasons, you will not be emailed.</div>
         </div>
         <div>
-          <input type='submit' value='Submit' />
+          <input
+            type='submit'
+            value='Submit'
+          />
         </div>
       </form>
     </div>

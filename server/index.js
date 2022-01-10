@@ -4,11 +4,6 @@ const app = express();
 const PORT = 3000;
 const axios = require('axios');
 const API_KEY = require('../config/config.js');
-
-const headers = {
-  Authorization: API_KEY.Authorization,
-  'Content-Type': 'application/json',
-};
 const memo = {};
 const outfitsMemo = {};
 const cart = {};
@@ -28,16 +23,21 @@ app.listen(PORT, () => {
 });
 
 app.get(/products/, (req, res) => {
+  // console.log(req.url);
   if (memo[req.path]) {
     res.send(memo[req.path]);
   } else {
     axios({
       url: req.url,
-      headers: headers,
+      headers: {
+        Authorization: API_KEY.Authorization,
+        'Content-Type': 'application/json',
+      },
       baseURL: baseURL,
     })
       .then((response) => {
         memo[req.path] = response.data;
+        // console.log('API CALLED');
         res.send(response.data);
       })
       .catch((error) => {
@@ -47,16 +47,21 @@ app.get(/products/, (req, res) => {
 });
 
 app.get(/qa/, (req, res) => {
+  // console.log(req.path + `?product_id=${req.query.product_id}`);
   if (memo[req.path + `?product_id=${req.query.product_id}`]) {
     res.send(memo[req.path + `?product_id=${req.query.product_id}`]);
   } else {
     axios({
       url: req.url,
-      headers: headers,
+      headers: {
+        Authorization: API_KEY.Authorization,
+        'Content-Type': 'application/json',
+      },
       baseURL: baseURL,
     })
       .then((response) => {
         memo[req.path + `?product_id=${req.query.product_id}`] = response.data;
+        // console.log('API CALLED');
         res.send(response.data);
       })
       .catch((error) => {
@@ -65,40 +70,14 @@ app.get(/qa/, (req, res) => {
   }
 });
 
-app.post(/answers/, (req, res) => {
-  console.log(baseURL + req.url);
-  axios({
-    method: 'POST',
-    url: req.url,
-    headers: headers,
-    data: req.body,
-    baseURL: baseURL,
-  })
-    .then(() => {
-      axios({
-        url: `/qa/questions/?product_id=${req.body.item}`,
-        headers: headers,
-        baseURL: baseURL,
-      })
-        .then((response) => {
-          memo[req.path + `?product_id=${req.body.item}`] = response.data;
-          res.status(201).send(response.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    })
-    .catch((error) => {
-      console.log(error);
-      res.send(error);
-    });
-});
-
 app.post('/qa/questions', (req, res) => {
   axios({
     method: 'POST',
     url: req.url,
-    headers: headers,
+    headers: {
+      Authorization: API_KEY.Authorization,
+      'Content-Type': 'application/json',
+    },
     data: req.body,
     baseURL: baseURL,
   })
@@ -117,18 +96,25 @@ app.put(/qa/, (req, res) => {
     url: req.url,
     body: req.body,
     method: 'PUT',
-    headers: headers,
+    headers: {
+      Authorization: API_KEY.Authorization,
+      'Content-Type': 'application/json',
+    },
     baseURL: baseURL,
   })
-    .then(() => {
+    .then((response) => {
       axios({
         url: `/qa/questions/?product_id=${req.body.id}`,
         method: 'GET',
-        headers: headers,
+        headers: {
+          Authorization: API_KEY.Authorization,
+          'Content-Type': 'application/json',
+        },
         baseURL: baseURL,
       })
         .then((response) => {
           memo[`/qa/questions?product_id=${req.body.id}`] = response.data;
+          // console.log('API CALLED');
           res.send(response.data.results);
         })
         .catch((error) => {
@@ -141,16 +127,21 @@ app.put(/qa/, (req, res) => {
 });
 
 app.get(/reviews/, (req, res) => {
+  // console.log(req.path + `?product_id=${req.query.product_id}`);
   if (memo[req.path + `?product_id=${req.query.product_id}`]) {
     res.send(memo[req.path + `?product_id=${req.query.product_id}`]);
   } else {
     axios({
       url: req.url,
-      headers: headers,
+      headers: {
+        Authorization: API_KEY.Authorization,
+        'Content-Type': 'application/json',
+      },
       baseURL: baseURL,
     })
       .then((response) => {
         memo[req.path + `?product_id=${req.query.product_id}`] = response.data;
+        // console.log('API CALLED');;
         res.send(response.data);
       })
       .catch((error) => {
@@ -177,11 +168,14 @@ app.post(/interactions/, (req, res) => {
   axios({
     method: 'post',
     url: req.url,
-    headers: headers,
+    headers: {
+      Authorization: API_KEY.Authorization,
+      'Content-Type': 'application/json',
+    },
     data: req.body,
     baseURL: baseURL,
   })
-    .then(() => {
+    .then((response) => {
       res.sendStatus(201);
     })
     .catch((error) => {
@@ -193,16 +187,19 @@ app.post(/cart/, (req, res) => {
   axios({
     method: 'post',
     url: req.url,
-    headers: headers,
+    headers: {
+      Authorization: API_KEY.Authorization,
+      'Content-Type': 'application/json',
+    },
     data: req.body,
     baseURL: baseURL,
   })
-    .then(() => {
+    .then((response) => {
       if (cart[req.body.sku_id]) {
         cart[req.body.sku_id].quantity += parseInt(req.body.quantity);
       } else {
         cart[req.body.sku_id] = {
-          name: req.body.item.name,
+          item: req.body.item.name,
           style: req.body.style.name,
           price: req.body.style.sale_price || req.body.style.original_price,
           pic: req.body.style.photos[0].thumbnail_url,
@@ -218,5 +215,5 @@ app.post(/cart/, (req, res) => {
 });
 
 app.get(/cart/, (req, res) => {
-  res.send(Object.values(cart));
+  res.send(cart);
 });
