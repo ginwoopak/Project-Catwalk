@@ -1,4 +1,4 @@
-# Team Lil-Bopeep - Project Catwalk Retail Site
+# Project Catwalk Retail Site
 
 ![alt text](ReadMe.gif)
 
